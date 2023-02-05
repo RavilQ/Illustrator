@@ -1596,4 +1596,61 @@ span {
 #my-v-pills-messages .news .article:active figcaption {
   opacity: 1;
   transform: none;
+}
+
+#v-pills-wishlist .my-add-hoveer {
+  height: 0;
+  width: 100%;
+  position: absolute;
+  background-color: #303030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+#v-pills-wishlist .my-add-hoveer div {
+  display: none;
+}
+#v-pills-wishlist .my-add-hoveer div p {
+  font-size: 100%;
+  color: transparent;
+}
+#v-pills-wishlist .my-add-hoveer div small {
+  color: transparent;
+}
+#v-pills-wishlist .my-add-hoveer div h5 {
+  color: transparent;
+}
+#v-pills-wishlist .my-add-hoveer:hover {
+  background-color: black;
+  color: white;
+}
+#v-pills-wishlist .my-add-hoveer-span {
+  height: 100%;
+  margin-top: 0rem;
+  transition: 0.2s;
+}
+#v-pills-wishlist .portret-image-hoveer:hover {
+  cursor: pointer;
+}
+#v-pills-wishlist .portret-image-hoveer:hover .my-add-hoveer {
+  height: 100%;
+}
+#v-pills-wishlist .portret-image-hoveer:hover .my-add-hoveer div {
+  display: block;
+}
+#v-pills-wishlist .portret-image-hoveer:hover .my-add-hoveer div p {
+  font-size: 100%;
+  color: white;
+}
+#v-pills-wishlist .portret-image-hoveer:hover .my-add-hoveer div small {
+  color: white;
+}
+#v-pills-wishlist .portret-image-hoveer:hover .my-add-hoveer div h5 {
+  color: white;
+}
+#v-pills-wishlist .portret-image-hoveer:hover .my-add-hoveer-span {
+  margin-top: 1.4rem;
 }/*# sourceMappingURL=main.css.map */

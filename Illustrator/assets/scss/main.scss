@@ -1691,3 +1691,71 @@ h2:after {
 
 
 }
+
+
+
+#v-pills-wishlist{
+  .my-add-hoveer{
+    height: 0;
+    width: 100%;
+    position: absolute;
+    background-color: #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    div{
+        p{
+          font-size:100%;
+          color: transparent;
+        }
+        small{
+          color: transparent;
+        }
+        h5{
+          color: transparent;
+        }
+       display: none;
+    }
+}
+
+.my-add-hoveer:hover{
+    background-color: black;
+    color: white;
+}
+
+.my-add-hoveer-span{
+    height: 100%;
+    margin-top: 0rem;
+    transition: 0.2s;
+}
+
+.portret-image-hoveer:hover{
+
+    cursor: pointer;
+    .my-add-hoveer{
+        height: 100%;
+
+        div{
+          p{
+            font-size:100%;
+            color: white;
+          }
+          small{
+            color: white;
+          }
+          h5{
+            color: white;
+          }
+          display: block;
+        }
+    }
+    
+    .my-add-hoveer-span{
+        margin-top: 1.4rem;
+    }
+}
+
+}
