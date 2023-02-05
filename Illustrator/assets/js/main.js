@@ -21,10 +21,8 @@ document.addEventListener('click', function(event) {
     if (!e.contains(event.target) && !b.contains(event.target)){
         navbar.style.display="block";
         searchInput.style.display="none";
-    } 
+    }
 });
-
-
 
 // var scrollsearchBtn = document.getElementById("my-scroll-search-button");
 // var scrollnavbar = document.getElementById("my-scroll-navbar");
@@ -42,7 +40,7 @@ document.addEventListener('click', function(event) {
 //     if (!e.contains(event.target) && !b.contains(event.target)){
 //         scrollnavbar.style.display="block";
 //         scrollsearchInput.style.display="none";
-//     } 
+//     }
 // });
 
 
@@ -76,13 +74,14 @@ var currentScrollPos = window.pageYOffset;
   }
 }
 
-
 $(document).ready(function() {
   $('#heart-icon').click(function() {
+    // $('#wishlist').css('display', 'block');
     $('#wishlist').css('right', '0');
   });
   $('#wishlist').mouseleave(function() {
     $(this).css('right', '-25%');
+    setTimeout(main, 5000); 
   });
 });
 
@@ -92,10 +91,42 @@ $(document).ready(function() {
   });
   $('#wishlist').mouseleave(function() {
     $(this).css('right', '-25%');
+    setTimeout(main, 1000); 
   });
 });
+
+$(document).ready(function() {
+  if (wishlistCheck==true) {
+    setTimeout(main, 1000); 
+  }
+});
+
+// function main() {
+//   $('#wishlist').css('display','none');
+// }
 
 document.getElementById("upBtn").addEventListener("click", function() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 });
+
+
+$(function () {
+  $("#slider-range").slider({
+    range: true,
+    min: 130,
+    max: 500,
+    values: [130, 250],
+    slide: function (event, ui) {
+      $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+    }
+  });
+  $("#amount").val(
+    "$" +
+      $("#slider-range").slider("values", 0) +
+      " - $" +
+      $("#slider-range").slider("values", 1)
+  );
+});
+
+

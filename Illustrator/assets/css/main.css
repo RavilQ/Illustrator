@@ -1,6 +1,8 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 #priloader {
   position: fixed;
   width: 100%;
@@ -8,6 +10,16 @@
   z-index: 9;
   background: white url(/assets/gifs/807.gif) no-repeat center center;
   /* background-size: 30%; */
+}
+
+::-moz-selection {
+  background-color: black;
+  color: white;
+}
+
+::selection {
+  background-color: black;
+  color: white;
 }
 
 .color-white {
@@ -150,7 +162,7 @@ ul {
   position: absolute;
   left: 0;
   bottom: -10px;
-  background-color: #e91e63;
+  background-color: white;
   height: 2px;
   box-sizing: border-box;
   width: 50px;
@@ -422,6 +434,7 @@ body {
   right: -25%;
   top: 0;
   transition: right 0.5s ease-out;
+  overflow: hidden;
 }
 
 #wishlist-content {
@@ -444,11 +457,13 @@ body {
   display: inline-block;
   text-align: center;
   margin-bottom: 2rem;
+  height: 77%;
+  width: 65%;
 }
 
 .img-container {
-  height: 230px;
-  width: 200px;
+  height: 65%;
+  width: 92%;
   overflow: hidden;
   border-radius: 0px 0px 20px 20px;
   display: inline-block;
@@ -456,7 +471,8 @@ body {
 
 .img-container img {
   transform: skew(0deg, -13deg);
-  height: 250px;
+  height: 115%;
+  width: 133%;
   margin: -35px 0px 0px -70px;
 }
 
@@ -469,8 +485,8 @@ body {
   font-size: 0px;
   margin: 30px 0px 0px 0px;
   background: #c8c2c2;
-  height: 250px;
-  width: 200px;
+  height: 100%;
+  width: 100%;
 }
 
 .text-container {
@@ -494,16 +510,17 @@ body {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 100%;
+  height: 100vh;
 }
 
 .top-section {
   overflow-y: scroll;
   flex-grow: 1;
-  height: 32rem;
+  height: 76%;
 }
 
 .bottom-section {
+  height: 24%;
   flex-shrink: 0;
 }
 
@@ -549,11 +566,11 @@ p {
   height: 50px;
   width: 260px;
   line-height: 50px;
-  margin: 25px 0;
+  margin: 11px 0;
   padding: 0px;
   border-radius: 25px;
   box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
-  background: linear-gradient(135deg, #e570e7 0%, #79f1fc 100%);
+  background: linear-gradient(135deg, black 0%, white 100%);
 }
 
 .btn-slide:active {
@@ -562,13 +579,13 @@ p {
 }
 
 .btn-slide:hover {
-  background: linear-gradient(-135deg, #e570e7 0%, #79f1fc 100%);
+  background: linear-gradient(-135deg, black 0%, white 100%);
 }
 
 .btn-slide span.circle {
   display: block;
   background-color: #fff;
-  color: #e570e7;
+  color: black;
   position: absolute;
   margin: 5px;
   height: 40px;
@@ -582,8 +599,8 @@ p {
 .btn-slide:hover span.circle {
   left: 100%;
   margin-left: -45px;
-  background-color: #fff;
-  color: #79f1fc;
+  background-color: black;
+  color: white;
 }
 
 .btn-slide span.title {
@@ -625,8 +642,8 @@ p {
 }
 
 .my-lord-icon {
-  width: 50px;
-  height: 50px;
+  width: 27%;
+  height: 22%;
   position: absolute;
   right: -0.5rem;
 }
@@ -637,6 +654,8 @@ p {
 
 .img-inner {
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 #upBtn {
@@ -967,4 +986,614 @@ span {
 }
 #myportretsections small {
   margin-bottom: 1rem;
+}
+
+.slide-images {
+  height: 40rem;
+}
+
+@media (min-width: 576px) {
+  .col-sm-3 {
+    flex: 0 0 auto;
+    width: 50% !important;
+  }
+}
+@media (min-width: 1200px) {
+  .col-xl-3 {
+    flex: 0 0 auto;
+    width: 25% !important;
+  }
+}
+#myaboutusmainsection {
+  background-image: url(/assets/images/pages-img-8.jpg);
+  text-align: center;
+  position: relative;
+  bottom: 4rem;
+  padding-bottom: 8rem;
+}
+#myaboutusmainsection h1 {
+  font-size: 130px;
+  padding-top: 12rem;
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1750px);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1750px);
+  }
+}
+.slider {
+  background: white;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.13);
+  /* height: 100px; */
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 5rem;
+  margin-bottom: 10rem;
+  margin-top: 7rem;
+}
+.slider::before, .slider::after {
+  background: linear-gradient(to right, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+.slider::before {
+  left: 0;
+  top: 0;
+}
+.slider .slide-track {
+  -webkit-animation: scroll 40s linear infinite;
+          animation: scroll 40s linear infinite;
+  display: flex;
+  width: 3500px;
+}
+.slider .slide {
+  height: 100px;
+  width: 250px;
+}
+
+.myaboutusimages {
+  border-radius: 50% !important;
+}
+
+:root {
+  --glow-color: white;
+}
+
+.glowing-btn {
+  position: relative;
+  color: var(--glow-color);
+  cursor: pointer;
+  padding: 0.35em 1em;
+  border: 0.15em solid var(--glow-color);
+  border-radius: 0.45em;
+  background: none;
+  perspective: 2em;
+  font-family: "Raleway", sans-serif;
+  font-size: 2em;
+  font-weight: 900;
+  letter-spacing: 1em;
+  box-shadow: inset 0px 0px 0.5em 0px var(--glow-color), 0px 0px 0.5em 0px var(--glow-color);
+  -webkit-animation: border-flicker 2s linear infinite;
+          animation: border-flicker 2s linear infinite;
+}
+
+.glowing-txt {
+  float: left;
+  margin-right: -0.8em;
+  -webkit-text-shadow: 0 0 0.125em hsla(0deg, 0%, 100%, 0.3), 0 0 0.45em var(--glow-color);
+  -moz-text-shadow: 0 0 0.125em hsla(0deg, 0%, 100%, 0.3), 0 0 0.45em var(--glow-color);
+  text-shadow: 0 0 0.125em hsla(0deg, 0%, 100%, 0.3), 0 0 0.45em var(--glow-color);
+  -webkit-animation: text-flicker 3s linear infinite;
+          animation: text-flicker 3s linear infinite;
+}
+
+.faulty-letter {
+  opacity: 0.5;
+  -webkit-animation: faulty-flicker 2s linear infinite;
+          animation: faulty-flicker 2s linear infinite;
+}
+
+.glowing-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.7;
+  filter: blur(1em);
+  transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+  background: var(--glow-color);
+  pointer-events: none;
+}
+
+.glowing-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: -1;
+  background-color: var(--glow-color);
+  box-shadow: 0 0 2em 0.2em var(--glow-color);
+  transition: opacity 100ms linear;
+}
+
+.glowing-btn:hover {
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: none;
+  -webkit-animation: none;
+          animation: none;
+}
+
+.glowing-btn:hover .glowing-txt {
+  -webkit-animation: none;
+          animation: none;
+}
+
+.glowing-btn:hover .faulty-letter {
+  -webkit-animation: none;
+          animation: none;
+  text-shadow: none;
+  opacity: 1;
+}
+
+.glowing-btn:hover:before {
+  filter: blur(1.5em);
+  opacity: 1;
+}
+
+.glowing-btn:hover:after {
+  opacity: 1;
+}
+
+@-webkit-keyframes faulty-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 0.1;
+  }
+  4% {
+    opacity: 0.5;
+  }
+  19% {
+    opacity: 0.5;
+  }
+  21% {
+    opacity: 0.1;
+  }
+  23% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  83% {
+    opacity: 0.4;
+  }
+  87% {
+    opacity: 1;
+  }
+}
+
+@keyframes faulty-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 0.1;
+  }
+  4% {
+    opacity: 0.5;
+  }
+  19% {
+    opacity: 0.5;
+  }
+  21% {
+    opacity: 0.1;
+  }
+  23% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  83% {
+    opacity: 0.4;
+  }
+  87% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  8% {
+    opacity: 0.1;
+  }
+  9% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  72% {
+    opacity: 0.2;
+  }
+  77% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+@keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  8% {
+    opacity: 0.1;
+  }
+  9% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  72% {
+    opacity: 0.2;
+  }
+  77% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+@-webkit-keyframes border-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  8% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes border-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  8% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .glowing-btn {
+    font-size: 1em;
+  }
+}
+.myaccountnormalbtns {
+  padding: 25px 30px;
+  background-color: #050801;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+  border-radius: 5px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.myaccountnormalbtns:hover {
+  background: white;
+  color: #050801;
+  box-shadow: 0 0 5px white, 0 0 25px white, 0 0 50px white, 0 0 200px white;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.3333333333));
+}
+
+.my-account-tabs {
+  border-bottom: 1px solid #131313 !important;
+  color: #131313 !important;
+  width: 70%;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff !important;
+  background-color: #131313 !important;
+}
+
+#formFileMultiple::-webkit-file-upload-button {
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+#my-v-pills-messages .abs,
+#my-v-pills-messages h2:after,
+#my-v-pills-messages .cards .card figcaption,
+#my-v-pills-messages .cards .card:after,
+#my-v-pills-messages .news .card figcaption,
+#my-v-pills-messages .news .card:after,
+#my-v-pills-messages .news .article figcaption {
+  position: absolute;
+}
+#my-v-pills-messages .rel,
+#my-v-pills-messages h2,
+#my-v-pills-messages h2 strong,
+#my-v-pills-messages .cards .card,
+#my-v-pills-messages .news .card,
+#my-v-pills-messages .news .article {
+  position: relative;
+}
+#my-v-pills-messages .fix {
+  position: fixed;
+}
+#my-v-pills-messages .dfix {
+  display: inline;
+}
+#my-v-pills-messages .dib {
+  display: inline-block;
+}
+#my-v-pills-messages .db {
+  display: block;
+}
+#my-v-pills-messages .dn {
+  display: none;
+}
+#my-v-pills-messages .df,
+#my-v-pills-messages .cards,
+#my-v-pills-messages .news {
+  display: flex;
+}
+#my-v-pills-messages .dif {
+  display: inline-flex;
+}
+#my-v-pills-messages .dg {
+  display: grid;
+}
+#my-v-pills-messages .dig {
+  display: inline-grid;
+}
+#my-v-pills-messages .vm,
+#my-v-pills-messages h2,
+#my-v-pills-messages h2 strong,
+#my-v-pills-messages h2 span {
+  vertical-align: middle;
+}
+#my-v-pills-messages body {
+  background: #24282f;
+  font-family: "Alegreya Sans";
+}
+#my-v-pills-messages .wrapper {
+  padding: 15px;
+}
+#my-v-pills-messages h2 {
+  padding: 10px;
+  padding-left: 25px;
+  color: #ccc;
+  margin: 0;
+}
+#my-v-pills-messages h2 strong {
+  z-index: 2;
+  background: black;
+  padding: 4px 8px;
+}
+#my-v-pills-messages h2 span {
+  font-size: 0.7em;
+  color: #aaa;
+  margin-left: 10px;
+}
+#my-v-pills-messages h2:after {
+  content: "";
+  z-index: 1;
+  bottom: 50%;
+  margin-bottom: -2px;
+  height: 2px;
+  left: 0;
+  right: 0;
+  background: #373d47;
+}
+#my-v-pills-messages .cards,
+#my-v-pills-messages .news {
+  flex-flow: row wrap;
+}
+#my-v-pills-messages .cards .card,
+#my-v-pills-messages .news .card {
+  margin: 20px;
+  width: 27%;
+  height: 16.875rem;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  transition: 0.3s;
+}
+#my-v-pills-messages .cards .card img,
+#my-v-pills-messages .news .card img {
+  width: 100%;
+  min-height: 100%;
+}
+#my-v-pills-messages .cards .card figcaption,
+#my-v-pills-messages .news .card figcaption {
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem;
+  padding-bottom: 0.625rem;
+  font-size: 1.25rem;
+  background: none;
+  color: #fff;
+  transform: translateY(100%);
+  transition: 0.3s;
+}
+#my-v-pills-messages .cards .card figcaption a,
+#my-v-pills-messages .news .card figcaption a {
+  color: white;
+}
+#my-v-pills-messages .cards .card:after,
+#my-v-pills-messages .news .card:after {
+  content: "";
+  z-index: 10;
+  width: 200%;
+  height: 100%;
+  top: -90%;
+  left: -20px;
+  opacity: 0.1;
+  transform: rotate(45deg);
+  background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
+  transition: 0.3s;
+}
+#my-v-pills-messages .cards .card:hover,
+#my-v-pills-messages .news .card:hover,
+#my-v-pills-messages .cards .card:focus,
+#my-v-pills-messages .news .card:focus,
+#my-v-pills-messages .cards .card:active,
+#my-v-pills-messages .news .card:active {
+  box-shadow: 0 8px 16px 3px rgba(0, 0, 0, 0.6);
+  transform: translateY(-3px) scale(1.05) rotateX(15deg);
+}
+#my-v-pills-messages .cards .card:hover figcaption,
+#my-v-pills-messages .news .card:hover figcaption,
+#my-v-pills-messages .cards .card:focus figcaption,
+#my-v-pills-messages .news .card:focus figcaption,
+#my-v-pills-messages .cards .card:active figcaption,
+#my-v-pills-messages .news .card:active figcaption {
+  transform: none;
+}
+#my-v-pills-messages .cards .card:hover:after,
+#my-v-pills-messages .news .card:hover:after,
+#my-v-pills-messages .cards .card:focus:after,
+#my-v-pills-messages .news .card:focus:after,
+#my-v-pills-messages .cards .card:active:after,
+#my-v-pills-messages .news .card:active:after {
+  transform: rotate(25deg);
+  top: -40%;
+  opacity: 0.15;
+}
+#my-v-pills-messages .news .article {
+  overflow: hidden;
+  width: 350px;
+  height: 235px;
+  margin: 20px;
+}
+#my-v-pills-messages .news .article img {
+  width: 100%;
+  min-height: 100%;
+  transition: 0.2s;
+}
+#my-v-pills-messages .news .article figcaption {
+  font-size: 14px;
+  text-shadow: 0 1px 0 rgba(51, 51, 51, 0.3);
+  color: #fff;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 40px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  background: rgba(6, 18, 53, 0.6);
+  opacity: 0;
+  transform: scale(1.15);
+  transition: 0.2s;
+}
+#my-v-pills-messages .news .article figcaption h3 {
+  color: #3792e3;
+  font-size: 16px;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+#my-v-pills-messages .news .article:hover img,
+#my-v-pills-messages .news .article:focus img,
+#my-v-pills-messages .news .article:active img {
+  filter: blur(3px);
+  transform: scale(0.97);
+}
+#my-v-pills-messages .news .article:hover figcaption,
+#my-v-pills-messages .news .article:focus figcaption,
+#my-v-pills-messages .news .article:active figcaption {
+  opacity: 1;
+  transform: none;
 }/*# sourceMappingURL=main.css.map */

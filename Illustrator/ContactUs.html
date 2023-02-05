@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/Shop.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div id="priloader"></div>
+    <header class="for-header">
+        <nav id="my-navbar" class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                   <div>
+                        <a class="navbar-brand" href="#">
+                         <img class="navbar-logo" src="assets/images/logo-light.png" alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse show" id="navbarNavAltMarkup">
+                            <div class="navbar-nav fnt-families">
+                              <a class="nav-link active px-4 color-white" aria-current="page" href="#">HOME</a>
+                              <a class="nav-link px-4 color-white" href="#">PORTFOLIO</a>
+                              <a class="nav-link px-4 color-white" href="#">BLOG</a>
+                              <a class="nav-link px-4 color-white" href="#">SHOP</a>
+                              <a class="nav-link px-4 color-white" href="#">PAGES</a>
+                              <a class="nav-link px-4 color-white" href="#">ELEMENTS</a>
+                              <a id="heart-icon" class="nav-link color-white" href="#"> <i style="font-size: 1.3rem;" class="las la-heart"></i></a>
+                              <a id="my-search-button" class="nav-link px-4 color-white" href="#"><i style="font-size: 1.3rem;" class="las la-search"></i></a> 
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </nav>
+        <input id="my-search-input" placeholder="Search" type="text">
+    </header>
+    <nav id="my-scroll-navbar" class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+               <div>
+                    <a class="navbar-brand" href="#">
+                     <img class="navbar-logo" src="assets/images/logo-dark.png" alt="">
+                    </a>
+                </div>
+                <div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse show" id="navbarNavAltMarkup">
+                        <div class="navbar-nav fnt-families">
+                          <a class="nav-link active px-4 color-white" aria-current="page" href="#">HOME</a>
+                          <a class="nav-link px-4 color-white" href="#">PORTFOLIO</a>
+                          <a class="nav-link px-4 color-white" href="#">BLOG</a>
+                          <a class="nav-link px-4 color-white" href="#">SHOP</a>
+                          <a class="nav-link px-4 color-white" href="#">PAGES</a>
+                          <a class="nav-link px-4 color-white" href="#">ELEMENTS</a>
+                          <a id="heart-icon2" class="nav-link color-white"> <i style="font-size: 1.3rem;" class="las la-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </nav>
+    <main>
+        <section style="margin-bottom: -4rem;" id="mydetailmainsection">
+             <h1>Contact Us</h1>
+        </section>
+        <section>
+            <div style="--bs-gutter-x: 0;" class="row">
+                <div style="background-color: #3b3b3b;" class="col-md-4 d-flex flex-column justify-content-center text-center">
+                    <div class="mx-3">
+                        <h1>Who we are</h1>
+                        <p style="font-size: 1.22rem;">Lorem ipsum dolor sit amet, consectetur adipisc ing elit. Etiam fermentum nulla ac tincidunt male suada. Sed volutpat semper elit quis pharetra.</p>
+                    </div>
+                    <div style="height: 15%;" class="buttons">
+                        <button style="margin-top: 3rem;" class="blob-btn">
+                        Read More
+                        <span class="blob-btn__inner">
+                            <span class="blob-btn__blobs">
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            </span>
+                        </span>
+                        </button>
+                        <br>
+                    
+                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+                            <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+                        </filter>
+                        </defs>
+                        </svg>
+                   </div>
+                </div>
+                <div style="background-color: #151515;" class="col-md-4 d-flex flex-column justify-content-center text-center">
+                    <div class="mx-3">
+                        <h1>What we do</h1>
+                        <p style="font-size: 1.22rem;">Lorem ipsum dolor sit amet, consectetur adipisc ing elit. Etiam fermentum nulla ac tincidunt male suada. Sed volutpat semper elit quis pharetra.</p>
+                    </div>
+                    <div style="height: 15%;" class="buttons">
+                        <button style="margin-top: 3rem;" class="blob-btn">
+                        Read More
+                        <span class="blob-btn__inner">
+                            <span class="blob-btn__blobs">
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            </span>
+                        </span>
+                        </button>
+                        <br>
+                    
+                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+                            <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+                        </filter>
+                        </defs>
+                        </svg>
+                   </div>
+                </div>
+                <div style="background-color: #242424;" class="col-md-4 d-flex flex-column justify-content-center text-center">
+                    <div class="mx-3">
+                        <h1>Work with us</h1>
+                        <p style="font-size: 1.22rem;">Lorem ipsum dolor sit amet, consectetur adipisc ing elit. Etiam fermentum nulla ac tincidunt male suada. Sed volutpat semper elit quis pharetra.</p>
+                    </div>
+                    <div style="height: 15%;" class="buttons">
+                        <button style="margin-top: 3rem;" class="blob-btn">
+                        Read More
+                        <span class="blob-btn__inner">
+                            <span class="blob-btn__blobs">
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            </span>
+                        </span>
+                        </button>
+                        <br>
+                    
+                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+                            <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+                        </filter>
+                        </defs>
+                        </svg>
+                   </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div style="border: none; align-items: center; padding: 8rem 0;" class="card">
+                <div style="width: 70%;" class="row g-0">
+                  <div style="height:32rem;" class="col-5 col-sm-6">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12157.71469426235!2d49.8539455!3d40.3771909!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d079efb5163%3A0xc20aa51a5f0b5e01!2sCode%20Academy!5e0!3m2!1sen!2s!4v1675368958958!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+                  <div class="col-7 col-sm-6">
+                    <div style="padding: 0rem 1rem;" class="card-body">
+                      <h2 class="card-title">Feel free to contact</h2>
+                      <p style="color: #828282;
+                      font-size: 17px;
+                      line-height: 29px;
+                      font-weight: 400;" class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum nulla ac tincid-unt males. Sed volutpat semper elit quis pharetra. Phasellus at vestibulum mauris. Etiam et mauris.</p>
+                       <form action="" method="post">
+                          <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email</label>
+                          </div>
+                          <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingPassword" placeholder="Name">
+                            <label for="floatingPassword">Name</label>
+                          </div>
+                          <div style="margin-top: 1rem;" class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px;margin-bottom: 2rem;"></textarea>
+                            <label for="floatingTextarea">Message</label>
+                          </div>
+                          <button style="width: auto;" type="submit" class="btn-flip" data-back="Send" data-front="Message"></button>
+                       </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer class="footer">
+        <div class="containerr headline">
+            <div class="roww">
+                <div class="footer-coll">
+                    <h4>About me</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-coll">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-coll">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">watch</a></li>
+                        <li><a href="#">bag</a></li>
+                        <li><a href="#">shoes</a></li>
+                        <li><a href="#">dress</a></li>
+                    </ul>
+                </div>
+                <div class="footer-coll">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+
+   <!-- Modals -->
+
+   <!-- Wishlist Modal -->
+ <div id="wishlist">
+  <div id="wishlist-content">
+    <div class="containerrr">
+        <div class="top-section">
+            
+            <div class="a-box">
+                <div class="img-container">
+                  <div class="img-inner">
+                    <div class="inner-skew">
+                      <img src="assets/images/h14-shop-img-13-594x787.jpg">
+                    </div>
+                    <lord-icon
+                        src="https://cdn.lordicon.com/jmkrnisz.json"
+                        trigger="hover"
+                        colors="primary:#121331"
+                        scale="30"
+                        class="my-lord-icon">
+                    </lord-icon>
+                  </div>
+                </div>
+                <div class="text-container">
+                  <h3>Black and white world</h3>
+                  <div>
+                    $150.00
+                </div>
+               </div>
+            </div>
+
+            <div class="a-box">
+                <div class="img-container">
+                  <div class="img-inner">
+                    <div class="inner-skew">
+                      <img src="assets/images/h14-shop-img-13-594x787.jpg">
+                    </div>
+                    <lord-icon
+                        src="https://cdn.lordicon.com/jmkrnisz.json"
+                        trigger="hover"
+                        colors="primary:#121331"
+                        scale="30"
+                        class="my-lord-icon">
+                    </lord-icon>
+                  </div>
+                </div>
+                <div class="text-container">
+                  <h3>Black and white world</h3>
+                  <div>
+                    $150.00
+                </div>
+               </div>
+            </div>
+
+        </div>
+        <div class="bottom-section">
+            <div> <a class="btn-slide" href="#" >
+                <span class="circle">
+                    <i style="font-size: 1.6rem;" class="las la-heart"></i>        
+                </span>
+              
+                <span class="title">My Wishlist</span>
+                <span class="title title-hover">Go to</span>
+               </a> </div>
+              
+             <div> <a class="btn-slide" href="#" >
+                <span class="circle">
+                    <i style="font-size:1.6rem;" class="las la-times"></i>
+                </span>
+               
+                <span class="title" >Delete</span>
+                <span class="title title-hover">All</span>
+               </a> </div>
+              
+            </div>
+        </div>
+      </div>
+       
+  </div> 
+ </div>
+
+ <!-- Scrollup Modal -->
+ <button id="upBtn">
+    <i id="scrollbtnicon" class="las la-arrow-up"></i>
+ </button>
+
+ <script>
+    ScrollReveal().reveal('.headline');
+ </script>
+
+    
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
