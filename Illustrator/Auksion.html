@@ -7,10 +7,56 @@
     <title>Document</title>
     <script src="https://unpkg.com/scrollreveal@4"></script>
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/Shop.css">
+    <link rel="stylesheet" href="assets/css/Auction.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        .chat-online {
+    color: #34ce57
+}
+
+.chat-offline {
+    color: #34ce57
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    overflow-y: scroll
+}
+
+.chat-message-left,
+.chat-message-right {
+    display: flex;
+    flex-shrink: 0
+}
+
+.chat-message-left {
+    margin-right: auto
+}
+
+.chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto
+}
+.py-3 {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.px-4 {
+    padding-right: 1.5rem!important;
+    padding-left: 1.5rem!important;
+}
+.flex-grow-0 {
+    flex-grow: 0!important;
+}
+.border-top {
+    border-top: 1px solid #dee2e6!important;
+}
+    </style>
 </head>
 <body>
     <div id="priloader"></div>
@@ -69,62 +115,107 @@
         </div>
     </nav>
     <main>
-        <section style="margin-bottom: -4rem;" id="mydetailmainsection">
-             <h1>BLOG</h1>
+        <section style="background-image: url(/assets/images/Auction.jpg);position: relative;bottom: 4rem;">
+             <h1 style="padding: 20rem;"></h1>
         </section>
         <section class="container">
             <div style="--bs-gutter-x:0;" class="row row-cols-1">
                 <div class="col d-flex justify-content-center pt-5">
-                    <img style="width: 100%;" src="assets/images/blog-standard-img-2.jpg" alt="">
+                    <img style="width: 30%;" src="assets/images/h14-shop-img-6-594x787.jpg" alt="">
                 </div>
-                <div class="col pt-3">
+                <div style="text-align: center;" class="col pt-3">
                     <h3>A Moment of Truth</h3>
                     <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer auctor fringilla lacus vitae egestas. In feugiat laoreet risus id venenatis. Cras sed dui purus. Pellentesque ac leo non ipsum congue dictum finibus in ante. Aliquam molestie velit vitae nulla fermentum posuere. Proin vel felis id nisl interdum varius. Aliquam nec sem dictum, dignissim mi dapibus, euismod ligula. Suspendisse diam sapien, ultrices et suscipit at, fermentum at lorem. Sed mattis scelerisque nisi. Ut molestie volutpat ultricies....</small>
                     <hr>
                     <small style="color:#565656;">JANUARY 15, 2017ADMININ ART, DESIGN</small>
                 </div>
-                <div class="col pt-5">
-                    <img style="width: 100%;" src="assets/images/blog-standard-img-6.jpg" alt="">
-                </div>
                 <div class="col pt-3">
-                    <h3>Desing is all</h3>
-                    <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer auctor fringilla lacus vitae egestas. In feugiat laoreet risus id venenatis. Cras sed dui purus. Pellentesque ac leo non ipsum congue dictum finibus in ante. Aliquam molestie velit vitae nulla fermentum posuere. Proin vel felis id nisl interdum varius. Aliquam nec sem dictum, dignissim mi dapibus, euismod ligula. Suspendisse diam sapien, ultrices et suscipit at, fermentum at lorem. Sed mattis scelerisque nisi. Ut molestie volutpat ultricies....</small>
-                    <hr>
-                    <small style="color:#565656;">JANUARY 15, 2017ADMININ ART, DESIGN</small>
-                </div>
-                <div class="col pt-5">
-                    <div style="background-color: #303030;">
-                        <div style="padding: 5rem;text-align: center;">
-                            <i style="font-size: 160%;background-color: white;border-radius: 50%;padding: 1rem;margin-bottom: 3%;" class="las la-quote-right"></i>
-                            <p>You will find what you need in one of our fully equipped demos. Easy to import, they make your life easier.</p>
-                            <p style="font-size: 88%;">PATRIC CASTILLO</p>
+                    <main class="content">
+                        <div class="container p-0">
+                    
+                            <h1 class="h3 mb-3">Messages</h1>
+                    
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div style="overflow-y: scroll;height: 35rem;" class="col-12 col-lg-5 col-xl-3 border-right">
+                    
+                                        <div class="px-4 d-none d-md-block">
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">
+                                                    <input type="text" class="form-control my-3" placeholder="Search...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <a href="#" class="list-group-item list-group-item-action border-0">
+                                            <div class="d-flex align-items-start">
+                                                <img src="assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Jennifer Chang" width="40" height="40">
+                                                <div style="margin-left: 1rem;" class="flex-grow-1 ml-3">
+                                                    Jennifer Chang
+                                                    <div class="small"><span class="fas fa-circle chat-offline"></span> Online</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                    
+                                        <hr class="d-block d-lg-none mt-1 mb-0">
+                                    </div>
+                                    <div class="col-12 col-lg-7 col-xl-9">
+                                        <div style="height: 88%;" class="position-relative">
+                                            <div style="height: 100%;" class="chat-messages p-4">
+                                                <div class="chat-message-right pb-4">
+                                                    <div class="ms-2">
+                                                        <img src="assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                                        
+                                                    </div>
+                                                    <div style="display: flex;align-items: center;" class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                                        Lorem ipsum dolor sit amet, vis erat denique in, dicunt prodesset te vix.
+                                                    </div>
+                                                </div>
+                    
+                                                <div class="chat-message-left pb-4">
+                                                    <div class="me-2">
+                                                        <img src="assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                                       
+                                                    </div>
+                                                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                                        <div class="font-weight-bold mb-1">Sharon Lessman</div>
+                                                        Sit meis deleniti eu, pri vidit meliore docendi ut, an eum erat animal commodo.
+                                                    </div>
+                                                </div>
+
+                                                <div class="chat-message-center pb-4">
+                                                    <div style="text-align: center; background-color: #212529 !important; color:white;" class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                                        <div class="font-weight-bold mb-1">Sharon Lessman</div>
+                                                        OFFER 5000 FOR THIS PORTRAIT !!
+                                                    </div>
+                                                </div>
+
+                                                <img style="position: absolute; display:none;" src="assets/images/sold3.png" alt="">
+                                            </div>
+                                        </div>
+                    
+                                        <div class="flex-grow-0 py-3 px-4 border-top d-flex">
+                                            <div style="width: 90%;" class="input-group">
+                                                <input type="text" class="form-control" placeholder="Type your message">
+                                                <button class="btn btn-dark">Send</button>
+                                            </div>
+                                            <i style="font-size: 243%;margin-left: 4%;cursor: pointer;" class="las la-hand-paper"></i>
+                                        </div>
+                    
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col pt-5">
-                    <img style="width: 100%;" src="assets/images/blog-standard-img-9.jpg" alt="">
-                </div>
-                <div class="col pt-3">
-                    <h3>Power of Art</h3>
-                    <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer auctor fringilla lacus vitae egestas. In feugiat laoreet risus id venenatis. Cras sed dui purus. Pellentesque ac leo non ipsum congue dictum finibus in ante. Aliquam molestie velit vitae nulla fermentum posuere. Proin vel felis id nisl interdum varius. Aliquam nec sem dictum, dignissim mi dapibus, euismod ligula. Suspendisse diam sapien, ultrices et suscipit at, fermentum at lorem. Sed mattis scelerisque nisi. Ut molestie volutpat ultricies....</small>
-                    <hr>
-                    <small style="color:#565656;">JANUARY 15, 2017ADMININ ART, DESIGN</small>
-                </div>
-                <div class="col pt-5 pb-5">
-                    <div style="background-color: #303030;">
-                        <div style="padding: 3rem;text-align: center;">
-                            <i style="font-size: 160%;background-color: white;border-radius: 50%;padding: 1rem;margin-bottom: 3%;" class="las la-quote-right"></i>
-                            <p>
-                                You will find what you need in one of our fully equipped demos.</p>
-                        </div>
-                    </div>
-                </div>
+                    </main>
+                </div>  
+                    
+                
             </div>
         </section>
     </main>
 
     
-    <footer class="footer">
+    <footer class="footer mt-3">
         <div class="containerr headline">
             <div class="roww">
                 <div class="footer-coll">
@@ -176,51 +267,51 @@
     <div class="containerrr">
         <div class="top-section">
             
-            <div class="a-box">
-                <div class="img-container">
-                  <div class="img-inner">
-                    <div class="inner-skew">
-                      <img src="assets/images/h14-shop-img-13-594x787.jpg">
-                    </div>
-                    <lord-icon
-                        src="https://cdn.lordicon.com/jmkrnisz.json"
-                        trigger="hover"
-                        colors="primary:#121331"
-                        scale="30"
-                        class="my-lord-icon">
-                    </lord-icon>
-                  </div>
+          <div class="a-box">
+            <div class="img-container">
+              <div class="img-inner">
+                <div class="inner-skew">
+                  <img src="assets/images/h14-shop-img-13-594x787.jpg">
                 </div>
-                <div class="text-container">
-                  <h3>Black and white world</h3>
-                  <div>
-                    $150.00
-                </div>
-               </div>
+                <lord-icon
+                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                    trigger="hover"
+                    colors="primary:#121331"
+                    scale="30"
+                    class="my-lord-icon">
+                </lord-icon>
+              </div>
             </div>
+            <div class="text-container">
+              <h3>Black and white world</h3>
+              <div>
+                $150.00
+            </div>
+           </div>
+        </div>
 
-            <div class="a-box">
-                <div class="img-container">
-                  <div class="img-inner">
-                    <div class="inner-skew">
-                      <img src="assets/images/h14-shop-img-13-594x787.jpg">
-                    </div>
-                    <lord-icon
-                        src="https://cdn.lordicon.com/jmkrnisz.json"
-                        trigger="hover"
-                        colors="primary:#121331"
-                        scale="30"
-                        class="my-lord-icon">
-                    </lord-icon>
-                  </div>
+        <div class="a-box">
+            <div class="img-container">
+              <div class="img-inner">
+                <div class="inner-skew">
+                  <img src="assets/images/h14-shop-img-13-594x787.jpg">
                 </div>
-                <div class="text-container">
-                  <h3>Black and white world</h3>
-                  <div>
-                    $150.00
-                </div>
-               </div>
+                <lord-icon
+                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                    trigger="hover"
+                    colors="primary:#121331"
+                    scale="30"
+                    class="my-lord-icon">
+                </lord-icon>
+              </div>
             </div>
+            <div class="text-container">
+              <h3>Black and white world</h3>
+              <div>
+                $150.00
+            </div>
+           </div>
+        </div>
 
         </div>
         <div class="bottom-section">
@@ -262,7 +353,6 @@
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
