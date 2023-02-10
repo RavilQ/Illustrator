@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Product Listing";
+    var pagedList = (IPagedList)ViewBag.slider;
+}
+
+@using Illustration.Models
+@using X.PagedList.Mvc.Core; @*import this so we get our HTML Helper*@
+@using X.PagedList; @*import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+@using X.PagedList.Mvc.Core.Fluent
+@using X.PagedList.Web.Common
+
+
+<!-- import the included stylesheet for some (very basic) default styling -->
+<link href="~/AdminPanel/assets/css/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    int? count = (ViewBag.pageNumber - 1) * ViewBag.pageSize;
+    count++;
+}
+<div class="container-fluid pt-4 px-4">
+
+
+    <div class="col-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <div class="d-flex justify-content-between">
+                <h6 class="mb-4">Singers Table</h6>
+                <a asp-action="Create" asp-controller="Slider" type="button" class="btn btn-info mb-4">Create</a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Text</th>
+                            <th scope="col">Img</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Slider slider in ViewBag.slider)
+                        {
+                            <tr>
+                                <th class="pt-4" scope="row">@count</th>
+                                <td class="pt-4">@slider.Title</td>
+                                <td class="pt-4">@slider.Text</td>
+                                <td class="pt-4"><img class="rounded-circle" style="margin-top:-7px; width: 40px; height: 40px;" src="~/Uploads/Sliders/@slider.Image" /></td>
+                                <td>
+                                    <a asp-action="Edit" asp-controller="Slider" asp-route-id="@slider.Id" type="button" class="btn btn-success rounded-pill m-2">Edit</a>
+                                    <a asp-action="Delete" asp-controller="Slider" asp-route-id="@slider.Id" type="button" class="btn btn-danger rounded-pill m-2 slider-delete-btn">Delete</a>
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+                    @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blank End -->
+
+                   

@@ -1,0 +1,80 @@
+﻿@model Slider
+
+<div class="container-fluid pt-4 px-4">
+
+
+    <div class="col-12">
+
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Create Singer</h6>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label">Title</label>
+                        <input asp-for="Title" class="form-control">
+                        <span class="text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Text" class="form-label">Text</label>
+                        <input asp-for="Text" type="text" class="form-control">
+                        <span class="text-danger" asp-validation-for="Text"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ImageFile" class="form-label">Slider photo</label>
+                        <input id="file" asp-for="ImageFile" class="form-control bg-dark">
+                        <span class="text-danger" asp-validation-for="ImageFile"></span>
+                    </div>
+                    <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">Show or Hidden</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="IsShow" value="true" checked="">
+                                <label class="form-check-label" asp-for="IsShow">
+                                    Show
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="IsShow" value="false">
+                                <label class="form-check-label" asp-for="IsShow">
+                                    Hidden
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row">
+                        <span id="output"></span>
+                    </div>
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    function handleFileSelect(evt) {
+        var file = evt.target.files; // FileList object
+        var f = file[0];
+        // Only process image files.
+        if (!f.type.match('image.*')) {
+            alert("Image only please....");
+        }
+        var reader = new FileReader();
+        // Closure to capture the file information.
+        reader.onload = (function (theFile) {
+            return function (e) {
+                // Render thumbnail.
+                //var span = document.createElement('span');
+                //span.innerHTML = ['<img style="width: 10rem;margin-bottom: 15px;border-radius: 16%; " class="thumb" title="', escape(theFile.name), '" src="', e.target.result, '" />'].join('');
+                //document.getElementById('output').insertBefore(span, null);
+                document.getElementById('output').innerHTML = ['<img style="width: 10rem;margin-bottom: 15px;border-radius: 16%; " class="thumb" title="', escape(theFile.name), '" src="', e.target.result, '" />'].join('');
+            };
+        })(f);
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+    }
+    document.getElementById('file').addEventListener('change', handleFileSelect, false);
+</script>
