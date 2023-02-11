@@ -1,4 +1,6 @@
 using Illustration.DAL;
+using Illustration.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<IllustratorDbContext>(opt => { opt.UseSqlServer(builder.Configuration.GetConnectionString("Default")); });
+
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+{
+    opt.Password.RequireDigit = false;
+    opt.Password.RequireUppercase = false;
+}).AddDefaultTokenProviders().AddEntityFrameworkStores<IllustratorDbContext>();
 
 var app = builder.Build();
 

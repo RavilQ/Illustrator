@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\IllustrationB\\Illustration\\Illustration\\Illustration.csproj": {}
+    "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\Illustration.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\IllustrationB\\Illustration\\Illustration\\Illustration.csproj": {
+    "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\Illustration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\IllustrationB\\Illustration\\Illustration\\Illustration.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\Illustration.csproj",
         "projectName": "Illustration",
-        "projectPath": "C:\\Users\\HP\\Desktop\\IllustrationB\\Illustration\\Illustration\\Illustration.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\Illustration.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\IllustrationB\\Illustration\\Illustration\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.13, )"

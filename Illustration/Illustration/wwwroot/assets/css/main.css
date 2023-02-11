@@ -1391,3 +1391,11 @@ span {
     background-color: #131313;
   }
 }/*# sourceMappingURL=main.css.map */
+
+
+.my-first-backend-class {
+    width: 25%;
+    margin-bottom: 15px;
+    border-radius: 16%;
+    margin-left:1%;
+}

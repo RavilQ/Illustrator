@@ -8,73 +8,85 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Illustration
 build_property.RootNamespace = Illustration
-build_property.ProjectDir = C:\Users\HP\Desktop\IllustrationB\Illustration\Illustration\
+build_property.ProjectDir = C:\Users\HP\Desktop\New folder\Illustration\Illustration\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\HP\Desktop\IllustrationB\Illustration\Illustration
+build_property.MSBuildProjectDirectory = C:\Users\HP\Desktop\New folder\Illustration\Illustration
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Areas/AdminPanel/Views/Dashboard/Index.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xEYXNoYm9hcmRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Areas/AdminPanel/Views/Shared/_Layout.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xTaGFyZWRcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Areas/AdminPanel/Views/Slider/Create.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Slider/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xTbGlkZXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Areas/AdminPanel/Views/Slider/Edit.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Slider/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xTbGlkZXJcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Areas/AdminPanel/Views/Slider/Index.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Slider/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xTbGlkZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Areas/AdminPanel/Views/_ViewImports.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Areas/AdminPanel/Views/_ViewStart.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Views/Home/AboutUs.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Account/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Home/AboutUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dFVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Views/Home/Blog.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Home/Blog.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCbG9nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Views/Home/ContactUs.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Home/ContactUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0VXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Views/Home/Index.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Views/Portrait/Detail.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Portrait/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9ydHJhaXRcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Views/Shop/Index.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Shared/_addPortraitPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9hZGRQb3J0cmFpdFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Shop/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Views/_ViewImports.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Views/_ViewStart.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/IllustrationB/Illustration/Illustration/Views/Shared/_Layout.cshtml]
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zlk46xjnbx

@@ -1,0 +1,110 @@
+﻿
+@model Portrait
+
+<form asp-controller="Account" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-floating mb-3">
+        <input asp-for="Name" class="form-control" placeholder="Name">
+        <label asp-for="Name">Name</label>
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" asp-for="Weight" class="form-control" placeholder="Weight">
+        <label asp-for="Weight">Weight</label>
+        <span class="text-danger" asp-validation-for="Weight"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" asp-for="Dimention" class="form-control" placeholder="Dimention">
+        <label asp-for="Dimention">Dimention</label>
+        <span class="text-danger" asp-validation-for="Dimention"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Info" class="form-control" placeholder="Info">
+        <label asp-for="Info">Info</label>
+        <span class="text-danger" asp-validation-for="Info"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Desc" class="form-control" placeholder="Desc">
+        <label asp-for="Desc">Desc</label>
+        <span class="text-danger" asp-validation-for="Desc"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" asp-for="SalePrice" class="form-control" placeholder="SalePrice">
+        <label asp-for="SalePrice">SalePrice</label>
+        <span class="text-danger" asp-validation-for="SalePrice"></span>
+
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" asp-for="CostPrice" class="form-control" placeholder="CostPrice">
+        <label asp-for="CostPrice">CostPrice</label>
+        <span class="text-danger" asp-validation-for="CostPrice"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="DiscountPercent" class="form-control" placeholder="DiscountPercent">
+        <label asp-for="Info">DiscountPercent</label>
+        <span class="text-danger" asp-validation-for="DiscountPercent"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <label class="form-check-label" asp-for="CategoryIds">CategoryIds</label>
+        <select asp-for="CategoryIds" asp-items="@(new SelectList(ViewBag.Categories,nameof(Category.Id),nameof(Category.Name)))" class="form-select" multiple aria-label="multiple select example">
+
+        </select>
+        <span class="text-danger" asp-validation-for="CategoryIds"></span>
+    </div>
+    <div class="form-floating mb-3" data-select2-id="21">
+        <label class="form-check-label" asp-for="TagIds">TagIds</label>
+        <select asp-for="TagIds" asp-items="@(new SelectList(ViewBag.Tags,nameof(Tag.Id),nameof(Tag.Name)))" class="form-select my-multiply-select" size="3" aria-label="size 3 select example">
+
+        </select>
+        <span class="text-danger" asp-validation-for="TagIds"></span>
+    </div>
+    <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Auktion or Shop</legend>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input style="background-color: black;border-color: black;" class="form-check-input" type="radio" asp-for="IsAuktion" value="true" checked="">
+                <label class="form-check-label" asp-for="IsAuktion">
+                    Auktion
+                </label>
+            </div>
+            <div class="form-check">
+                <input style="background-color: black;border-color: black;" class="form-check-input" type="radio" asp-for="IsAuktion" value="false">
+                <label class="form-check-label" asp-for="IsAuktion">
+                    Shop
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Special or Simple</legend>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input style="background-color: black;border-color: black;" class="form-check-input" type="radio" asp-for="IsSpecial" value="true" checked="">
+                <label class="form-check-label" asp-for="IsSpecial">
+                    Special
+                </label>
+            </div>
+            <div class="form-check">
+                <input style="background-color: black;border-color: black;" class="form-check-input" type="radio" asp-for="IsSpecial" value="false">
+                <label class="form-check-label" asp-for="IsSpecial">
+                    Simple
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    <div class="mb-3">
+        <label asp-for="PosterImage" class="form-label">Select Your Portret</label>
+        <input asp-for="PosterImage" class="form-control" id="formFileMultiple" multiple="">
+        <span class="text-danger" asp-validation-for="PosterImage"></span>
+    </div>
+    <div id="myOutput" class="form-floating mb-3">
+    </div>
+    <div class="mb-3">
+        <label asp-for="OtherImages" class="form-label">Select Other Portret Images</label>
+        <input asp-for="OtherImages" class="form-control formFileMultiple2" id="formFileMultiple" multiple="">
+        <span class="text-danger" asp-validation-for="OtherImages"></span>
+    </div>
+    <div id="myManyOutput" class="form-floating d-flex flex-wrap mb-3">
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <button style="background-color: black;" type="submit" class="btn btn-dark">Add Portret</button>
+</form>

@@ -1,0 +1,271 @@
+﻿
+@model ProfileViewModel
+
+    <main>
+        <section style="background-color: #131313;position: relative;bottom: 3.5rem;">
+            <h1 class="container" style="max-width: 90%;">My Account</h1>
+
+        </section>
+        <section class="container" style="padding-bottom: 10rem;max-width: 90%;">
+            <div style="--bs-gutter-x:0;" class="row">
+                <div class="col-4">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="my-account-tabs nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Dashboard</a>
+                        <a class="my-account-tabs nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Orders</a>
+                        <a class="my-account-tabs nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-settings" aria-selected="false">Wishlist</a>
+                        <a class="my-account-tabs nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#my-v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Portraits</a>
+                        <a class="my-account-tabs nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Add New</a>
+                        <a class="my-account-tabs nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-details" role="tab" aria-controls="v-pills-messages" aria-selected="false">Account Details</a>
+                        <a class="my-account-tabs nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#" role="tab" aria-controls="v-pills-settings" aria-selected="false">Log Out</a>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <h3 id="alo3333">
+                                Dashboard
+                            </h3>
+                            <hr>
+                            <p style="color: #212529;">Hello, Alex Tuntuni (If Not Tuntuni !Logout)</p>
+                            From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="row">
+                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
+                                    <img src="~/assets/images/we-love-women-in-black-and-white-20200831-1024-764x1024.jpg" alt="">
+                                    <h3>Barbara Palvin</h3>
+                                    <div>01.06.1998</div>
+                                    <div>150$</div>
+                                    <div><span class="badge bg-dark">Pending</span></div>
+                                </div>
+                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
+                                    <img src="~/assets/images/rosee3.jpg" alt="">
+                                    <h3>Barbara Palvin</h3>
+                                    <div>01.06.1998</div>
+                                    <div>150$</div>
+                                    <div><span class="badge bg-dark">Pending</span></div>
+                                </div>
+                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
+                                    <img src="~/assets/images/jennie2.jpg" alt="">
+                                    <h3>Barbara Palvin</h3>
+                                    <div>01.06.1998</div>
+                                    <div>150$</div>
+                                    <div><span class="badge bg-dark">Pending</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <div class="row">
+                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-6">
+                                    <i style="font-size: 165%;" class="las la-times"></i>
+                                    <img src="~/assets/images/rosee3.jpg" alt="">
+                                    <h3>Barbara Palvin</h3>
+                                    <div></div>
+                                    <div>150$</div>
+                                    <div><button style="width:130%;" class="btn btn-dark">Buy</button></div>
+                                </div>
+                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-6">
+                                    <i style="font-size: 165%;" class="las la-times"></i>
+                                    <img src="~/assets/images/rosee3.jpg" alt="">
+                                    <h3>Barbara Palvin</h3>
+                                    <div></div>
+                                    <div>150$</div>
+                                    <div><button style="width:130%;" class="btn btn-dark">Buy</button></div>
+                                </div>
+                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-6">
+                                    <i style="font-size: 165%;" class="las la-times"></i>
+                                    <img src="~/assets/images/rosee3.jpg" alt="">
+                                    <h3>Barbara Palvin</h3>
+                                    <div></div>
+                                    <div>150$</div>
+                                    <div><button style="width:130%;" class="btn btn-dark">Buy</button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="my-v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <!-- <div class="l-container">
+                                <div class="b-game-card">
+                                  <div class="b-game-card__cover" style="background-image: url(/assets/images/rosee3.jpg);"></div>
+                                </div>
+                                <div class="b-game-card">
+                                  <div class="b-game-card__cover" style="background-image: url(/assets/images/jisoo3.jpg);"></div>
+                                </div>
+                                <div class="b-game-card">
+                                  <div class="b-game-card__cover" style="background-image: url(/assets/images/lalisa.jpg);"></div>
+                                </div>
+                                <div class="b-game-card">
+                                  <div class="b-game-card__cover" style="background-image: url(/assets/images/jennie2.jpg);"></div>
+                                </div>
+                            </div> -->
+
+
+                            <div class="wrapper">
+
+                                <h2><strong>All Portrets<span>( 4 )</span></strong></h2>
+
+                                <div style="width: 109%;" class="cards">
+
+                                    <figure class="card">
+
+                                        <img src="~/assets/images/midjourney1.png" />
+
+                                        <figcaption><a href="#"><i class="las la-info-circle"></i></a> <a href="#"><i style="line-height: unset;" class="las la-pen"></i></a><a id="myaccount-delete-icon-a" href="#"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
+
+                                    </figure>
+
+                                    <figure class="card">
+
+                                        <img src="~/assets/images/realistic1.jpg" />
+
+                                        <figcaption><a href="#"><i class="las la-info-circle"></i></a> <a href="#"><i style="line-height: unset;" class="las la-pen"></i></a><a id="myaccount-delete-icon-a" href="#"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
+
+                                    </figure>
+
+                                    <figure class="card">
+
+                                        <img src="~/assets/images/batman2.jpg" />
+
+                                        <figcaption><a href="#"><i class="las la-info-circle"></i></a> <a href="#"><i style="line-height: unset;" class="las la-pen"></i></a><a id="myaccount-delete-icon-a" href="#"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
+
+                                    </figure>
+
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                            <h3>
+                                Add New Portret
+                            </h3>
+                            <hr>
+                            
+                            @await Html.PartialAsync("_addPortraitPartial",Model.Portrait)
+                        </div>
+                        <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-details" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <h3>
+                                Account Details
+                            </h3>
+                            <hr>
+                            <form action="post">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <label for="floatingInput">Fullname</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <label for="floatingInput">Username</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">Email</label>
+                                </div>
+                                <hr>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="floatingInput" placeholder="password">
+                                    <label for="floatingInput">Current Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="floatingInput" placeholder="password">
+                                    <label for="floatingInput">New Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="floatingInput" placeholder="password">
+                                    <label for="floatingInput">Confirm Password</label>
+                                </div>
+                                <button style="background-color: black;" type="submit" class="btn btn-dark">Change</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+        </section>
+    </main>
+
+
+   
+    <script>
+        ScrollReveal().reveal('.headline');
+
+        function handleFileSelect(evt) {
+            var file = evt.target.files; // FileList object
+            var f = file[0];
+            // Only process image files.
+            if (!f.type.match('image.*')) {
+                alert("Image only please....");
+            }
+            var reader = new FileReader();
+            // Closure to capture the file information.
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    // Render thumbnail.
+                    //var span = document.createElement('span');
+                    //span.innerHTML = ['<img style="width: 10rem;margin-bottom: 15px;border-radius: 16%; " class="thumb" title="', escape(theFile.name), '" src="', e.target.result, '" />'].join('');
+                    //document.getElementById('output').insertBefore(span, null);
+                    document.getElementById('myOutput').innerHTML = ['<img style="width: 25%;margin-bottom: 15px;border-radius: 16%; " class="thumb" title="', escape(theFile.name), '" src="', e.target.result, '" />'].join('');
+                };
+            })(f);
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(f);
+        }
+        document.getElementById('formFileMultiple').addEventListener('change', handleFileSelect, false);
+
+
+    function handleFileSelectt(event) {
+        //Check File API support
+        if (window.File && window.FileList && window.FileReader) {
+
+            var files = event.target.files; //FileList object
+            var output = document.getElementById("myManyOutput");
+
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                //Only pics
+                if (!file.type.match('image')) continue;
+
+                var picReader = new FileReader();
+                picReader.addEventListener("load", function (event) {
+                    var picFile = event.target;
+                    var div = document.createElement("div");
+                    document.getElementById("myManyOutput").innerHTML += "<img class='thumbnail my-first-backend-class' src='" + picFile.result + "'" + "title='" + file.name + "'/>";
+                    output.insertBefore(div, null);
+                });
+                //Read the image
+                picReader.readAsDataURL(file);
+            }
+        } else {
+            console.log("Your browser does not support File API");
+        }
+    }
+
+    document.querySelector('.formFileMultiple2').addEventListener('change', handleFileSelectt, false);
+
+        document.getElementById("myaccount-delete-icon-a").addEventListener("click", () => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                iconColor: 'black',
+                showCancelButton: true,
+                confirmButtonColor: 'black',
+                confirmButtonBorder: 'none',
+                cancelButtonColor: 'black',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        iconColor: 'black',
+                        title: 'Deleted!',
+                        text: "Your file has been deleted.",
+                        confirmButtonColor: 'black'
+                    })
+                }
+            })
+        })
+
+    </script>
+
+   
