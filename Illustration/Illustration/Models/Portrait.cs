@@ -32,12 +32,13 @@ namespace Illustration.Models
         [NotMapped]
         public List<IFormFile>? OtherImages { get; set; }
         [NotMapped]
-        public List<int>? CategoryIds = new List<int>();
+        public List<int>? CategoryIds { get; set; } = new List<int>();
         [NotMapped]
-        public List<int>? TagIds = new List<int>();
+        public List<int>? TagIds { get; set; } = new List<int>();
 
-        public List<PortraitImage>? PortraitImages = new List<PortraitImage>();
-        public List<PortraitCategory> PortraitCategories = new List<PortraitCategory>();
+        public List<PortraitImage>? PortraitImages { get; set; } = new List<PortraitImage>();
+        public List<PortraitCategory> PortraitCategories { get; set; } = new List<PortraitCategory>();
+        public List<PortraitTag> PortraitTags { get; set; } = new List<PortraitTag>();
 
         public AppUser? AppUser { get; set; }
 

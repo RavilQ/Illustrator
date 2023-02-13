@@ -14,7 +14,6 @@
                         <a class="my-account-tabs nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Orders</a>
                         <a class="my-account-tabs nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-settings" aria-selected="false">Wishlist</a>
                         <a class="my-account-tabs nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#my-v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Portraits</a>
-                        <a class="my-account-tabs nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Add New</a>
                         <a class="my-account-tabs nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-details" role="tab" aria-controls="v-pills-messages" aria-selected="false">Account Details</a>
                         <a class="my-account-tabs nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#" role="tab" aria-controls="v-pills-settings" aria-selected="false">Log Out</a>
                     </div>
@@ -100,20 +99,26 @@
 
 
                             <div class="wrapper">
-
-                                <h2><strong>All Portrets<span>( 4 )</span></strong></h2>
+                            <div class="d-flex justify-content-between">
+                                <h3>All Portraits<span>( @Model.Portraits.Count )</span></h3>
+                                <a asp-action="Create" class="btn btn-dark">Add Portrait</a>
+                            </div>
+                            <hr />
 
                                 <div style="width: 109%;" class="cards">
+                                    @foreach (var portrait in Model.Portraits)
+                                    {
+                                       <figure class="card">
 
-                                    <figure class="card">
+                                        <img src="~/Uploads/Portraits/@portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" />
 
-                                        <img src="~/assets/images/midjourney1.png" />
+                                        <figcaption><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@portrait.Id"><i class="las la-info-circle"></i></a> <a asp-action="Edit" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-pen"></i></a><a id="myaccount-delete-icon-a" asp-action="Delete" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
 
-                                        <figcaption><a href="#"><i class="las la-info-circle"></i></a> <a href="#"><i style="line-height: unset;" class="las la-pen"></i></a><a id="myaccount-delete-icon-a" href="#"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
+                                       </figure>
+                                    }    
+                                   
 
-                                    </figure>
-
-                                    <figure class="card">
+                             @*       <figure class="card">
 
                                         <img src="~/assets/images/realistic1.jpg" />
 
@@ -127,7 +132,7 @@
 
                                         <figcaption><a href="#"><i class="las la-info-circle"></i></a> <a href="#"><i style="line-height: unset;" class="las la-pen"></i></a><a id="myaccount-delete-icon-a" href="#"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
 
-                                    </figure>
+                                    </figure>*@
 
 
                                 </div>
@@ -135,14 +140,6 @@
 
 
                             </div>
-                        </div>
-                        <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                            <h3>
-                                Add New Portret
-                            </h3>
-                            <hr>
-                            
-                            @await Html.PartialAsync("_addPortraitPartial",Model.Portrait)
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-details" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                             <h3>

@@ -1,4 +1,9 @@
 ﻿
+@model DetailViewModel
+
+@{
+    int count = 0;
+}
     <main>
         <section id="mydetailmainsection">
              <h1>DETAIL</h1>
@@ -8,22 +13,22 @@
             <div style="width: 80%; border: none;" class="card">
                 <div class="row g-0">
                   <div class="col-5 col-sm-4">
-                    <img src="assets/images/h14-shop-img-3-594x787.jpg" class="img-fluid w-100" alt="card-horizontal-image">
+                    <img src="~/Uploads/Portraits/@Model.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="img-fluid w-100" alt="card-horizontal-image">
                      <div style="padding-top: 2rem;" class="card-group">
-                        <div class="card">
-                          <img src="assets/images/shop-img-8-768x1013.jpg" class="card-img-top" alt="card-group-image">
-                        </div>
-                        <div class="card">
-                          <img src="assets/images/shop-img-9-768x1013.jpg" class="card-img-top" alt="card-group-image">
-                        </div>
-                        <div class="card">
-                          <img src="assets/images/shop-img-10-768x1013.jpg" class="card-img-top" alt="card-group-image">
-                        </div>
+                        
+                            @foreach (var item in @Model.Portrait.PortraitImages.FindAll(x=>x.ImageStatus==false))
+                            {
+                              <div class="card">
+                                <img style="height:100%;" src="~/Uploads/Portraits/@item.Image" class="card-img-top" alt="card-group-image">
+                              </div>
+                            }
+                          
+                     
                       </div>
                   </div>
                   <div class="col-7 col-sm-8">
                     <div class="card-body">
-                      <h2 class="card-title">Various Poster</h2>
+                      <h2 class="card-title">@Model.Portrait.Name</h2>
                       <p>
                         <span class="simple-star fa fa-star checked"></span>
                         <span class="simple-star fa fa-star checked"></span>
@@ -31,13 +36,13 @@
                         <span class="simple-star fa fa-star"></span>
                         <span class="simple-star fa fa-star"></span>
                       </p>
-                      <p class="card-text"><small class="text-muted">$130.00</small></p>
+                      <p class="card-text"><small class="text-muted">$@Model.Portrait.SalePrice</small></p>
                       <div class="btn-2">
                         <a href=""><span>Complete Order</span></a>
                       </div>
                       <div>
                         <h4 style="color: #212529;padding-top: 2rem;">Info</h4>
-                        <p style="color: #6c6c6c;" class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac elit mauris. Nam laoreet lacus et porttitor pellentesque. Fusce tellus quam, hendrerit a accumsan eu, fermentum at ligula. Nulla lorem lorem, placerat gravida est eget, fermentum posuere turpis. Etiam at sodales purus. Nam consectetur felis ac blandit aliquet. Nulla in vehicula libero.</p>
+                        <p style="color: #6c6c6c;" class="card-text">@Model.Portrait.Info</p>
                       </div>
                       <!-- Tabs or Pills can be used in a card with the help of .nav-{tabs|pills} and .card-header-{tabs|pills} classes -->
                         <div style="border: none;padding-top: 3rem;" class="card">
@@ -56,7 +61,7 @@
                             </div>
                             <div class="card-body">
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi alias praesentium illo omnis adipisci ipsa suscipit rerum quidem doloribus magnam?</div>
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">@Model.Portrait.Desc</div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div>
                                         <button style="height: 6rem;
@@ -64,7 +69,7 @@
                                     background-color: white;border-color: #cdcdcd;">Weight</button>
                                     <button style="height: 6rem;
                                     width: 15rem;
-                                    background-color: white;border-color: #cdcdcd;margin-left: -5px;">20 lbs</button>
+                                    background-color: white;border-color: #cdcdcd;margin-left: -5px;">@Model.Portrait.Weight lbs</button>
                                     </div>
                                    <div>
                                     <button style="height: 6rem;
@@ -72,7 +77,7 @@
                                     background-color: white;border-color: #cdcdcd;">Dimention</button>
                                     <button style="height: 6rem;
                                     width: 15rem;
-                                    background-color: white;border-color: #cdcdcd;margin-left: -5px;">20 x 10 in</button>
+                                    background-color: white;border-color: #cdcdcd;margin-left: -5px;">20 x @Model.Portrait.Dimention in</button>
                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">
@@ -141,49 +146,27 @@
         <section id="detail-product-section">
             
             <div class="row row-cols-4 fix-row-x headline container">
-                <div class="col">
-                    <div class="card mx-3 cards-border portret-image-hover">
-                        <img src="assets/images/h14-shop-img-1-594x787.jpg" class="card-img-top" alt="card-group-image">
-                        <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                        <div class="card-body card-texts">
-                          <h5 class="card-title">Black and white world</h5>
-                          <small>Graphic Print, Work</small> 
-                          <p class="card-text card-prices">$150.00</p>
+                @foreach (var item in Model.Portraits)
+                {
+                    <div class="col">
+                        <div class="card mx-3 cards-border portret-image-hover">
+                            <img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image">
+                            <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
+                            <div class="card-body card-texts">
+                                <h5 class="card-title">@item.Name</h5>
+                                @foreach (var item2 in item.PortraitCategories)
+                                {
+                                  <small>@item2.Category.Name @(item.PortraitCategories.Count-1>count?",":"")</small>
+                                  count++;
+                                }
+                                
+                                <p class="card-text card-prices">$@item.SalePrice</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card mx-3 cards-border portret-image-hover">
-                        <img src="assets/images/h14-shop-img-2-594x787.jpg" class="card-img-top" alt="card-group-image">
-                        <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                        <div class="card-body card-texts">
-                          <h5 class="card-title">Yellow rain</h5>
-                          <small>Graphic Print, Work</small> 
-                          <p class="card-text card-prices">$40.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card mx-3 cards-border portret-image-hover">
-                        <img src="assets/images/h14-shop-img-3-594x787.jpg" class="card-img-top" alt="card-group-image">
-                        <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                        <div class="card-body card-texts">
-                          <h5 class="card-title">Various Posters</h5>
-                          <small>Graphic Print, Work</small> 
-                          <p class="card-text card-prices">$120.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card mx-3 cards-border portret-image-hover">
-                        <img src="assets/images/h14-shop-img-7-594x787.jpg" class="card-img-top" alt="card-group-image">
-                        <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                        <div class="card-body card-texts">
-                          <h5 class="card-title">In The Mind</h5>
-                          <small>Graphic Print, Work</small> 
-                          <p class="card-text card-prices">$130.00</p>
-                        </div>
-                    </div>
-                </div>
+                  count=0;
+                }
+            
+            </div>
         </section>
     </main>
