@@ -1,5 +1,6 @@
 using Illustration.DAL;
 using Illustration.Models;
+using Illustration.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
     opt.Password.RequireDigit = false;
     opt.Password.RequireUppercase = false;
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<IllustratorDbContext>();
+
+builder.Services.AddScoped<LayoutService>();
 
 var app = builder.Build();
 

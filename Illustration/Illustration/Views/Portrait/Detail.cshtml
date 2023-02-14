@@ -146,26 +146,32 @@
         <section id="detail-product-section">
             
             <div class="row row-cols-4 fix-row-x headline container">
-                @foreach (var item in Model.Portraits)
-                {
-                    <div class="col">
-                        <div class="card mx-3 cards-border portret-image-hover">
-                            <img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image">
-                            <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                            <div class="card-body card-texts">
-                                <h5 class="card-title">@item.Name</h5>
-                                @foreach (var item2 in item.PortraitCategories)
-                                {
-                                  <small>@item2.Category.Name @(item.PortraitCategories.Count-1>count?",":"")</small>
-                                  count++;
-                                }
-                                
+            @foreach (var item in Model.Portraits)
+            {
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="card mx-3 cards-border portret-image-hover">
+                        <a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
+                        <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
+                        <div class="card-body card-texts">
+                            <h5 class="card-title">@item.Name</h5>
+                            @foreach (var item2 in item.PortraitCategories)
+                            {
+                                <small>@item2.Category.Name @(item.PortraitCategories.Count - 1 > count ? "," : "")</small>
+                                count++;
+                            }
+                            @if (item.DiscountPercent > 0)
+                            {
+                                <p class="card-text card-prices"><s style="color:#818181;">$@item.SalePrice</s> $@(((item.SalePrice * (100 - item.DiscountPercent) / 100)).ToString("0.00"))</p>
+                            }
+                            else
+                            {
                                 <p class="card-text card-prices">$@item.SalePrice</p>
-                            </div>
+                            }
                         </div>
                     </div>
-                  count=0;
-                }
+                </div>
+                count = 0;
+            }
             
             </div>
         </section>

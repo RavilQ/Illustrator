@@ -145,3 +145,36 @@ $(function(){
     });
   });
 }) 
+
+
+
+
+
+$(document).on("click", ".add-to-wishlist", function (e) {
+    e.preventDefault();
+
+    let url = $(this).attr("href");
+
+    fetch(url)
+        .then(response => {
+            return response.text();
+        }).then(html => {
+            $("#wishlist-block").html(html)
+        })
+})
+
+
+
+
+$(document).on("click", ".DeleteToWishList", function (e) {
+    e.preventDefault();
+
+    let url = $(this).attr("href");
+
+    fetch(url)
+        .then(response => {
+            return response.text();
+        }).then(html => {
+            $("#wishlist-block").html(html)
+        })
+})

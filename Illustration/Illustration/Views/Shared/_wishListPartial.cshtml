@@ -1,0 +1,31 @@
+﻿
+
+@model List<WishListItem>
+
+    @foreach (var item in Model)
+    {
+        <div class="a-box">
+            <div class="img-container">
+                <div class="img-inner">
+                    <div class="inner-skew">
+                        <img src="~/Uploads/Portraits/@item.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image">
+                    </div>
+                    <a class="DeleteToWishList" asp-controller="Portrait" asp-action="DeleteToWishList" asp-route-id="@item.Portrait.Id">
+                        <lord-icon src="https://cdn.lordicon.com/jmkrnisz.json"
+                               trigger="hover"
+                               colors="primary:#121331"
+                               scale="30"
+                               class="my-lord-icon">
+                        </lord-icon>
+                    </a>
+                   
+                </div>
+            </div>
+            <div class="text-container">
+                <h3>@item.Portrait.Name</h3>
+                <div>
+                    $@item.Portrait.SalePrice
+                </div>
+            </div>
+        </div>
+    }

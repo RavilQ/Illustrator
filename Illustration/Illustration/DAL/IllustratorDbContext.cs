@@ -22,5 +22,6 @@ namespace Illustration.DAL
         public DbSet<PortraitCategory> PortraitCategories { get; set; }
         public DbSet<ReviewWriter> ReviewWriters { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<WishListItem> WishListItems { get; set; }
     }
 }

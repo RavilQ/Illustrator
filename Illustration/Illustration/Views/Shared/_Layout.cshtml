@@ -1,4 +1,11 @@
-﻿
+﻿@using Illustration.Services
+
+@inject LayoutService layoutService
+
+@{
+    List<WishListItem> WishListItems = layoutService.GetWishListItems();
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +41,7 @@
                             <a class="nav-link px-4 color-white" asp-controller="Shop" asp-action="Index">SHOP</a>
                             <a class="nav-link px-4 color-white" asp-controller="Home" asp-action="Blog">BLOG</a>
                             <a class="nav-link px-4 color-white" asp-controller="Home" asp-action="ContactUs">CONTACT US</a>
-                            <a id="my-account-icon-responsive" class="nav-link px-4 color-white" href="MyAccount.html"><i style="font-size: 1.3rem;" class="lar la-user"></i></a>
+                            <a id="my-account-icon-responsive" class="nav-link px-4 color-white" asp-controller="Account" asp-action="Profile"><i style="font-size: 1.3rem;" class="lar la-user"></i></a>
                             <a id="heart-icon" class="nav-link color-white" href="#"> <i style="font-size: 1.3rem;" class="las la-heart"></i></a>
                             <a id="my-search-button" class="nav-link px-4 color-white" href="#"><i style="font-size: 1.3rem;" class="las la-search"></i></a>
                         </div>
@@ -118,51 +125,9 @@
     <div id="wishlist">
         <div id="wishlist-content">
             <div class="containerrr">
-                <div class="top-section">
+                <div id="wishlist-block" class="top-section">
 
-                    <div class="a-box">
-                        <div class="img-container">
-                            <div class="img-inner">
-                                <div class="inner-skew">
-                                    <img src="~/assets/images/h14-shop-img-13-594x787.jpg">
-                                </div>
-                                <lord-icon src="https://cdn.lordicon.com/jmkrnisz.json"
-                                           trigger="hover"
-                                           colors="primary:#121331"
-                                           scale="30"
-                                           class="my-lord-icon">
-                                </lord-icon>
-                            </div>
-                        </div>
-                        <div class="text-container">
-                            <h3>Black and white world</h3>
-                            <div>
-                                $150.00
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="a-box">
-                        <div class="img-container">
-                            <div class="img-inner">
-                                <div class="inner-skew">
-                                    <img src="~/assets/images/h14-shop-img-13-594x787.jpg">
-                                </div>
-                                <lord-icon src="https://cdn.lordicon.com/jmkrnisz.json"
-                                           trigger="hover"
-                                           colors="primary:#121331"
-                                           scale="30"
-                                           class="my-lord-icon">
-                                </lord-icon>
-                            </div>
-                        </div>
-                        <div class="text-container">
-                            <h3>Black and white world</h3>
-                            <div>
-                                $150.00
-                            </div>
-                        </div>
-                    </div>
+                    @await Html.PartialAsync("_wishListPartial",WishListItems)
 
                 </div>
                 <div class="bottom-section">

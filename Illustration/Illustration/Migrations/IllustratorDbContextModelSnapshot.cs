@@ -37,7 +37,7 @@ namespace Illustration.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Illustration.Models.Order", b =>
@@ -105,7 +105,7 @@ namespace Illustration.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Illustration.Models.Portrait", b =>
@@ -165,7 +165,7 @@ namespace Illustration.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Portraits", (string)null);
+                    b.ToTable("Portraits");
                 });
 
             modelBuilder.Entity("Illustration.Models.PortraitCategory", b =>
@@ -188,7 +188,7 @@ namespace Illustration.Migrations
 
                     b.HasIndex("PortraitId");
 
-                    b.ToTable("PortraitCategories", (string)null);
+                    b.ToTable("PortraitCategories");
                 });
 
             modelBuilder.Entity("Illustration.Models.PortraitImage", b =>
@@ -214,7 +214,7 @@ namespace Illustration.Migrations
 
                     b.HasIndex("PortraitId");
 
-                    b.ToTable("PortraitImages", (string)null);
+                    b.ToTable("PortraitImages");
                 });
 
             modelBuilder.Entity("Illustration.Models.PortraitTag", b =>
@@ -237,7 +237,7 @@ namespace Illustration.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("PortraitTags", (string)null);
+                    b.ToTable("PortraitTags");
                 });
 
             modelBuilder.Entity("Illustration.Models.Review", b =>
@@ -274,7 +274,7 @@ namespace Illustration.Migrations
 
                     b.HasIndex("ReviewWriterId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Illustration.Models.ReviewWriter", b =>
@@ -297,7 +297,7 @@ namespace Illustration.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ReviewWriters", (string)null);
+                    b.ToTable("ReviewWriters");
                 });
 
             modelBuilder.Entity("Illustration.Models.Slider", b =>
@@ -327,7 +327,7 @@ namespace Illustration.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sliders", (string)null);
+                    b.ToTable("Sliders");
                 });
 
             modelBuilder.Entity("Illustration.Models.Tag", b =>
@@ -345,7 +345,36 @@ namespace Illustration.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags", (string)null);
+                    b.ToTable("Tags");
+                });
+
+            modelBuilder.Entity("Illustration.Models.WishListItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PortraitId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("PortraitId");
+
+                    b.ToTable("WishListItems");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -593,7 +622,7 @@ namespace Illustration.Migrations
                         .IsRequired();
 
                     b.HasOne("Illustration.Models.Portrait", "Portrait")
-                        .WithMany()
+                        .WithMany("PortraitCategories")
                         .HasForeignKey("PortraitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -606,7 +635,7 @@ namespace Illustration.Migrations
             modelBuilder.Entity("Illustration.Models.PortraitImage", b =>
                 {
                     b.HasOne("Illustration.Models.Portrait", "Portrait")
-                        .WithMany()
+                        .WithMany("PortraitImages")
                         .HasForeignKey("PortraitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -617,7 +646,7 @@ namespace Illustration.Migrations
             modelBuilder.Entity("Illustration.Models.PortraitTag", b =>
                 {
                     b.HasOne("Illustration.Models.Portrait", "Portrait")
-                        .WithMany()
+                        .WithMany("PortraitTags")
                         .HasForeignKey("PortraitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -650,6 +679,23 @@ namespace Illustration.Migrations
                     b.Navigation("Portrait");
 
                     b.Navigation("ReviewWriter");
+                });
+
+            modelBuilder.Entity("Illustration.Models.WishListItem", b =>
+                {
+                    b.HasOne("Illustration.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("Illustration.Models.Portrait", "Portrait")
+                        .WithMany()
+                        .HasForeignKey("PortraitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Portrait");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -701,6 +747,15 @@ namespace Illustration.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Illustration.Models.Portrait", b =>
+                {
+                    b.Navigation("PortraitCategories");
+
+                    b.Navigation("PortraitImages");
+
+                    b.Navigation("PortraitTags");
                 });
 #pragma warning restore 612, 618
         }
