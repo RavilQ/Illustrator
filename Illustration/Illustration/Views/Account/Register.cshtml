@@ -1,0 +1,50 @@
+﻿
+@model MemberRegisterViewModel
+
+<link rel="stylesheet" href="~/assets/css/Login.css">
+    <main>
+        <section style="background-color: #131313;position: relative;bottom: 3.5rem;">
+            <h1 class="container">Illustrator</h1>
+        </section>
+        <section style="display: flex; justify-content: center;">
+            <div class="row container">
+                <h1 style="color: #131313;">Register</h1>
+                <div class="col">
+                    <form method="post">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Fullname" class="form-control" id="floatingInput" placeholder="Max">
+                            <label asp-for="Fullname">Fullname</label>
+                            <span class="text-danger" asp-validation-for="Fullname"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                             <input asp-for="Username" class="form-control" id="floatingInput" placeholder="Max">
+                             <label asp-for="Username">Username</label>
+                             <span class="text-danger" asp-validation-for="Username"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Email" type="email" class="form-control" id="floatingInput" placeholder="maxs@mail.com">
+                            <label asp-for="Email">Email</label>
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Password" class="form-control" id="floatingInput" placeholder="Password">
+                            <label asp-for="Password">Password</label>
+                            <span class="text-danger" asp-validation-for="Password"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="ConfirmPassword" type="password" class="form-control" id="floatingInput" placeholder="Password">
+                            <label asp-for="ConfirmPassword">Confirm Password</label>
+                            <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                        </div>
+                        <div class="form-check">
+                            <input style="background-color: #22262a;border-color: #22262a;" class="form-check-input" type="checkbox" value="" id="formCheckDefault">
+                            <label class="form-check-label" for="formCheckDefault">By clicking "create account", I consent to the privacy policy.</label>
+                        </div>
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <button style="width: 15%;background-color:#22262a;" type="submit" class="btn btn-dark">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+

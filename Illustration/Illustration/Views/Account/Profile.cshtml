@@ -15,7 +15,7 @@
                         <a class="my-account-tabs nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-settings" aria-selected="false">Wishlist</a>
                         <a class="my-account-tabs nav-link active" id="v-pills-messages-tab" data-bs-toggle="pill" href="#my-v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Portraits</a>
                         <a class="my-account-tabs nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-details" role="tab" aria-controls="v-pills-messages" aria-selected="false">Account Details</a>
-                        <a class="my-account-tabs nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#" role="tab" aria-controls="v-pills-settings" aria-selected="false">Log Out</a>
+                        <a class="my-account-tabs nav-link"asp-action="Logout">Log Out</a>
                     </div>
                 </div>
                 <div class="col-8">
@@ -25,7 +25,7 @@
                                 Dashboard
                             </h3>
                             <hr>
-                            <p style="color: #212529;">Hello, Alex Tuntuni (If Not Tuntuni !Logout)</p>
+                            <p style="color: #212529;">Hello, @User.Identity.Name (If Not @User.Identity.Name !Logout)</p>
                             From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">

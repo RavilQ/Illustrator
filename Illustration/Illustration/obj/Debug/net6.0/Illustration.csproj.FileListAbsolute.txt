@@ -541,3 +541,16 @@ C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\Micros
 C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\DotNetOpenAuth.AspNet.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\DotNetOpenAuth.Core.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\DotNetOpenAuth.OAuth.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\DotNetOpenAuth.OpenId.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\Facebook.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\System.Net.Http.WebRequest.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\MailKit.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\MimeKit.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\BouncyCastle.Crypto.dll

@@ -1,0 +1,39 @@
+﻿@model MemberLoginViewModel
+
+<link rel="stylesheet" href="~/assets/css/Login.css">
+
+    <main> 
+        <section style="background-color: #131313;position: relative;bottom: 3.5rem;"> 
+            <h1 class="container">Illustrator</h1>
+        </section>
+        <section style="display: flex; justify-content: center;">
+            <div class="row container">
+                <h1 style="color: #131313;">Login</h1>
+                <div class="col">
+                <form method="post">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Email" type="email" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="Email">Email</label>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <a style="text-decoration: none;color:#131313;" asp-action="Register">Dont have an account?</a>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Password" class="form-control" id="floatingInput" placeholder="Ilon">
+                        <label asp-for="Password">Password</label>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <a style="text-decoration: none;color:#131313;" asp-action="ForgotPassword">Forgotten your password?</a>
+                    </div>
+                    <button style="width: 15%;background-color:#22262a;" type="submit" class="btn btn-dark">Sign In</button>
+                </form> 
+                </div>
+                <div class="signup-connect">
+                    <a asp-action="Facebook" class="btn btn-social btn-facebook"><i class="lab la-facebook-f"></i> Sign in with Facebook</a>
+                    <a asp-action="GoogleLogin" class="btn btn-social btn-google"><i class="lab la-google-plus"></i> Sign in with Google</a>
+                </div>
+            </div>
+        </section>
+    </main>
+  

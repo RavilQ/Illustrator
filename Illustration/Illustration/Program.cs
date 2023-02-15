@@ -1,6 +1,7 @@
 using Illustration.DAL;
 using Illustration.Models;
 using Illustration.Services;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,18 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<IllustratorDbContext>();
 
 builder.Services.AddScoped<LayoutService>();
+
+builder.Services.AddAuthentication()
+.AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
+{
+    options.ClientId = "1052189299383-qbkpoco0iv1s9r8p2sj7qrqdf6kkh8bt.apps.googleusercontent.com";
+    options.ClientSecret = "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";
+    options.SignInScheme = IdentityConstants.ExternalScheme;
+}).AddFacebook(facebookOptions =>
+{
+    facebookOptions.AppId = "1198809320739698";
+    facebookOptions.AppSecret = "4c262dd94602bd167d23c4cfedd13c59";
+});
 
 var app = builder.Build();
 
