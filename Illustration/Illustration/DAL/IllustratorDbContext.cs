@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Illustration.DAL
 {
-    public class IllustratorDbContext:IdentityDbContext
+    public class IllustratorDbContext : IdentityDbContext
     {
-        public IllustratorDbContext(DbContextOptions<IllustratorDbContext> opt):base(opt)
+        public IllustratorDbContext(DbContextOptions<IllustratorDbContext> opt) : base(opt)
         {
 
         }
@@ -20,8 +20,8 @@ namespace Illustration.DAL
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<PortraitCategory> PortraitCategories { get; set; }
-        public DbSet<ReviewWriter> ReviewWriters { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<WishListItem> WishListItems { get; set; }
+        public DbSet<MyOrder> MyOrders { get; set; }
     }
 }

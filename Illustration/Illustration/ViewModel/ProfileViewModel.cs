@@ -6,5 +6,7 @@ namespace Illustration.ViewModel
     {
         public Portrait Portrait { get; set; }
         public List<Portrait> Portraits { get; set; } = new List<Portrait>();
+        public List<WishListItem> WishListItem { get; set; } = new List<WishListItem>();
+        public List<MyOrder> MyOrders { get; set; } = new List<MyOrder>();
     }
 }

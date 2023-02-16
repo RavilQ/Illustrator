@@ -38,7 +38,7 @@
                       </p>
                       <p class="card-text"><small class="text-muted">$@Model.Portrait.SalePrice</small></p>
                       <div class="btn-2">
-                        <a href=""><span>Complete Order</span></a>
+                        <a asp-controller="Account" asp-action="Order" asp-route-id="@Model.Portrait.Id"><span>Complete Order</span></a>
                       </div>
                       <div>
                         <h4 style="color: #212529;padding-top: 2rem;">Info</h4>
@@ -111,25 +111,7 @@
                                     <hr>
                                     <h4 style="color: #212529;padding-top: 2rem;">Add a Review</h4>
                                     <h5 style="color: #212529;padding-top: 2rem;">Your Raiting</h5>
-                                    <form action="#" method="post">
-                                        <div class="rate">
-                                            <input type="radio" id="star5" name="rate" value="5" />
-                                            <label for="star5" title="text">5 stars</label>
-                                            <input type="radio" id="star4" name="rate" value="4" />
-                                            <label for="star4" title="text">4 stars</label>
-                                            <input type="radio" id="star3" name="rate" value="3" />
-                                            <label for="star3" title="text">3 stars</label>
-                                            <input type="radio" id="star2" name="rate" value="2" />
-                                            <label for="star2" title="text">2 stars</label>
-                                            <input type="radio" id="star1" name="rate" value="1" />
-                                            <label for="star1" title="text">1 star</label>
-                                        </div>
-                                        <h5 style="color: #212529;padding-top: 4rem;margin-left: 0rem;">Your Message</h5>
-                                        <textarea name="" id="review-text-area" cols="30" rows="10"></textarea>
-                                        <input id="myauthor" name="author" type="text" value="" size="30" aria-required="true" placeholder="Your Name*">
-                                        <input id="myemail" name="email" type="text" value="" size="30" aria-required="true" placeholder="Your Email*">
-                                        <button type="submit" class="btn-flip" data-back="Send" data-front="Message"></button>
-                                    </form>
+                                    @await Html.PartialAsync("_reviewPartial",Model.Review)
                                    
                                 </div>
                             </div>

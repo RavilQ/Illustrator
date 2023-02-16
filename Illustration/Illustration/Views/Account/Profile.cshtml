@@ -28,16 +28,24 @@
                             <p style="color: #212529;">Hello, @User.Identity.Name (If Not @User.Identity.Name !Logout)</p>
                             From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.
                         </div>
-                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             <div class="row">
-                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
-                                    <img src="~/assets/images/we-love-women-in-black-and-white-20200831-1024-764x1024.jpg" alt="">
-                                    <h3>Barbara Palvin</h3>
-                                    <div>01.06.1998</div>
-                                    <div>150$</div>
-                                    <div><span class="badge bg-dark">Pending</span></div>
+                                <div class="d-flex justify-content-between">
+                                <h3>All Wish List Portraits<span>( @Model.MyOrders.Count )</span></h3>
                                 </div>
-                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
+                                <hr />
+                                @foreach (var item in Model.MyOrders)
+                                {
+                                    <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
+                                    <img src="~/Uploads/Portraits/@item.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
+                                    <h3>@item.Portrait.Name</h3>
+                                    <div>@item.CreatAt</div>
+                                    <div>$@item.Portrait.SalePrice</div>
+                                    <div><span class="badge bg-dark">@item.Status</span></div>
+                                    </div>
+                                }
+                              
+   @*                             <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
                                     <img src="~/assets/images/rosee3.jpg" alt="">
                                     <h3>Barbara Palvin</h3>
                                     <div>01.06.1998</div>
@@ -50,35 +58,26 @@
                                     <div>01.06.1998</div>
                                     <div>150$</div>
                                     <div><span class="badge bg-dark">Pending</span></div>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                             <div class="row">
-                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-6">
-                                    <i style="font-size: 165%;" class="las la-times"></i>
-                                    <img src="~/assets/images/rosee3.jpg" alt="">
-                                    <h3>Barbara Palvin</h3>
+                                  <div class="d-flex justify-content-between">
+                                  <h3>All Wish List Portraits<span>( @Model.WishListItem.Count )</span></h3>
+                                  </div>
+                                  <hr />
+                                @foreach (var item in Model.WishListItem)
+                                {
+                                    <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-6">
+                                    <a asp-controller="Account" asp-action="DeleteToWishList" asp-route-id="@item.Portrait.Id"><i style="font-size: 165%;" class="las la-times"></i></a>
+                                    <img src="~/Uploads/Portraits/@item.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
+                                    <h3>@item.Portrait.Name</h3>
                                     <div></div>
-                                    <div>150$</div>
-                                    <div><button style="width:130%;" class="btn btn-dark">Buy</button></div>
-                                </div>
-                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-6">
-                                    <i style="font-size: 165%;" class="las la-times"></i>
-                                    <img src="~/assets/images/rosee3.jpg" alt="">
-                                    <h3>Barbara Palvin</h3>
-                                    <div></div>
-                                    <div>150$</div>
-                                    <div><button style="width:130%;" class="btn btn-dark">Buy</button></div>
-                                </div>
-                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-6">
-                                    <i style="font-size: 165%;" class="las la-times"></i>
-                                    <img src="~/assets/images/rosee3.jpg" alt="">
-                                    <h3>Barbara Palvin</h3>
-                                    <div></div>
-                                    <div>150$</div>
-                                    <div><button style="width:130%;" class="btn btn-dark">Buy</button></div>
-                                </div>
+                                    <div>@item.Portrait.SalePrice$</div>
+                                    <div><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Portrait.Id" style="width:130%;" class="btn btn-dark">Buy</a></div>
+                                    </div>
+                                }
                             </div>
                         </div>
                     <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade show active" id="my-v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">

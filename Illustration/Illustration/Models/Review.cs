@@ -9,11 +9,12 @@ namespace Illustration.Models
         public int Raiting { get; set; }
         [MaxLength(250)]
         public string Message { get; set; }
-        public DateTime CreatAt { get; set; }
-        public OrderStatus Status { get; set; }
-        public int PortraitId { get; set; }
-        public int ReviewWriterId { get; set; }
-        public Portrait Portrait { get; set; }
-        public ReviewWriter ReviewWriter { get; set; }
+        public DateTime? CreatAt { get; set; } = DateTime.UtcNow.AddHours(4);
+        public OrderStatus? Status { get; set; }
+        public int? PortraitId { get; set; }
+        public string? AppUserId { get; set; }
+
+        public AppUser? AppUser { get; set; }
+        public Portrait? Portrait { get; set; }
     }
 }

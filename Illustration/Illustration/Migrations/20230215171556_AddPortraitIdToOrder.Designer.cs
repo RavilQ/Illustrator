@@ -4,6 +4,7 @@ using Illustration.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Illustration.Migrations
 {
     [DbContext(typeof(IllustratorDbContext))]
-    partial class IllustratorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230215171556_AddPortraitIdToOrder")]
+    partial class AddPortraitIdToOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,6 +90,7 @@ namespace Illustration.Migrations
                         .HasColumnType("nvarchar(370)");
 
                     b.Property<string>("AppUserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("City")
@@ -119,16 +122,17 @@ namespace Illustration.Migrations
                         .HasColumnType("nvarchar(70)");
 
                     b.Property<string>("Note")
+                        .IsRequired()
                         .HasMaxLength(570)
                         .HasColumnType("nvarchar(570)");
 
                     b.Property<long>("Phone")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("PortraitId")
+                    b.Property<int>("PortraitId")
                         .HasColumnType("int");
 
-                    b.Property<byte?>("Status")
+                    b.Property<byte>("Status")
                         .HasColumnType("tinyint");
 
                     b.Property<string>("ZipCode")
@@ -285,10 +289,7 @@ namespace Illustration.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("CreatAt")
+                    b.Property<DateTime>("CreatAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Message")
@@ -296,22 +297,48 @@ namespace Illustration.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<int?>("PortraitId")
+                    b.Property<int>("PortraitId")
                         .HasColumnType("int");
 
                     b.Property<int>("Raiting")
                         .HasColumnType("int");
 
-                    b.Property<byte?>("Status")
+                    b.Property<int>("ReviewWriterId")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("Status")
                         .HasColumnType("tinyint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
-
                     b.HasIndex("PortraitId");
 
+                    b.HasIndex("ReviewWriterId");
+
                     b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("Illustration.Models.ReviewWriter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Fullname")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ReviewWriters");
                 });
 
             modelBuilder.Entity("Illustration.Models.Slider", b =>
@@ -625,11 +652,15 @@ namespace Illustration.Migrations
                 {
                     b.HasOne("Illustration.Models.AppUser", "AppUser")
                         .WithMany()
-                        .HasForeignKey("AppUserId");
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Illustration.Models.Portrait", "Portrait")
                         .WithMany()
-                        .HasForeignKey("PortraitId");
+                        .HasForeignKey("PortraitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("AppUser");
 
@@ -696,17 +727,21 @@ namespace Illustration.Migrations
 
             modelBuilder.Entity("Illustration.Models.Review", b =>
                 {
-                    b.HasOne("Illustration.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-
                     b.HasOne("Illustration.Models.Portrait", "Portrait")
                         .WithMany()
-                        .HasForeignKey("PortraitId");
+                        .HasForeignKey("PortraitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("AppUser");
+                    b.HasOne("Illustration.Models.ReviewWriter", "ReviewWriter")
+                        .WithMany()
+                        .HasForeignKey("ReviewWriterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Portrait");
+
+                    b.Navigation("ReviewWriter");
                 });
 
             modelBuilder.Entity("Illustration.Models.WishListItem", b =>

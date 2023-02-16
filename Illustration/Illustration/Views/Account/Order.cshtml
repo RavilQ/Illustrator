@@ -1,0 +1,86 @@
+﻿
+@model Order
+
+    <main>
+        <section style="background-color: #131313;position: relative;bottom: 3.5rem;">
+            <h1 class="container">ORDER</h1>
+        </section>
+        <section style="display: flex; justify-content: center;">
+            
+            <div class="row row-cols-2 container">
+
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input form="OrderForm" asp-for="FirstName" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="FirstName">First Name</label>
+                        <span class="text-danger" asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input form="OrderForm" asp-for="LastName" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="LastName">Last Name</label>
+                        <span class="text-danger" asp-validation-for="LastName"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input form="OrderForm" asp-for="Email" type="email" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="Email">Email Address</label>
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input form="OrderForm" asp-for="City" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="City">City</label>
+                        <span class="text-danger" asp-validation-for="City"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input form="OrderForm" asp-for="Address" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="Address">Address</label>
+                        <span class="text-danger" asp-validation-for="Address"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input form="OrderForm" asp-for="ZipCode" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="ZipCode">Post Code/Zip</label>
+                        <span class="text-danger" asp-validation-for="ZipCode"></span>
+                    </div>
+                </div>
+                <form method="post" id="OrderForm">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Phone" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="Phone">Phone</label>
+                        <span class="text-danger" asp-validation-for="Phone"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Company" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="Company">Company</label>
+                        <span class="text-danger" asp-validation-for="Company"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="AditionalInformation" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="AditionalInformation">AditionalInformation</label>
+                        <span class="text-danger" asp-validation-for="AditionalInformation"></span>
+                    </div>
+
+                    <table class="table caption-top">
+                        <caption>Your Order</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col"></th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.Portrait.Name</td>
+                                <td></td>
+                                <td>$@Model.Portrait.SalePrice</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <button style="margin-top: 1.7rem;" type="submit" class="btn btn-dark">Place Order</button>
+                </div>
+                </form>
+            </div>
+           
+        </section>
+    </main>

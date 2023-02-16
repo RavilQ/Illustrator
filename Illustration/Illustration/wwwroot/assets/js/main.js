@@ -159,6 +159,7 @@ $(document).on("click", ".add-to-wishlist", function (e) {
         .then(response => {
             return response.text();
         }).then(html => {
+            toastr["success"]("Added to WishList !!")
             $("#wishlist-block").html(html)
         })
 })
@@ -178,3 +179,29 @@ $(document).on("click", ".DeleteToWishList", function (e) {
             $("#wishlist-block").html(html)
         })
 })
+
+
+
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": true,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+}
+
+
+
+$(document).on("click", '.my-problemly-raitings', function (e) {
+    window.scrollTo(0, 1750);
+});

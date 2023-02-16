@@ -13,7 +13,7 @@ using MimeKit;
 using MimeKit.Text;
 using System.Data;
 using System.Security.Claims;
-
+using Newtonsoft.Json;
 
 namespace Illustration.Controllers
 {
@@ -39,10 +39,14 @@ namespace Illustration.Controllers
         }
 
         [Authorize(Roles = "Member")]
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             ProfileViewModel model = new ProfileViewModel();
-            model.Portraits = _context.Portraits.Include(x=>x.PortraitImages).ToList();
+            model.Portraits = _context.Portraits.Include(x=>x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            model.WishListItem = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x=>x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            model.MyOrders = _context.MyOrders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
             return View(model);
@@ -684,6 +688,126 @@ namespace Illustration.Controllers
             return RedirectToAction("login");
 
         }
+
+        public async Task<IActionResult> DeleteToWishList(int id)
+        {
+            AppUser user = null;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            }
+
+            List<WishListItem> wishListItems = new List<WishListItem>();
+
+
+
+            if (user != null)
+            {
+                var wishListItem = _context.WishListItems.FirstOrDefault(x => x.PortraitId == id && x.AppUserId == user.Id);
+                if (wishListItem == null)
+                {
+                    return View("Error");
+                }
+                _context.WishListItems.Remove(wishListItem);
+                _context.SaveChanges();
+
+                wishListItems = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).ToList();
+            }
+
+            else
+            {
+                var wishListstr = HttpContext.Request.Cookies["wishListItem"];
+
+                List<WishListCookieItemViewModel> wishListCookieItems = null;
+
+                wishListCookieItems = JsonConvert.DeserializeObject<List<WishListCookieItemViewModel>>(wishListstr);
+
+                WishListCookieItemViewModel wishListCookieItem = wishListCookieItems.FirstOrDefault(x => x.PortraitId == id);
+
+                wishListCookieItems.Remove(wishListCookieItem);
+
+                var removeItem = JsonConvert.SerializeObject(wishListCookieItems);
+                HttpContext.Response.Cookies.Append("wishListItem", removeItem);
+
+                WishListItem item = new WishListItem();
+
+                foreach (var items in wishListCookieItems)
+                {
+                    Portrait portrait = _context.Portraits.Include(x => x.PortraitImages).FirstOrDefault(x => x.Id == items.PortraitId);
+
+                    item = new WishListItem
+                    {
+                        Portrait = portrait
+                    };
+
+                    wishListItems.Add(item);
+                }
+            }
+
+            return RedirectToAction("Profile","Account");
+        }
+
+        public IActionResult Order(int id)
+        {
+            Order order = new Order {
+
+                Portrait = _context.Portraits.FirstOrDefault(x => x.Id == id)
+
+            };
+            return View(order);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Order(Order order,int id)
+        {
+            if (id != 0)
+            {
+                order.PortraitId = id;
+            }
+            else
+            {
+                return View("Error");
+            }
+           
+
+            if (!ModelState.IsValid)
+            {
+                order.Portrait = _context.Portraits.FirstOrDefault(x => x.Id == id);
+                return View(order);
+            }
+
+            order.Status = Enum.OrderStatus.Pending;
+
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            MyOrder myOrder = new MyOrder
+            {
+                PortraitId = id,
+                Status = Enum.OrderStatus.Pending
+            };
+
+            if (user != null)
+            {
+                order.AppUserId = user.Id;
+                myOrder.AppUserId = user.Id;
+            }
+
+            var wishListItem = _context.WishListItems.FirstOrDefault(x => x.PortraitId == id);
+            if (wishListItem != null)
+            {
+                _context.WishListItems.Remove(wishListItem);
+            }
+
+            order.Id = 0;
+            _context.Orders.Add(order);
+            _context.MyOrders.Add(myOrder);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
 
         public bool checkImageFile(IFormFile image)
         {

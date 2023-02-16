@@ -150,7 +150,7 @@ namespace Illustration.Controllers
 
             if (user != null)
             {
-                var wishListItem = _context.WishListItems.FirstOrDefault(x => x.Id == id && x.AppUserId == user.Id );
+                var wishListItem = _context.WishListItems.FirstOrDefault(x => x.PortraitId == id && x.AppUserId == user.Id );
                 if (wishListItem == null)
                 {
                     return View("Error");
@@ -192,6 +192,56 @@ namespace Illustration.Controllers
             }
 
             return PartialView("_wishListPartial", wishListItems);
+        }
+
+        public async Task<IActionResult> DeleteAll()
+        {
+            AppUser user = null;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            }
+
+            List<WishListItem> wishListItems = new List<WishListItem>();
+
+            if (user != null)
+            {
+                var wishListItem = _context.WishListItems.First();
+                if (wishListItem != null)
+                {
+                    var wishitems = _context.WishListItems.ToList();
+                    _context.WishListItems.RemoveRange(wishitems);
+                    _context.SaveChanges();
+                }
+
+                wishListItems = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).ToList();
+            }
+
+            else
+            {
+                var wishListstr = HttpContext.Request.Cookies["wishListItem"];
+
+                List<WishListCookieItemViewModel> wishListCookieItems = null;
+
+                wishListCookieItems = JsonConvert.DeserializeObject<List<WishListCookieItemViewModel>>(wishListstr);
+
+                wishListCookieItems = new List<WishListCookieItemViewModel>();
+
+                var removeItem = JsonConvert.SerializeObject(wishListCookieItems);
+                HttpContext.Response.Cookies.Append("wishListItem", removeItem);
+
+                WishListItem item = new WishListItem();
+            }
+
+            return PartialView("_wishListPartial", wishListItems);
+        }
+
+
+        public IActionResult Review(Review review,int id)
+        {
+            return Ok(id);
         }
     }
 }

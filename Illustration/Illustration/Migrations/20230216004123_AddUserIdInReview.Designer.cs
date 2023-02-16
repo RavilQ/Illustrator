@@ -4,6 +4,7 @@ using Illustration.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Illustration.Migrations
 {
     [DbContext(typeof(IllustratorDbContext))]
-    partial class IllustratorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230216004123_AddUserIdInReview")]
+    partial class AddUserIdInReview
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,6 +304,9 @@ namespace Illustration.Migrations
                     b.Property<int>("Raiting")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ReviewWriterId")
+                        .HasColumnType("int");
+
                     b.Property<byte?>("Status")
                         .HasColumnType("tinyint");
 
@@ -311,7 +316,32 @@ namespace Illustration.Migrations
 
                     b.HasIndex("PortraitId");
 
+                    b.HasIndex("ReviewWriterId");
+
                     b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("Illustration.Models.ReviewWriter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Fullname")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ReviewWriters");
                 });
 
             modelBuilder.Entity("Illustration.Models.Slider", b =>
@@ -704,9 +734,15 @@ namespace Illustration.Migrations
                         .WithMany()
                         .HasForeignKey("PortraitId");
 
+                    b.HasOne("Illustration.Models.ReviewWriter", "ReviewWriter")
+                        .WithMany()
+                        .HasForeignKey("ReviewWriterId");
+
                     b.Navigation("AppUser");
 
                     b.Navigation("Portrait");
+
+                    b.Navigation("ReviewWriter");
                 });
 
             modelBuilder.Entity("Illustration.Models.WishListItem", b =>

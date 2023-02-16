@@ -1,0 +1,28 @@
+﻿
+@model Review
+
+<div class="rate">
+    <input class="my-problemly-raitings" form="ReviewForm" asp-for="Raiting" type="radio" id="star5" value="5" />
+    <label class="my-problemly-raitings" for="star5" title="text">5 stars</label>
+    <input class="my-problemly-raitings" form="ReviewForm" asp-for="Raiting" type="radio" id="star4" value="4" />
+    <label class="my-problemly-raitings" for="star4" title="text">4 stars</label>
+    <input class="my-problemly-raitings" form="ReviewForm" asp-for="Raiting" type="radio" id="star3" value="3" />
+    <label class="my-problemly-raitings" for="star3" title="text">3 stars</label>
+    <input class="my-problemly-raitings" form="ReviewForm" asp-for="Raiting" type="radio" id="star2" value="2" />
+    <label class="my-problemly-raitings" for="star2" title="text">2 stars</label>
+    <input class="my-problemly-raitings" form="ReviewForm" asp-for="Raiting" type="radio" id="star1" value="1" />
+    <label class="my-problemly-raitings" for="star1" title="text">1 star</label>
+</div>
+
+<form id="ReviewForm" asp-action="Review" method="post">
+   
+    <h5 style="color: #212529;padding-top: 4rem;margin-left: 0rem;">your message</h5>
+    <textarea asp-for="Message" id="review-text-area" cols="30" rows="10"></textarea>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <input id="myauthor" name="author" type="text" value="" size="30" aria-required="true" placeholder="your name*">
+        <input id="myemail" name="email" type="text" value="" size="30" aria-required="true" placeholder="your email*">
+        <button type="submit" class="btn-flip" data-back="send" data-front="message"></button>
+    }
+    <button type="submit" class="btn-flip mt-3" data-back="send" data-front="message"></button>
+</form>
