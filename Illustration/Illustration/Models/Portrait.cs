@@ -26,6 +26,7 @@ namespace Illustration.Models
         public bool IsSpecial { get; set; }
         public bool IsAuktion { get; set; }
         public DateTime CreatAt { get; set; } = DateTime.UtcNow.AddHours(4);
+        public int? AvgRate { get; set; }
         public string? AppUserId { get; set; }
         [NotMapped]
         public IFormFile? PosterImage { get; set; }
@@ -39,6 +40,7 @@ namespace Illustration.Models
         public List<PortraitImage>? PortraitImages { get; set; } = new List<PortraitImage>();
         public List<PortraitCategory> PortraitCategories { get; set; } = new List<PortraitCategory>();
         public List<PortraitTag> PortraitTags { get; set; } = new List<PortraitTag>();
+        public List<Review> Reviews { get; set; } = new List<Review>();
 
         public AppUser? AppUser { get; set; }
 

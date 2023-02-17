@@ -16,13 +16,18 @@
 
 <form id="ReviewForm" asp-action="Review" method="post">
    
-    <h5 style="color: #212529;padding-top: 4rem;margin-left: 0rem;">your message</h5>
+    <h5 style="color: #212529;padding-top: 4rem;margin-left: 0rem;">Your Message</h5>
     <textarea asp-for="Message" id="review-text-area" cols="30" rows="10"></textarea>
     @if (!User.Identity.IsAuthenticated)
     {
-        <input id="myauthor" name="author" type="text" value="" size="30" aria-required="true" placeholder="your name*">
-        <input id="myemail" name="email" type="text" value="" size="30" aria-required="true" placeholder="your email*">
+        @*<input asp-for="Fullname" id="myauthor" name="author" type="text" size="30" aria-required="true" placeholder="your Fullname*">*@
+        <input asp-for="Fullname" id="myauthor" placeholder="your Fullname*" />
+        <input asp-for="Email" id="myemail" name="email" type="email" size="30" aria-required="true" placeholder="your email*">
         <button type="submit" class="btn-flip" data-back="send" data-front="message"></button>
     }
-    <button type="submit" class="btn-flip mt-3" data-back="send" data-front="message"></button>
+    else{
+        <button type="submit" class="btn-flip mt-3" data-back="send" data-front="message"></button>
+    }
+    <input type="hidden" name="id" value="@ViewBag.Id" />
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 </form>

@@ -13,6 +13,10 @@ namespace Illustration.Models
         public OrderStatus? Status { get; set; }
         public int? PortraitId { get; set; }
         public string? AppUserId { get; set; }
+        [MaxLength(50)]
+        public string? Fullname { get; set; }
+        [MaxLength(70)]
+        public string? Email { get; set; }
 
         public AppUser? AppUser { get; set; }
         public Portrait? Portrait { get; set; }

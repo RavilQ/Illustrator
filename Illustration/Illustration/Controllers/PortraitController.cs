@@ -32,10 +32,13 @@ namespace Illustration.Controllers
 
                 Portrait = portrait,
                 Portraits = _context.Portraits.Include(x => x.PortraitImages)
-                .Include(x => x.PortraitCategories).ThenInclude(x=>x.Category)
-                .Include(x => x.PortraitTags).ThenInclude(x=>x.Tag).Where(x=>x.Id != id && x.IsSpecial==true).Take(4).ToList()
+                .Include(x => x.PortraitCategories).ThenInclude(x => x.Category)
+                .Include(x => x.PortraitTags).ThenInclude(x => x.Tag).Where(x => x.Id != id && x.IsSpecial == true).Take(4).ToList(),
+                Reviews = _context.Reviews.Include(x=>x.AppUser).Where(x=>x.PortraitId==id).Take(3).ToList()
 
             };
+
+            ViewBag.Id = portrait.Id;
 
             return View(model);
         }
@@ -238,10 +241,41 @@ namespace Illustration.Controllers
             return PartialView("_wishListPartial", wishListItems);
         }
 
-
-        public IActionResult Review(Review review,int id)
+        [HttpPost]
+        public async Task<IActionResult> Review(Review review,int id)
         {
-            return Ok(id);
+            AppUser user = null;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            }
+
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("","Message and Rate cannot be empty !!");
+                return RedirectToAction("Detail","Portrait");
+            }
+
+            review.Id = 0;
+            review.Status = Enum.OrderStatus.Pending;
+            review.PortraitId = id;
+
+            if (user != null)
+            {
+                review.AppUserId = user.Id;  
+            }
+
+            var portrait = _context.Portraits.Include(x=>x.Reviews).FirstOrDefault(x => x.Id == id);
+
+           
+
+            _context.Reviews.Add(review);
+            portrait.AvgRate = (int)portrait.Reviews.Average(x => x.Raiting);
+            _context.SaveChanges();
+
+            return RedirectToAction("Detail", new { id = id });
         }
     }
 }

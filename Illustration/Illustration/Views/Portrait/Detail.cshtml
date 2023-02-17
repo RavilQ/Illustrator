@@ -30,11 +30,15 @@
                     <div class="card-body">
                       <h2 class="card-title">@Model.Portrait.Name</h2>
                       <p>
-                        <span class="simple-star fa fa-star checked"></span>
+                       @for (var i = 1; i <= 5; i++)
+                       {
+                         <span class="simple-star fa fa-star @(Model.Portrait.AvgRate>=i?"checked":"")"></span>
+                       }
+                        @*<span class="simple-star fa fa-star checked"></span>
                         <span class="simple-star fa fa-star checked"></span>
                         <span class="simple-star fa fa-star checked"></span>
                         <span class="simple-star fa fa-star"></span>
-                        <span class="simple-star fa fa-star"></span>
+                        <span class="simple-star fa fa-star"></span>*@
                       </p>
                       <p class="card-text"><small class="text-muted">$@Model.Portrait.SalePrice</small></p>
                       <div class="btn-2">
@@ -81,33 +85,43 @@
                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">
-                                    <h5>1 review for Various Posters</h5>
-                                    <div style="border: none; padding-top: 2rem;" class="card">
-                                        <div class="row g-0">
-                                            <div class="col-2 col-sm-2">
-                                              <img style="width: 100% !important;" src="assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="img-fluid w-100" alt="card-horizontal-image">
-                                            </div>
-                                            <div class="col-10 col-sm-10">
-                                              <div style="position: relative;" class="card-body">
-                                                <h5 style="margin-bottom: -11px;" class="card-title">Mark Johnson</h5>
-                                                <p class="card-text"><small style="font-size:13px; margin-top:-1rem;" class="text-muted">January 11, 2017</small></p>
-                                                <div style="display: flex;
-                                                justify-content: end;
-                                                position: absolute;
-                                                margin-left: 25rem;
-                                                margin-top: -4rem;">
-                                                    <span class="simple-star fa fa-star checked"></span>
-                                                    <span class="simple-star fa fa-star checked"></span>
-                                                    <span class="simple-star fa fa-star checked"></span>
-                                                    <span class="simple-star fa fa-star"></span>
-                                                    <span class="simple-star fa fa-star"></span>
+                                    <h5>@Model.Reviews.Count review for @Model.Portrait.Name</h5>
+                                    @foreach (var item in Model.Reviews)
+                                    {
+                                            <div style="border: none; padding-top: 2rem;" class="card">
+                                                <div class="row g-0">
+                                                    <div class="col-2 col-sm-2">
+                                                        <img style="width: 100% !important;" src="~/assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="img-fluid w-100" alt="card-horizontal-image">
+                                                    </div>
+                                                    <div class="col-10 col-sm-10">
+                                                        <div style="position: relative;" class="card-body">
+                                                            <h5 style="margin-bottom: -11px;" class="card-title">@(item.Fullname==null?item.AppUser.Fullname:item.Fullname)</h5>
+                                                            <p class="card-text"><small style="font-size:13px; margin-top:-1rem;" class="text-muted">@item.CreatAt</small></p>
+                                                            <div style="display: flex;
+                                                            justify-content: end;
+                                                            position: absolute;
+                                                            margin-left: 25rem;
+                                                            margin-top: -4rem;">
+                                                                @for (var i = 1; i <= 5; i++)
+                                                                {
+                                                                    <span class="simple-star fa fa-star @(item.Raiting>=i?"checked":"")"></span>
+                                                                }
+                                                               @* <span class="simple-star fa fa-star checked"></span>
+                                                                <span class="simple-star fa fa-star checked"></span>
+                                                                <span class="simple-star fa fa-star checked"></span>
+                                                                <span class="simple-star fa fa-star"></span>
+                                                                <span class="simple-star fa fa-star"></span>*@
+                                                            </div>
+
+                                                            <span>@item.Message</span>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
-                                               
-                                                <span>Mean afacilisis urbanitas moderatius id.</span> 
-                                              </div>
+
                                             </div>
-                                        </div>
-                                    </div>
+                                    }
+                                   
                                     <hr>
                                     <h4 style="color: #212529;padding-top: 2rem;">Add a Review</h4>
                                     <h5 style="color: #212529;padding-top: 2rem;">Your Raiting</h5>
