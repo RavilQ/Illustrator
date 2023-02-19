@@ -1,9 +1,12 @@
 ﻿using Illustration.DAL;
 using Illustration.Models;
 using Illustration.ViewModel;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System;
 using System.Security.Claims;
+
 
 namespace Illustration.Services
 {
@@ -11,11 +14,14 @@ namespace Illustration.Services
     {
         private readonly IllustratorDbContext _context;
         private readonly IHttpContextAccessor _accessor;
+        private readonly UserManager<AppUser> _userManager;
 
-        public LayoutService(IllustratorDbContext context, IHttpContextAccessor accessor)
+        public LayoutService(IllustratorDbContext context, IHttpContextAccessor accessor, UserManager<AppUser> userManager)
         {
             _context = context;
             _accessor = accessor;
+            _userManager = userManager;
+
         }
 
         public List<WishListItem> GetWishListItems()

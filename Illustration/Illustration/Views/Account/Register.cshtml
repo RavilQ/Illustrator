@@ -10,7 +10,7 @@
             <div class="row container">
                 <h1 style="color: #131313;">Register</h1>
                 <div class="col">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <div class="form-floating mb-3">
                             <input asp-for="Fullname" class="form-control" id="floatingInput" placeholder="Max">
                             <label asp-for="Fullname">Fullname</label>
@@ -36,6 +36,12 @@
                             <label asp-for="ConfirmPassword">Confirm Password</label>
                             <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
                         </div>
+                        <div class=" mb-3">
+                            <label asp-for="PosterImage" class="form-label">Select Your Image</label>
+                            <input asp-for="PosterImage" type="file" class="form-control" id="formFileMultiple2" />
+                            <span class="text-danger" asp-validation-for="PosterImage"></span>
+                        </div>
+                        <div id="myOutput" class="form-floating mb-3"></div>
                         <div class="form-check">
                             <input style="background-color: #22262a;border-color: #22262a;" class="form-check-input" type="checkbox" value="" id="formCheckDefault">
                             <label class="form-check-label" for="formCheckDefault">By clicking "create account", I consent to the privacy policy.</label>
@@ -48,3 +54,27 @@
         </section>
     </main>
 
+<script>
+    function handleFileSelect(evt) {
+        var file = evt.target.files; // FileList object
+        var f = file[0];
+        // Only process image files.
+        if (!f.type.match('image.*')) {
+            alert("Image only please....");
+        }
+        var reader = new FileReader();
+        // Closure to capture the file information.
+        reader.onload = (function (theFile) {
+            return function (e) {
+                // Render thumbnail.
+                //var span = document.createElement('span');
+                //span.innerHTML = ['<img style="width: 10rem;margin-bottom: 15px;border-radius: 16%; " class="thumb" title="', escape(theFile.name), '" src="', e.target.result, '" />'].join('');
+                //document.getElementById('output').insertBefore(span, null);
+                document.getElementById('myOutput').innerHTML = ['<img style="width: 25%;margin-bottom: 15px;border-radius: 16%; " class="thumb" title="', escape(theFile.name), '" src="', e.target.result, '" />'].join('');
+            };
+        })(f);
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+    }
+    document.getElementById('formFileMultiple2').addEventListener('change', handleFileSelect, false);
+</script>

@@ -14,6 +14,9 @@ using MimeKit.Text;
 using System.Data;
 using System.Security.Claims;
 using Newtonsoft.Json;
+using static DotNetOpenAuth.OpenId.Extensions.AttributeExchange.WellKnownAttributes;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Drawing.Printing;
 
 namespace Illustration.Controllers
 {
@@ -39,18 +42,152 @@ namespace Illustration.Controllers
         }
 
         [Authorize(Roles = "Member")]
-        public async Task<IActionResult> Profile()
+        public async Task<IActionResult> Profile(int? page = 1)
         {
+            int pageSize = 3;
+
+            var wishitems = _context.WishListItems.ToList();
+            Pagination<WishListItem> paginatedList = new Pagination<WishListItem>();
+            ViewBag.wishitems = paginatedList.GetPagedNames(wishitems, page, pageSize);
+
+            ViewBag.pageSize = pageSize;
+            ViewBag.pageNumber = page;
+
+            if (ViewBag.wishitems == null)
+            {
+                return View("Error");
+            }
+
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            AccountDetailViewModel viewModel = new AccountDetailViewModel
+            {
+                Fullname = user.Fullname,
+                Username = user.UserName,
+                Email = user.Email
+            };
 
             ProfileViewModel model = new ProfileViewModel();
             model.Portraits = _context.Portraits.Include(x=>x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
             model.WishListItem = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x=>x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
             model.MyOrders = _context.MyOrders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            model.User = user;
+            model.ViewModel = viewModel;
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
             return View(model);
         }
+
+
+        [Authorize(Roles = "Member")]
+        [HttpPost]
+        public async Task<IActionResult> Profile(AccountDetailViewModel memberVm)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (user == null)
+            {
+                return View("Error");
+            }
+
+            AccountDetailViewModel viewModel = new AccountDetailViewModel
+            {
+                Fullname = user.Fullname,
+                Username = user.UserName,
+                Email = user.Email
+            };
+
+            ProfileViewModel model = new ProfileViewModel();
+            model.Portraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            model.WishListItem = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            model.MyOrders = _context.MyOrders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            model.User = user;
+            model.ViewModel = viewModel;
+            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Tags = _context.Tags.ToList();
+
+            if (memberVm.Username == null || memberVm.Email == null)
+            {
+                ModelState.AddModelError("Username", "Chose another Username !!");
+                ViewBag.Categories = _context.Categories.ToList();
+                ViewBag.Tags = _context.Tags.ToList();
+                return View(model);
+            }
+
+            if (user.NormalizedUserName != memberVm.Username.ToUpper() && await _userManager.FindByNameAsync(memberVm.Username) != null)
+            {
+                ModelState.AddModelError("Username", "Chose another Username !!");
+                ViewBag.Categories = _context.Categories.ToList();
+                ViewBag.Tags = _context.Tags.ToList();
+                return View(model);
+            }
+
+            if (user.NormalizedEmail != memberVm.Email.ToUpper() && await _userManager.FindByEmailAsync(memberVm.Email) != null)
+            {
+                ModelState.AddModelError("Email", "Chose another Email !!");
+                ViewBag.Categories = _context.Categories.ToList();
+                ViewBag.Tags = _context.Tags.ToList();
+                return View(model);
+            }
+
+            user.UserName = memberVm.Username;
+            user.Fullname = memberVm.Fullname;
+            user.Email = memberVm.Email;
+
+            await _userManager.UpdateAsync(user);
+            await _signInManager.SignInAsync(user, false);
+
+            if (memberVm.PosterImage != null)
+            {
+                if (!checkImageFile(memberVm.PosterImage))
+                {
+                    ModelState.AddModelError("PosterImage", "Image is incorrect");
+                    return RedirectToAction("Profile");
+
+                }
+
+            }
+
+            if (memberVm.PosterImage != null)
+            {
+                var newName = FileHelper.Save(memberVm.PosterImage, _env.WebRootPath, "Uploads/Users");
+                if (user.Image != null)
+                {
+                    FileHelper.Delete(_env.WebRootPath, "Uploads/Users", user.Image);
+                }
+                user.Image = newName;
+                _context.SaveChanges();
+            }
+
+
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Categories = _context.Categories.ToList();
+                ViewBag.Tags = _context.Tags.ToList();
+                return View(model);
+            }
+
+
+            if (memberVm.NewPassword != null && memberVm.ConfirmPassword != null)
+            {
+                var result = await _userManager.CheckPasswordAsync(user, memberVm.CurrentPassword);
+
+                if (result)
+                {
+                    var netice = await _userManager.ChangePasswordAsync(user, memberVm.CurrentPassword, memberVm.ConfirmPassword);
+
+                    if (netice == null)
+                    {
+                        ViewBag.Categories = _context.Categories.ToList();
+                        ViewBag.Tags = _context.Tags.ToList();
+                        return View(model);
+                    }
+                }
+            }
+
+            return RedirectToAction("Profile");
+        }
+
 
         public IActionResult Create()
         {
@@ -428,12 +565,31 @@ namespace Illustration.Controllers
                 ModelState.AddModelError("Username", "That Username alreaady taken!!");
             }
 
+            string newName = null;
+
+            if (registerVm.PosterImage == null)
+            {
+
+            }
+            else
+            {
+                if (!checkImageFile(registerVm.PosterImage))
+                {
+                    ModelState.AddModelError("PosterImage", "Image is incorrect");
+                    return View();
+
+                }
+
+              newName = FileHelper.Save(registerVm.PosterImage, _env.WebRootPath, "Uploads/Users");
+            }
+
             AppUser user = new AppUser
             {
 
                 Fullname = registerVm.Fullname,
                 UserName = registerVm.Username,
-                Email = registerVm.Email
+                Email = registerVm.Email,
+                Image = newName
 
             };
 
@@ -449,6 +605,8 @@ namespace Illustration.Controllers
             }
 
             await _userManager.AddToRoleAsync(user, "Member");
+
+            await _signInManager.PasswordSignInAsync(user, registerVm.Password, false, false);
 
             return RedirectToAction("Index", "Home");
         }

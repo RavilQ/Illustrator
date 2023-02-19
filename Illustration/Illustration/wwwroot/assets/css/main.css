@@ -1099,6 +1099,13 @@ span {
   color: white;
 }
 
+#formFileMultiple2::-webkit-file-upload-button {
+    background-color: black;
+    border: none;
+    color: white;
+}
+
+
 #my-v-pills-messages .abs,
 #my-v-pills-messages h2:after,
 #my-v-pills-messages .cards .card figcaption,

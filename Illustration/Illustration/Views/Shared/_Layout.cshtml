@@ -1,9 +1,17 @@
 ﻿@using Illustration.Services
+@using Microsoft.AspNetCore.Identity
 
 @inject LayoutService layoutService
+@inject UserManager<AppUser> _userManager
 
 @{
     List<WishListItem> WishListItems = layoutService.GetWishListItems();
+
+    AppUser user = null;
+    if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+    {
+        user = await _userManager.FindByNameAsync(User.Identity.Name);
+    }
 }
 
 <!DOCTYPE html>

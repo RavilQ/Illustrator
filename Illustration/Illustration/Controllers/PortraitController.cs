@@ -255,7 +255,7 @@ namespace Illustration.Controllers
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("","Message and Rate cannot be empty !!");
-                return RedirectToAction("Detail","Portrait");
+                return RedirectToAction("Detail", new { id = id });
             }
 
             review.Id = 0;
@@ -268,8 +268,6 @@ namespace Illustration.Controllers
             }
 
             var portrait = _context.Portraits.Include(x=>x.Reviews).FirstOrDefault(x => x.Id == id);
-
-           
 
             _context.Reviews.Add(review);
             portrait.AvgRate = (int)portrait.Reviews.Average(x => x.Raiting);

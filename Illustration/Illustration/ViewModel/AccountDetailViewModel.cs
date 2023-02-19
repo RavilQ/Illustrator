@@ -2,7 +2,7 @@
 
 namespace Illustration.ViewModel
 {
-    public class MemberRegisterViewModel
+    public class AccountDetailViewModel
     {
         [MaxLength(55)]
         public string Fullname { get; set; }
@@ -12,10 +12,13 @@ namespace Illustration.ViewModel
         public string Email { get; set; }
         [MaxLength(25)]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string CurrentPassword { get; set; }
         [MaxLength(25)]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Password not the same !!")]
+        public string NewPassword { get; set; }
+        [MaxLength(25)]
+        [DataType(DataType.Password)]
+        [Compare("NewPassword", ErrorMessage = "Password not the same !!")]
         public string ConfirmPassword { get; set; }
         public IFormFile? PosterImage { get; set; }
     }

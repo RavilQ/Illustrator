@@ -4,7 +4,7 @@
     <main>
         <section style="background-color: #131313;position: relative;bottom: 3.5rem;">
             <h1 class="container" style="max-width: 90%;">My Account</h1>
-
+@*            <img src="~/Uploads/Users/@Model.User.Image"/>*@
         </section>
         <section class="container" style="padding-bottom: 10rem;max-width: 90%;">
             <div style="--bs-gutter-x:0;" class="row">
@@ -31,7 +31,7 @@
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             <div class="row">
                                 <div class="d-flex justify-content-between">
-                                <h3>All Wish List Portraits<span>( @Model.MyOrders.Count )</span></h3>
+                                <h3>All Order Portraits<span>( @Model.MyOrders.Count )</span></h3>
                                 </div>
                                 <hr />
                                 @foreach (var item in Model.MyOrders)
@@ -44,43 +44,12 @@
                                     <div><span class="badge bg-dark">@item.Status</span></div>
                                     </div>
                                 }
-                              
-   @*                             <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
-                                    <img src="~/assets/images/rosee3.jpg" alt="">
-                                    <h3>Barbara Palvin</h3>
-                                    <div>01.06.1998</div>
-                                    <div>150$</div>
-                                    <div><span class="badge bg-dark">Pending</span></div>
-                                </div>
-                                <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
-                                    <img src="~/assets/images/jennie2.jpg" alt="">
-                                    <h3>Barbara Palvin</h3>
-                                    <div>01.06.1998</div>
-                                    <div>150$</div>
-                                    <div><span class="badge bg-dark">Pending</span></div>
-                                </div>*@
                             </div>
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                            <div class="row">
-                                  <div class="d-flex justify-content-between">
-                                  <h3>All Wish List Portraits<span>( @Model.WishListItem.Count )</span></h3>
-                                  </div>
-                                  <hr />
-                                @foreach (var item in Model.WishListItem)
-                                {
-                                    <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-6">
-                                    <a asp-controller="Account" asp-action="DeleteToWishList" asp-route-id="@item.Portrait.Id"><i style="font-size: 165%;" class="las la-times"></i></a>
-                                    <img src="~/Uploads/Portraits/@item.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
-                                    <h3>@item.Portrait.Name</h3>
-                                    <div></div>
-                                    <div>@item.Portrait.SalePrice$</div>
-                                    <div><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Portrait.Id" style="width:130%;" class="btn btn-dark">Buy</a></div>
-                                    </div>
-                                }
-                            </div>
+                            @await Html.PartialAsync("_profileWishlistPartial",Model.WishListItem)
                         </div>
-                    <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade show active" id="my-v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade show active" id="my-v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                             <!-- <div class="l-container">
                                 <div class="b-game-card">
                                   <div class="b-game-card__cover" style="background-image: url(/assets/images/rosee3.jpg);"></div>
@@ -145,34 +114,7 @@
                                 Account Details
                             </h3>
                             <hr>
-                            <form action="post">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
-                                    <label for="floatingInput">Fullname</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
-                                    <label for="floatingInput">Username</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput">Email</label>
-                                </div>
-                                <hr>
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingInput" placeholder="password">
-                                    <label for="floatingInput">Current Password</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingInput" placeholder="password">
-                                    <label for="floatingInput">New Password</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingInput" placeholder="password">
-                                    <label for="floatingInput">Confirm Password</label>
-                                </div>
-                                <button style="background-color: black;" type="submit" class="btn btn-dark">Change</button>
-                            </form>
+                           @await Html.PartialAsync("_accountDetails",Model.ViewModel)
                         </div>
 
                     </div>

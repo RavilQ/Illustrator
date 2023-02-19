@@ -1,0 +1,43 @@
+﻿
+@model List<WishListItem>
+
+@{
+    ViewBag.Title = "Product Listing";
+    var pagedList = (IPagedList)ViewBag.wishitems;
+}
+
+@using Illustration.Models
+@using X.PagedList.Mvc.Core; @*import this so we get our HTML Helper*@
+@using X.PagedList; @*import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+@using X.PagedList.Mvc.Core.Fluent
+@using X.PagedList.Web.Common
+
+
+<!-- import the included stylesheet for some (very basic) default styling -->
+<link href="~/assets/css/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    int? count = (ViewBag.pageNumber - 1) * ViewBag.pageSize;
+    count++;
+}
+
+<div class="row">
+    <div class="d-flex justify-content-between">
+        <h3>All Wish List Portraits<span>( @Model.Count )</span></h3>
+    </div>
+    <hr />
+    @foreach (WishListItem item in ViewBag.wishitems)
+    {
+        <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-6">
+            <a asp-controller="Account" asp-action="DeleteToWishList" asp-route-id="@item.Portrait.Id"><i style="font-size: 165%;" class="las la-times"></i></a>
+            <img src="~/Uploads/Portraits/@item.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
+            <h3>@item.Portrait.Name</h3>
+            <div></div>
+            <div>@item.Portrait.SalePrice$</div>
+            <div><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Portrait.Id" style="width:130%;" class="btn btn-dark">Buy</a></div>
+        </div>
+    }
+    <div class="d-flex justify-content-center">
+        @Html.PagedListPager(pagedList, page => Url.Action("Profile", new { page }))
+    </div>
+</div>
