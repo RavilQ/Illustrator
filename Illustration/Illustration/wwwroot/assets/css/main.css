@@ -1405,3 +1405,13 @@ span {
     border-radius: 16%;
     margin-left:1%;
 }
+
+
+.searchcontainerillustration {
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.searchcontainerillustration:hover {
+        background-color: #cfcfcf;
+}

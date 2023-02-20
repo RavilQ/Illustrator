@@ -1,4 +1,10 @@
 ﻿
+@model ShopViewModel
+
+@{
+    int count = 0;
+}
+
     <main>
         <section id="mydetailmainsection">
              <h1>Shop</h1>
@@ -7,127 +13,69 @@
             <div class="row">
                 <div class="col-md-8">
                     <div style="width: 98%;" class="d-flex justify-content-between">
-                        <h6 class="my-shop-h6">SHOWING 1–12 OF 17 RESULTS</h6>
-                        <form class="my-first-shop-form" action="" method="get">
-                            <select class="form-select my-shop-select-frist" aria-label="Default select">
+                        <h6 class="my-shop-h6">SHOWING 1–12 OF @Model.Portraits.Count RESULTS</h6>
+                        <form id="sort-form" class="my-first-shop-form" method="get">
+                            <select onchange="this.form.submit()" name="sort" class="form-select my-shop-select-frist" aria-label="Default select">
                                 <option selected="">Default Sorting <i style="color: #ababab" class="las la-angle-down"></i></option>
-                                <option value="1">Short by Popularity</option>
-                                <option value="2">Sort by avarage raiting</option>
-                                <option value="3">Sort by Latest</option>
-                                <option value="3">Sort by Price:Low to high</option>
-                                <option value="3">Sort by Price:high to low</option>
+                                <option value="AtoZ">Sort by name (A-Z)</option>
+                                <option value="ZtoA">Sort by name (Z-A)</option>
+                                <option value="LowtoHigh">Sort by price: low to high</option>
+                                <option value="HightoLow">Sort by price: high to low</option>
                             </select>
+@*                            <select onchange="this.form.submit()" form="filter-form" name="sort" class="nice-select">
+                                <option>Default Sorting</option>
+                                <option value="AtoZ">Sort by name (A-Z)</option>
+                                <option value="ZtoA">Sort by name (Z-A)</option>
+                                <option value="LowtoHigh">Sort by price: low to high</option>
+                                <option value="HightoLow">Sort by price: high to low</option>
+                            </select>*@
                         </form>    
                     </div>
                     <div id="myportretsections" class="row row-cols-3 fix-row-x headline">
-                        <div class="col">
-                            <div class="card mx-3 cards-border portret-image-hover">
-                                <img src="~/assets/images/h14-shop-img-1-594x787.jpg" class="card-img-top" alt="card-group-image">
-                                <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                                <div class="card-body card-texts">
-                                <h5 class="card-title">Various Posters</h5>
-                                <small>Graphic Print, Work</small> 
-                                <p class="card-text card-prices">$120.00</p>
+                    @*    @foreach (var item in Model.Portraits)
+                        {
+                            <div class="col">
+                                <div class="card mx-3 cards-border portret-image-hover">
+                                    <a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
+                                <a asp-controller="Portrait" asp-action="AddToWishList" asp-route-id="@item.Id" class="my-add-hover add-to-wishlist"><span>Add To Wish List</span></a>
+                                    <div class="card-body card-texts">
+                                        <h5 class="card-title">@item.Name</h5>
+                                        @foreach (var item2 in item.PortraitCategories)
+                                        {
+                                            <small>@item2.Category.Name @(item.PortraitCategories.Count - 1 > count ? "," : "")</small>
+                                            count++;
+                                        }
+                                        <p class="card-text card-prices">$@item.SalePrice</p>
+                                    </div>
+                                </div>
                             </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-3 cards-border portret-image-hover">
-                                <img src="~/assets/images/h14-shop-img-2-594x787.jpg" class="card-img-top" alt="card-group-image">
-                                <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                                <div class="card-body card-texts">
-                                <h5 class="card-title">Various Posters</h5>
-                                <small>Graphic Print, Work</small> 
-                                <p class="card-text card-prices">$120.00</p>
-                            </div>
-                               </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-3 cards-border portret-image-hover">
-                                <img src="~/assets/images/h14-shop-img-3-594x787.jpg" class="card-img-top" alt="card-group-image">
-                                <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                                <div class="card-body card-texts">
-                                <h5 class="card-title">Various Posters</h5>
-                                <small>Graphic Print, Work</small> 
-                                <p class="card-text card-prices">$120.00</p>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-3 cards-border portret-image-hover">
-                                <img src="~/assets/images/h14-shop-img-7-594x787.jpg" class="card-img-top" alt="card-group-image">
-                                <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                                <div class="card-body card-texts">
-                                <h5 class="card-title">Various Posters</h5>
-                                <small>Graphic Print, Work</small> 
-                                <p class="card-text card-prices">$120.00</p>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-3 cards-border portret-image-hover">
-                                <img src="~/assets/images/h14-shop-img-5-594x787.jpg" class="card-img-top" alt="card-group-image">
-                                <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                                <div class="card-body card-texts">
-                                <h5 class="card-title">Various Posters</h5>
-                                <small>Graphic Print, Work</small> 
-                                <p class="card-text card-prices">$120.00</p>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-3 cards-border portret-image-hover">
-                                <img src="~/assets/images/h14-shop-img-6-594x787.jpg" class="card-img-top" alt="card-group-image">
-                                <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                                <div class="card-body card-texts">
-                                <h5 class="card-title">Various Posters</h5>
-                                <small>Graphic Print, Work</small> 
-                                <p class="card-text card-prices">$120.00</p>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-3 cards-border portret-image-hover">
-                                <img src="~/assets/images/h14-shop-img-9-594x787.jpg" class="card-img-top" alt="card-group-image">
-                                <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                                <div class="card-body card-texts">
-                                <h5 class="card-title">Various Posters</h5>
-                                <small>Graphic Print, Work</small> 
-                                <p class="card-text card-prices">$120.00</p>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mx-3 cards-border portret-image-hover">
-                                <img src="~/assets/images/h14-shop-img-8-594x787.jpg" class="card-img-top" alt="card-group-image">
-                                <a href="#" class="my-add-hover"><span>Add To Wish List</span></a>
-                                <div class="card-body card-texts">
-                                <h5 class="card-title">Various Posters</h5>
-                                <small>Graphic Print, Work</small> 
-                                <p class="card-text card-prices">$120.00</p>
-                            </div>
-                        </div>
-                        </div>
+                            count = 0;
+                        }*@
+
+                        @await Html.PartialAsync("_shopProductsPartial",Model.Portraits)
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h5>Search</h5>
                     <hr>
-                    <form method="get" id="searchform" action="https://illustrator.qodeinteractive.com/">
+                    <form method="get" id="searchform">
                         <div class="search__container">
-                            <input style="margin-bottom: 3rem;" class="search__input" type="text" placeholder="Search">
+                            <input name="search" style="margin-bottom: 3rem;" class="search__input" type="text" placeholder="Search">
                         </div>                        
                     </form>
+                  
                     <h5>Filter by Price</h5>
                     <hr>
+                    <input name="minPrice" form="sort-form" type="hidden" id="minPriceInput" value="@ViewBag.SelectedMinPrice" />
+                    <input name="maxPrice" form="sort-form" type="hidden" id="maxPriceInput" value="@ViewBag.SelectedMaxPrice" />
                     <div class="price-range-slider">
                         <p class="range-value">
                           <input type="text" id="amount" readonly>
                         </p>
                         <div id="slider-range" class="range-bar"></div>
                     </div>
-                    <div style="height: 15%;" class="buttons">
-                        <button style="margin-top: 3rem;" class="blob-btn">
+                   <div style="height: 15%;" class="buttons">
+                    <button form="sort-form" type="submit" style="margin-top: 3rem;" class="blob-btn">
                         Filter
                         <span class="blob-btn__inner">
                             <span class="blob-btn__blobs">
@@ -152,23 +100,18 @@
                    </div>
                    <h5>Product Categories</h5>
                    <hr>
-                   <h5 class="my-shop-categories-h5"><a class="my-shop-categories" href="#">Book</a></h5>
-                   <h5 class="my-shop-categories-h5"><a class="my-shop-categories" href="#">Art</a></h5>
-                   <h5 class="my-shop-categories-h5"><a class="my-shop-categories" href="#">Drawing</a></h5>
-                   <h5 class="my-shop-categories-h5"><a class="my-shop-categories" href="#">Work</a></h5>
-                   <h5 class="my-shop-categories-h5"><a class="my-shop-categories" href="#">Handmade</a></h5>
-                   <h5 style="padding-bottom:4rem;" class="my-shop-categories-h5"><a class="my-shop-categories" href="#">Graphic Print</a></h5>
-                   <h5>Tags</h5>
+                   @foreach (var item in Model.Categories)
+                   {
+                    <h5 class="my-shop-categories-h5"><a asp-action="Index" asp-route-categoriId="@item.Id" class="my-shop-categories">@item.Name</a></h5>
+                   }
+                   <h5 style="padding-top:4rem;">Tags</h5>
                    <hr>
                    <!-- flex-wrap can be used for responsive cases as well with the help of .flex-{sm|md|lg|xl|xxl}-wrap class -->
                     <div style="padding-bottom: 3rem;" class="d-flex flex-wrap bd-highlight">
-                        <div class="my-shop-Tags p-2 bd-highlight">Flex </div>
-                        <div class="my-shop-Tags p-2 bd-highlight">Flex item faeefaef</div>
-                        <div class="my-shop-Tags p-2 bd-highlight">Flex item</div>
-                        <div class="my-shop-Tags p-2 bd-highlight">Flex</div>
-                        <div class="my-shop-Tags p-2 bd-highlight">Flex item faeefaef</div>
-                        <div class="my-shop-Tags p-2 bd-highlight">Flex item</div>
-                        <div class="my-shop-Tags p-2 bd-highlight">Flex</div>
+                        @foreach (var item in Model.Tags)
+                        {
+                         <a style="text-decoration:none;" asp-action="Index" asp-route-TagId="@item.Id"><div class="my-shop-Tags p-2 bd-highlight">@item.Name</div></a>
+                        }
                     </div>
                     <h5>Folow us</h5>
                     <hr>
@@ -183,3 +126,46 @@
             </div>
         </section>
     </main>
+
+    @section scripts{
+    <script>
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: @Model.MinPrice,
+                max: @Model.MaxPrice,
+                values: [@ViewBag.SelectedMinPrice, @ViewBag.SelectedMaxPrice],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }, change: function (event, ui) {
+                    $("#minPriceInput").val(ui.values[0]);
+                    $("#maxPriceInput").val(ui.values[1]);
+                }
+            });
+            $("#amount").val(
+                "$" +
+                $("#slider-range").slider("values", 0) +
+                " - $" +
+                $("#slider-range").slider("values", 1)
+            );
+        });
+                //$(function () {
+                //    $("#slider-range").slider({
+                //        range: true,
+                //        min: @Model.MinPrice,
+                //        max: @Model.MaxPrice,
+                //        values: [ViewBag.SelectedMinPrice, ViewBag.SelectedMaxPrice],
+                //        slide: function (event, ui) {
+                //            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                //        }
+                //    });
+                //    $("#amount").val(
+                //        "$" +
+                //        $("#slider-range").slider("values", 0) +
+                //        " - $" +
+                //        $("#slider-range").slider("values", 1)
+                //    );
+                //});
+    </script>
+    }
+   

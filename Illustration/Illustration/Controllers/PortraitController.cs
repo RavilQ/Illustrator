@@ -275,5 +275,13 @@ namespace Illustration.Controllers
 
             return RedirectToAction("Detail", new { id = id });
         }
+
+        public IActionResult Search(string words)
+        {
+            var portraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.Name.Contains(words) && x.IsSpecial).Take(4).ToList();
+
+            return PartialView("_searchPartial", portraits);
+        }
+
     }
 }

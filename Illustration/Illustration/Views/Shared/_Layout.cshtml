@@ -58,8 +58,9 @@
                 </div>
             </div>
         </nav>
-        <input id="my-search-input" placeholder="Search" type="text">
+        <input id="my-search-input" onkeyup="mySearchFunction()" placeholder="Search" type="text">
     </header>
+    <div style="width: 100%;position: absolute;z-index: 100;display: flex;flex-wrap: wrap;" id="mySearchContainer"></div>
     <nav id="my-scroll-navbar" class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid"> 
             <div>
@@ -185,5 +186,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="~/assets/js/main.js"></script>
+
+    @RenderSection("Scripts",required:false)
 </body>
 </html>

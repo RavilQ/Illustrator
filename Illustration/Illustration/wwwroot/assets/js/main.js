@@ -20,7 +20,16 @@ document.addEventListener('click', function(event) {
     var b=document.getElementById("my-search-input");
     if (!e.contains(event.target) && !b.contains(event.target)){
         navbar.style.display="block";
-        searchInput.style.display="none";
+        searchInput.style.display = "none";
+
+        let link = `/Portrait/Search?words=${null}`
+
+        fetch(link)
+            .then(response => {
+                return response.text();
+            }).then(html => {
+                $("#mySearchContainer").html(html)
+            })
     }
 });
 
@@ -111,25 +120,23 @@ document.getElementById("upBtn").addEventListener("click", function() {
 });
 
 
-$(function () {
-  $("#slider-range").slider({
-    range: true,
-    min: 130,
-    max: 500,
-    values: [130, 250],
-    slide: function (event, ui) {
-      $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-    }
-  });
-  $("#amount").val(
-    "$" +
-      $("#slider-range").slider("values", 0) +
-      " - $" +
-      $("#slider-range").slider("values", 1)
-  );
-});
-
-
+//$(function () {
+//  $("#slider-range").slider({
+//    range: true,
+//    min: 130,
+//    max: 500,
+//    values: [130, 250],
+//    slide: function (event, ui) {
+//      $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+//    }
+//  });
+//  $("#amount").val(
+//    "$" +
+//      $("#slider-range").slider("values", 0) +
+//      " - $" +
+//      $("#slider-range").slider("values", 1)
+//  );
+//});
 
 
 $(function(){
@@ -205,3 +212,18 @@ toastr.options = {
 $(document).on("click", '.my-problemly-raitings', function (e) {
     window.scrollTo(0, 1750);
 });
+
+
+function mySearchFunction() {
+
+    var myLayoutSearch = document.getElementById("my-search-input")
+    var values = myLayoutSearch.value.split(" ").join("20%")
+    let link = `/Portrait/Search?words=${values}`
+
+    fetch(link)
+        .then(response => {
+            return response.text();
+        }).then(html => {
+            $("#mySearchContainer").html(html)
+        })
+}

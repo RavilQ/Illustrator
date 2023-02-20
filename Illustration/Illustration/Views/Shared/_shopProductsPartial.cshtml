@@ -1,0 +1,45 @@
+﻿@model List<Portrait>
+
+@{
+    ViewBag.Title = "Product Listing";
+    var pagedList = (IPagedList)ViewBag.portraits;
+}
+
+@using Illustration.Models
+@using X.PagedList.Mvc.Core; @*import this so we get our HTML Helper*@
+@using X.PagedList; @*import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+@using X.PagedList.Mvc.Core.Fluent
+@using X.PagedList.Web.Common
+
+
+<!-- import the included stylesheet for some (very basic) default styling -->
+<link href="~/assets/css/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    int? count = (ViewBag.pageNumber - 1) * ViewBag.pageSize;
+    count++;
+}
+
+
+@foreach (Portrait item in ViewBag.portraits)
+{
+    <div class="col">
+        <div class="card mx-3 cards-border portret-image-hover">
+            <a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
+            <a asp-controller="Portrait" asp-action="AddToWishList" asp-route-id="@item.Id" class="my-add-hover add-to-wishlist"><span>Add To Wish List</span></a>
+            <div class="card-body card-texts">
+                <h5 class="card-title">@item.Name</h5>
+                @foreach (var item2 in item.PortraitCategories)
+                {
+                    <small>@item2.Category.Name @(item.PortraitCategories.Count - 1 > count ? "," : "")</small>
+                    count++;
+                }
+                <p class="card-text card-prices">$@item.SalePrice</p>
+            </div>
+        </div>
+    </div>
+    count = 0;
+}
+<div style="width: 100%;display: flex;justify-content: center;">
+    @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
+</div>
