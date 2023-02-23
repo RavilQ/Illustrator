@@ -1,12 +1,15 @@
 ﻿using Illustration.DAL;
 using Illustration.Helper;
 using Illustration.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 
 namespace Illustration.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    [Authorize(Roles = "SuperAdmin")]
     public class SliderController : Controller
     {
         private readonly IllustratorDbContext _context;

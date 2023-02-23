@@ -8,5 +8,6 @@ namespace Illustration.ViewModel
         public List<Portrait> Portraits { get; set; } = new List<Portrait>();
         public Review Review { get; set; }
         public List<Review> Reviews { get; set; } = new List<Review>();
+        public AppUser User { get; set; }
     }
 }

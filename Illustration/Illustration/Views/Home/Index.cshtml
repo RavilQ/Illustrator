@@ -52,8 +52,18 @@
                 {
                     <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
                         <div class="card mx-3 cards-border portret-image-hover">
-                        <a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
-                        <a asp-controller="Portrait" asp-action="AddToWishList" asp-route-id="@item.Id" class="my-add-hover add-to-wishlist"><span>Add To Wish List</span></a>
+                        @if (!item.StockStatus)
+                        {
+                         <div style="position: absolute;padding: 9%;background-color: black;color: white;border-radius: 50%;font-family: cursive;">
+                            Sold
+                         </div>
+                         <a><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
+                        }
+                        else{
+                          <a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
+                          <a asp-controller="Portrait" asp-action="AddToWishList" asp-route-id="@item.Id" class="my-add-hover add-to-wishlist"><span>Add To Wish List</span></a>
+                        }
+                       
                             <div class="card-body card-texts">
                                 <h5 class="card-title">@item.Name</h5>
                                  @foreach (var item2 in item.PortraitCategories)
@@ -120,6 +130,12 @@
             {
                 <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
                     <div class="card mx-3 cards-border portret-image-hover">
+                        @if (!item.StockStatus)
+                        {
+                            <div style="position: absolute;padding: 9%;background-color: black;color: white;border-radius: 50%;font-family: cursive;">
+                                Sold
+                            </div>
+                        }
                         <a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
                         <a asp-controller="Portrait" asp-action="AddToWishList" asp-route-id="@item.Id" class="my-add-hover add-to-wishlist"><span>Add To Wish List</span></a>
                         <div class="card-body card-texts">

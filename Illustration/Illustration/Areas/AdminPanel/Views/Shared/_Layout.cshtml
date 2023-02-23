@@ -66,10 +66,10 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div>
-                    <a asp-action="Index" asp-controller="Singer" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Singers</a>
-                    <a asp-action="Index" asp-controller="Album" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Albums</a>
-                    <a asp-action="Index" asp-controller="Genre" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Genres</a>
-                    <a asp-action="Index" asp-controller="Song" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Songs</a>
+                    <a asp-action="Index" asp-controller="Slider" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Slider</a>
+                    <a asp-action="Index" asp-controller="Category" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Category</a>
+                    <a asp-action="Index" asp-controller="Tag" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tag</a>
+                    <a asp-action="Index" asp-controller="Review" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Review</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -163,12 +163,12 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="~/AdminPanel/assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex">@User.Identity.Name</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a asp-controller="Account" asp-action="Logout" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>

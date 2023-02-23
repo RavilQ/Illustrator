@@ -20,6 +20,26 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 
 builder.Services.AddScoped<LayoutService>();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Events.OnRedirectToAccessDenied = options.Events.OnRedirectToLogin = context =>
+    {
+        if (context.HttpContext.Request.Path.Value.StartsWith("/AdminPanel"))
+        {
+            var redirectPath = new Uri(context.RedirectUri);
+            context.Response.Redirect("/AdminPanel/account/login" + redirectPath.Query);
+        }
+        else
+        {
+            var redirectPath = new Uri(context.RedirectUri);
+            context.Response.Redirect("/account/login" + redirectPath.Query);
+        }
+
+        return Task.CompletedTask;
+    };
+});
+
+
 builder.Services.AddAuthentication()
 .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
 {

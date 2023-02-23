@@ -10,6 +10,7 @@ namespace Illustration.Models
         public string Fullname { get; set; }
         [MaxLength(101)]
         public string? Image { get; set; }
+        public bool? HasMember { get; set; } 
         [NotMapped]
         public IFormFile? PosterImage { get; set; } 
     }

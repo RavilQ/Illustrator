@@ -41,9 +41,12 @@
                         <span class="simple-star fa fa-star"></span>*@
                       </p>
                       <p class="card-text"><small class="text-muted">$@Model.Portrait.SalePrice</small></p>
-                      <div class="btn-2">
-                        <a asp-controller="Account" asp-action="Order" asp-route-id="@Model.Portrait.Id"><span>Complete Order</span></a>
-                      </div>
+                     @* @if (Model.User.Id != Model.Portrait.AppUserId)
+                      {*@
+                            <div class="btn-2">
+                                <a asp-controller="Account" asp-action="Order" asp-route-id="@Model.Portrait.Id"><span>Complete Order</span></a>
+                            </div>
+                     @* }*@
                       <div>
                         <h4 style="color: #212529;padding-top: 2rem;">Info</h4>
                         <p style="color: #6c6c6c;" class="card-text">@Model.Portrait.Info</p>

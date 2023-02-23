@@ -67,12 +67,15 @@ namespace Illustration.Controllers
                 Email = user.Email
             };
 
+            var portraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+
             ProfileViewModel model = new ProfileViewModel();
-            model.Portraits = _context.Portraits.Include(x=>x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            model.Portraits = portraits;
             model.WishListItem = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x=>x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
-            model.MyOrders = _context.MyOrders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            model.MyOrders = _context.Orders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
             model.User = user;
             model.ViewModel = viewModel;
+            model.SaleOrders = _context.Orders.Include(x=>x.Portrait).Where(x =>portraits.Contains(x.Portrait)).ToList();
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
             return View(model);
@@ -100,7 +103,7 @@ namespace Illustration.Controllers
             ProfileViewModel model = new ProfileViewModel();
             model.Portraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
             model.WishListItem = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
-            model.MyOrders = _context.MyOrders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            model.MyOrders = _context.Orders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
             model.User = user;
             model.ViewModel = viewModel;
             ViewBag.Categories = _context.Categories.ToList();
@@ -197,7 +200,7 @@ namespace Illustration.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Portrait portrait)
+        public async Task<IActionResult> Create(Portrait portrait)
         {
             if (!ModelState.IsValid)
             {
@@ -205,6 +208,14 @@ namespace Illustration.Controllers
                 ViewBag.Tags = _context.Tags.ToList();
                 return View();
             }
+
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (user == null)
+            {
+                return View("Error");
+            }
+
 
             foreach (var item in portrait.CategoryIds)
             {
@@ -234,15 +245,18 @@ namespace Illustration.Controllers
 
             }
 
-            foreach (var item in portrait.OtherImages)
+            if (portrait.OtherImages != null)
             {
-                if (!checkImageFile(item))
+                foreach (var item in portrait.OtherImages)
                 {
-                    ViewBag.Categories = _context.Categories.ToList();
-                    ViewBag.Tags = _context.Tags.ToList();
-                    ModelState.AddModelError("OtherImages", "Image is incorrect");
-                    return View();
+                    if (!checkImageFile(item))
+                    {
+                        ViewBag.Categories = _context.Categories.ToList();
+                        ViewBag.Tags = _context.Tags.ToList();
+                        ModelState.AddModelError("OtherImages", "Image is incorrect");
+                        return View();
 
+                    }
                 }
             }
 
@@ -288,6 +302,9 @@ namespace Illustration.Controllers
 
                 portrait.PortraitCategories.Add(category);
             }
+
+            portrait.AppUserId = user.Id;
+
             _context.Portraits.Add(portrait);
             _context.SaveChanges();
 
@@ -966,6 +983,38 @@ namespace Illustration.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult SaleOrderEdit(int id)
+        {
+            var order = _context.Orders.Include(x => x.AppUser).Include(x=>x.Portrait).ThenInclude(x=>x.PortraitImages).FirstOrDefault(x => x.Id == id);
+
+            if (order == null)
+            {
+                return View("Error");
+            }
+
+            return View(order);
+        }
+
+        public IActionResult Approve(int id)
+        {
+            var order = _context.Orders.FirstOrDefault(x => x.Id == id);
+            order.Status = Enum.OrderStatus.Accepted;
+            var portrait = _context.Portraits.FirstOrDefault(x => x.Id == order.PortraitId);
+            portrait.StockStatus = false;
+            _context.SaveChanges();
+
+            return RedirectToAction("Profile");
+        }
+
+        public IActionResult Reject(int id)
+        {
+            var order = _context.Orders.FirstOrDefault(x => x.Id == id);
+
+            order.Status = Enum.OrderStatus.Rejected;
+            _context.SaveChanges();
+
+            return RedirectToAction("Profile");
+        }
 
         public bool checkImageFile(IFormFile image)
         {

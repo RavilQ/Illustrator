@@ -612,6 +612,9 @@ namespace Illustration.Migrations
                         .HasMaxLength(70)
                         .HasColumnType("nvarchar(70)");
 
+                    b.Property<bool?>("HasMember")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Image")
                         .HasMaxLength(101)
                         .HasColumnType("nvarchar(101)");

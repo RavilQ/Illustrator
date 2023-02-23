@@ -21,7 +21,7 @@ namespace Illustration.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
             var portrait = _context.Portraits
                 .Include(x => x.PortraitImages)
@@ -34,7 +34,8 @@ namespace Illustration.Controllers
                 Portraits = _context.Portraits.Include(x => x.PortraitImages)
                 .Include(x => x.PortraitCategories).ThenInclude(x => x.Category)
                 .Include(x => x.PortraitTags).ThenInclude(x => x.Tag).Where(x => x.Id != id && x.IsSpecial == true).Take(4).ToList(),
-                Reviews = _context.Reviews.Include(x=>x.AppUser).Where(x=>x.PortraitId==id).Take(3).ToList()
+                Reviews = _context.Reviews.Include(x=>x.AppUser).Where(x=>x.PortraitId==id).Take(3).ToList(),
+                User = await _userManager.FindByNameAsync(User.Identity.Name)
 
             };
 

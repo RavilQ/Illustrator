@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Product Listing";
     var pagedList = (IPagedList)ViewBag.wishitems;
+    var list = ViewBag.wishitems;
 }
 
 @using Illustration.Models
@@ -37,7 +38,10 @@
             <div><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Portrait.Id" style="width:130%;" class="btn btn-dark">Buy</a></div>
         </div>
     }
-    <div class="d-flex justify-content-center">
-        @Html.PagedListPager(pagedList, page => Url.Action("Profile", new { page }))
-    </div>
+    @if (list.Count!=0)
+    {
+        <div class="d-flex justify-content-center">
+            @Html.PagedListPager(pagedList, page => Url.Action("Profile", new { page }))
+        </div>
+    }
 </div>

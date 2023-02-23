@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Product Listing";
+    var pagedList = (IPagedList)ViewBag.Reviews;
+}
+
+@using Illustration.Enum
+@using X.PagedList.Mvc.Core; @*import this so we get our HTML Helper*@
+@using X.PagedList; @*import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+@using X.PagedList.Mvc.Core.Fluent
+@using X.PagedList.Web.Common
+
+
+<!-- import the included stylesheet for some (very basic) default styling -->
+<link href="~/AdminPanel/assets/css/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    int? count = (ViewBag.pageNumber - 1) * ViewBag.pageSize;
+    count++;
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="col-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <div class="d-flex justify-content-between">
+                <h6 class="mb-4">Review Table</h6>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Review Writing Date</th>
+                            <th scope="col">Review</th>
+                            <th scope="col">Raiting</th>
+                            <th scope="col">Review Status</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Review Review in ViewBag.Reviews)
+                        {
+                            <tr>
+                                <th class="pt-4" scope="row">@count</th>
+                                <td class="pt-4">@Review.AppUser.Fullname</td>
+                                <td class="pt-4">@Review.CreatAt</td>
+                                <td class="pt-4">@Review.Message</td>
+                                <td class="pt-4">@Review.Raiting</td>
+                                <td>
+                                    <div class="badge badge-outline-@(Review.Status==OrderStatus.Accepted?"success":(Review.Status==OrderStatus.Rejected?"danger":"warning"))">@Review.Status</div>
+                                </td>
+                                @if (Review.Status != OrderStatus.Pending)
+                                {
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-rounded btn-md disabled">Edit</button>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@Review.Id" type="button" class="btn btn-success btn-rounded btn-md">Edit</a>
+                                    </td>
+                                }
+
+                            </tr>
+                            count++;
+                        }
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+                    @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

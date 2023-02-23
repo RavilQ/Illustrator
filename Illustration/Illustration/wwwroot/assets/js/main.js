@@ -227,3 +227,83 @@ function mySearchFunction() {
             $("#mySearchContainer").html(html)
         })
 }
+
+
+//$(document).on("click", '.myaccount-delete-icon-a', () => {
+//    e.preventDefault();
+//    let url = $(this).attr("href");
+
+//    Swal.fire({
+//        title: 'Are you sure?',
+//        text: "You won't be able to revert this!",
+//        icon: 'warning',
+//        iconColor: 'black',
+//        showCancelButton: true,
+//        confirmButtonColor: 'black',
+//        confirmButtonBorder: 'none',
+//        cancelButtonColor: 'black',
+//        confirmButtonText: 'Yes, delete it!'
+//    }).then((result) => {
+//        if (result.isConfirmed) {
+//            fetch(url)
+//                .then(response => {
+//                    if (response.ok) {
+//                        Swal.fire(
+//                            'Deleted!',
+//                            'Your file has been deleted.',
+//                            'success'
+//                        ).then(() => window.location.reload())
+//                    }
+//                    else {
+//                        Swal.fire({
+//                            icon: 'error',
+//                            title: 'Slider not found!',
+//                            text: 'Something went wrong!',
+//                        })
+//                    }
+//                })
+           
+//        }
+//    })
+//})
+
+$(document).on("click", ".myaccount-delete-icon-a", function (e) {
+    e.preventDefault();
+
+    let url = $(this).attr("href");
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        iconColor: 'black',
+        showCancelButton: true,
+        confirmButtonColor: 'black',
+        confirmButtonBorder: 'none',
+        cancelButtonColor: 'black',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: 'success',
+                            iconColor: 'black',
+                            title: 'Deleted!',
+                            text: "Your file has been deleted.",
+                            confirmButtonColor: 'black'
+                        }).then(() => window.location.reload())
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Slider not found!',
+                            text: 'Something went wrong!',
+                        })
+                    }
+                })
+        }
+    })
+})

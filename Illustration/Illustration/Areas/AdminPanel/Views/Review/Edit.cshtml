@@ -1,0 +1,32 @@
+﻿@using Illustration.Enum
+@model Review
+
+<div style="padding-bottom: 12.4%;" class="container-fluid pt-4 px-4">
+    <div class="col-sm-12 col-xl-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <dl class="row mb-0">
+                <dt class="col-sm-4 mb-4">User Name</dt>
+                <dd class="col-sm-8">@Model.AppUser.Fullname</dd>
+
+                <dt class="col-sm-4 mb-4">Review Writing Time</dt>
+                <dd class="col-sm-8">@Model.CreatAt</dd>
+
+                <dt class="col-sm-4 mb-4">Review</dt>
+                <dd class="col-sm-8">@Model.Message</dd>
+
+                <dt class="col-sm-4 mb-4 text-truncate">Review Status</dt>
+                <dd class="col-sm-8">
+                    <div class="badge badge-outline-@(Model.Status==OrderStatus.Accepted?"success":(Model.Status==OrderStatus.Rejected?"danger":"warning"))">@Model.Status</div>
+                </dd>
+
+                <dt class="col-sm-4">Action</dt>
+                <dd class="col-sm-8">
+                    <dl class="row">
+                        <dt class="col-sm-4"><a asp-action="Approve" asp-route-id="@Model.Id" class="btn btn-success">Approve</a></dt>
+                        <dd class="col-sm-8"><a asp-action="Reject" asp-route-id="@Model.Id" class="btn btn-danger">Reject</a></dd>
+                    </dl>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>

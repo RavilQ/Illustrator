@@ -1,0 +1,20 @@
+﻿@model Category
+
+<div class="container-fluid pt-4 px-4">
+    <div class="col-12">
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Create Singer</h6>
+                <form method="post">
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Title</label>
+                        <input asp-for="Name" class="form-control">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

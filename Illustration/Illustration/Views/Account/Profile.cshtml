@@ -1,4 +1,5 @@
-﻿
+﻿@using Illustration.Enum
+
 @model ProfileViewModel
 
     <main>
@@ -15,6 +16,7 @@
                         <a class="my-account-tabs nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-settings" aria-selected="false">Wishlist</a>
                         <a class="my-account-tabs nav-link active" id="v-pills-messages-tab" data-bs-toggle="pill" href="#my-v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Portraits</a>
                         <a class="my-account-tabs nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-details" role="tab" aria-controls="v-pills-messages" aria-selected="false">Account Details</a>
+                        <a class="my-account-tabs nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-sale" role="tab" aria-controls="v-pills-messages" aria-selected="false">Sale</a>
                         <a class="my-account-tabs nav-link"asp-action="Logout">Log Out</a>
                     </div>
                 </div>
@@ -76,13 +78,17 @@
                                 <div style="width: 109%;" class="cards">
                                     @foreach (var portrait in Model.Portraits)
                                     {
-                                       <figure class="card">
+                                        if (portrait.StockStatus)
+                                        {
+                                          <figure class="card">
 
-                                        <img src="~/Uploads/Portraits/@portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" />
+                                            <img src="~/Uploads/Portraits/@portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" />
 
-                                        <figcaption><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@portrait.Id"><i class="las la-info-circle"></i></a> <a asp-action="Edit" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-pen"></i></a><a id="myaccount-delete-icon-a" asp-action="Delete" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
+                                            <figcaption><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@portrait.Id"><i class="las la-info-circle"></i></a> <a asp-action="Edit" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-pen"></i></a><a class="myaccount-delete-icon-a" asp-action="Delete" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
 
-                                       </figure>
+                                          </figure>
+                                        }
+
                                     }    
                                    
 
@@ -108,6 +114,62 @@
 
 
                             </div>
+                        </div>
+                        <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-sale" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <div class="col-lg-12 grid-margin stretch-card">
+
+                            <div>
+                                <h4 class="card-title">Sale Portraits</h4>
+                                <div class="table-responsive">
+                                    <table class="table">
+
+                                        <thead>
+                                            <tr>
+
+                                                <th> Client Name </th>
+                                                <th> Product Price </th>
+                                                <th> Portrait Name </th>
+                                                <th> Start Date </th>
+                                                <th> Order Status </th>
+                                                <th> Actions </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.SaleOrders)
+                                            {
+                                                <tr>
+
+                                                    <td>
+                                                        <span class="pl-2">@item.AppUser.Fullname</span>
+                                                    </td>
+                                                    <td> $@(((item.Portrait.SalePrice * (100 - item.Portrait.DiscountPercent) / 100)).ToString("0.00")) </td>
+                                                    <td> @item.Portrait.Name </td>
+                                                    <td> @item.CreatAt </td>
+                                                    <td>
+                                                        <div class="badge bg-dark">@item.Status</div>
+                                                    </td>
+                                                    @if (item.Status != OrderStatus.Pending)
+                                                    {
+                                                        <td>
+                                                            <button type="button" class="btn btn-dark disabled">Edit</button>
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>
+                                                            <a asp-action="SaleOrderEdit" asp-route-id="@item.Id" type="button" class="btn btn-dark">Edit</a>
+                                                        </td>
+                                                    }
+
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-details" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                             <h3>
@@ -179,30 +241,6 @@
     }
 
     document.querySelector('.formFileMultiple2').addEventListener('change', handleFileSelectt, false);
-
-        document.getElementById("myaccount-delete-icon-a").addEventListener("click", () => {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                iconColor: 'black',
-                showCancelButton: true,
-                confirmButtonColor: 'black',
-                confirmButtonBorder: 'none',
-                cancelButtonColor: 'black',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'success',
-                        iconColor: 'black',
-                        title: 'Deleted!',
-                        text: "Your file has been deleted.",
-                        confirmButtonColor: 'black'
-                    })
-                }
-            })
-        })
 
     </script>
 
