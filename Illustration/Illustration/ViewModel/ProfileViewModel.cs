@@ -11,5 +11,6 @@ namespace Illustration.ViewModel
         public AppUser User { get; set; }
         public AccountDetailViewModel ViewModel { get; set; }
         public List<Order> SaleOrders { get; set; } = new List<Order>();
+        public List<ContactMessage> Messages { get; set; } = new List<ContactMessage>();
     }
 }

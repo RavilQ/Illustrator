@@ -76,6 +76,7 @@ namespace Illustration.Controllers
             model.User = user;
             model.ViewModel = viewModel;
             model.SaleOrders = _context.Orders.Include(x=>x.Portrait).Where(x =>portraits.Contains(x.Portrait)).ToList();
+            model.Messages = _context.ContactMessages.Include(x => x.AppUser).Where(x=>x.IsMember==false).ToList();
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
             return View(model);

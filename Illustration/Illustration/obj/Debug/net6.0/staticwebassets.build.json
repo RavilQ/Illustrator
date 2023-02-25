@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fCYsuwnBs3Us1nqR5azZEAf6DMo7GH4MIMjlJAF75gA=",
+  "Hash": "RUUCkbz4ersKMYbLJUPfR8lcWGBehxyOC0qWSR0F5Ws=",
   "Source": "Illustration",
   "BasePath": "_content/Illustration",
   "Mode": "Default",
@@ -3296,6 +3296,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\pages-img-8.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\assets\\images\\pages-parallax-img-20a.jpg",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "assets/images/pages-parallax-img-20a.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\pages-parallax-img-20a.jpg"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\assets\\images\\pages-parallax-img-4.jpg",

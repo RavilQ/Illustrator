@@ -23,5 +23,6 @@ namespace Illustration.DAL
         public DbSet<Review> Reviews { get; set; }
         public DbSet<WishListItem> WishListItems { get; set; }
         public DbSet<MyOrder> MyOrders { get; set; }
+        public DbSet<ContactMessage> ContactMessages { get; set; }
     }
 }

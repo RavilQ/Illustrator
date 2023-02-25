@@ -688,6 +688,22 @@ p {
   padding: 24%;
 }
 
+#myauctionmainsection {
+    position: relative;
+    bottom: 4rem;
+    background-repeat: round;
+    background-image: url(/assets/images/pages-parallax-img-20a.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#myauctionmainsection h1 {
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   font-size: 7rem;
+   padding: 24%;
+}
+
 .simple-star {
   color: grey;
 }

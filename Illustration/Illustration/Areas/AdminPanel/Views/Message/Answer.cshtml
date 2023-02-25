@@ -1,0 +1,29 @@
+﻿@model ContactMessage
+
+<div class="main-panel">
+
+    <div class="content-wrapper">
+
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Basic form elements</h4>
+                    <p class="card-description"> Basic form elements </p>
+                    <form asp-action="Answer" method="post" class="forms-sample">
+                        <div class="form-group">
+                            <label asp-for="Email">Email</label>
+                            <input id="adminMessageName" asp-for="Email" type="email" class="form-control" placeholder="Name">
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                            <label style="margin-top:2rem;" asp-for="Text">Message</label>
+                            <textarea id="adminMessageInput" asp-for="Text" type="text" class="form-control" placeholder="Message"></textarea>
+                            <span class="text-danger" asp-validation-for="Text"></span>
+                            <input id="adminMessageUserId" type="hidden" asp-for="AppUserId" name="AppUserId" value="@ViewBag.id" />
+                        </div>
+                        <button id="superAdminSendButton" type="submit" class="btn btn-primary mr-2">Send</button>
+                        <a asp-action="Answer" class="btn btn-dark">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

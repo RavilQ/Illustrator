@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Product Listing";
+    var pagedList = (IPagedList)ViewBag.message;
+}
+
+@using X.PagedList.Mvc.Core; @*import this so we get our HTML Helper*@
+@using X.PagedList; @*import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+@using X.PagedList.Mvc.Core.Fluent
+@using X.PagedList.Web.Common
+
+
+<!-- import the included stylesheet for some (very basic) default styling -->
+<link href="~/AdminPanel/assets/css/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="container-fluid pt-4 px-4">
+    <div class="col-sm-12 col-xl-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <h6 class="mb-4">Messages</h6>
+            <ul class="list-group">
+                @foreach (ContactMessage item in ViewBag.message)
+                {
+                    <li style="display: flex;justify-content: space-between;align-items: center;" class="list-group-item bg-transparent">
+                        <div>
+                            @item.Text
+                        </div>
+                        <div>
+                            <div>
+                                <a class="btn btn-dark btn-fw" asp-action="Answer" asp-controller="Message" asp-route-AppUserId="@item.AppUserId">Answer</a>
+                            </div>
+                            <div>
+                                <a asp-action="Delete" asp-controller="Message" asp-route-Id="@item.Id" type="button" style="color:black;" class="btn btn-danger btn-fw mt-2">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+            @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>
+
+@*
+<div class="col-md-6 col-xl-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex flex-row justify-content-between">
+                <h4 class="card-title">Messages</h4>
+                <p class="text-muted mb-1 small">View all</p>
+            </div>
+            <div class="preview-list">
+                @foreach (ContactMessage item in ViewBag.message)
+                {
+                    <div class="preview-item border-bottom">
+                        <div class="preview-item-content d-flex flex-grow">
+                            <div class="flex-grow">
+                                <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                                    @if (@item.AppUser != null)
+                                    {
+                                        <h6 class="preview-subject">@item.AppUser.Fullname</h6>
+                                    }
+                                    else{
+                                        <h6 class="preview-subject">@item.Email</h6>
+                                    }
+                                </div>
+                                <p class="text-muted">@item.Text</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="btn btn-info btn-fw" asp-action="Answer" asp-controller="Message" asp-route-AppUserId="@item.AppUserId">Answer</a>
+                    </div>
+                    <div>
+                        <a asp-action="Delete" asp-controller="Message" asp-route-Id="@item.Id" type="button" class="mytrash-btn btn btn-secondary btn-fw">Delete</a>
+                    </div>
+                }
+
+            </div>
+            @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>*@

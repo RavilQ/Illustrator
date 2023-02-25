@@ -1,0 +1,151 @@
+﻿
+@model Portrait
+
+    <link rel="stylesheet" href="~/assets/css/Auction.css">
+
+
+    <style>
+        .chat-online {
+            color: #34ce57
+        }
+
+        .chat-offline {
+            color: #34ce57
+        }
+
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+            max-height: 800px;
+            overflow-y: scroll
+        }
+
+        .chat-message-left,
+        .chat-message-right {
+            display: flex;
+            flex-shrink: 0
+        }
+
+        .chat-message-left {
+            margin-right: auto
+        }
+
+        .chat-message-right {
+            flex-direction: row-reverse;
+            margin-left: auto
+        }
+
+        .py-3 {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        .px-4 {
+            padding-right: 1.5rem !important;
+            padding-left: 1.5rem !important;
+        }
+
+        .flex-grow-0 {
+            flex-grow: 0 !important;
+        }
+
+        .border-top {
+            border-top: 1px solid #dee2e6 !important;
+        }
+    </style>
+
+    <main>
+        <section style="margin-bottom: -4rem;" id="myauctionmainsection">
+            <h1>Auktion</h1>
+        </section>
+        <section class="container">
+            <div style="--bs-gutter-x:0;" class="row row-cols-1">
+                <div class="col d-flex justify-content-center pt-5">
+                <img style="width: 30%;" src="~/Uploads/Portraits/@Model.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
+                </div>
+                <div style="text-align: center;" class="col pt-3">
+                    <h3>@Model.Name</h3>
+                    <h4>$@Model.SalePrice</h4>
+                    <small>@Model.Info....</small>
+                    <hr>
+                    <small style="color:#565656;">@Model.CreatAt</small>
+                </div>
+                <div class="col pt-3">
+                    <main class="content">
+                        <div class="container p-0">
+                            <h1 class="h3 mb-3">Messages</h1>
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div style="overflow-y: scroll;height: 35rem;" class="col-12 col-lg-5 col-xl-3 border-right">
+
+                                        <div class="px-4 d-none d-md-block">
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">
+                                                    <input type="text" class="form-control my-3" placeholder="Search...">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <a href="#" class="list-group-item list-group-item-action border-0">
+                                            <div class="d-flex align-items-start">
+                                                <img src="~/assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Jennifer Chang" width="40" height="40">
+                                                <div style="margin-left: 1rem;" class="flex-grow-1 ml-3">
+                                                    Jennifer Chang
+                                                    <div class="small"><span class="fas fa-circle chat-offline"></span> Online</div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <hr class="d-block d-lg-none mt-1 mb-0">
+                                    </div>
+                                    <div class="col-12 col-lg-7 col-xl-9">
+                                        <div style="height: 88%;" class="position-relative">
+                                            <div style="height: 100%;" class="chat-messages p-4">
+                                                <div class="chat-message-right pb-4">
+                                                    <div class="ms-2">
+                                                        <img src="~/assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+
+                                                    </div>
+                                                    <div style="display: flex;align-items: center;" class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                                        Lorem ipsum dolor sit amet, vis erat denique in, dicunt prodesset te vix.
+                                                    </div>
+                                                </div>
+
+                                                <div class="chat-message-left pb-4">
+                                                    <div class="me-2">
+                                                        <img src="~/assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+
+                                                    </div>
+                                                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                                        <div class="font-weight-bold mb-1">Sharon Lessman</div>
+                                                        Sit meis deleniti eu, pri vidit meliore docendi ut, an eum erat animal commodo.
+                                                    </div>
+                                                </div>
+
+                                                <div class="chat-message-center pb-4">
+                                                    <div style="text-align: center; background-color: #212529 !important; color:white;" class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                                        <div class="font-weight-bold mb-1">Sharon Lessman</div>
+                                                        OFFER 5000 FOR THIS PORTRAIT !!
+                                                    </div>
+                                                </div>
+
+                                                <img style="position: absolute; display:none;" src="~/assets/images/sold3.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <div class="flex-grow-0 py-3 px-4 border-top d-flex">
+                                            <div style="width: 90%;" class="input-group">
+                                                <input type="text" class="form-control" placeholder="Type your message">
+                                                <button class="btn btn-dark">Send</button>
+                                            </div>
+                                            <i style="font-size: 243%;margin-left: 4%;cursor: pointer;" class="las la-hand-paper"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </section>
+    </main>

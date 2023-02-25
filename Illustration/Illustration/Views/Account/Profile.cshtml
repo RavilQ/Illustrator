@@ -2,16 +2,21 @@
 
 @model ProfileViewModel
 
+@{
+    var start = DateTime.Now;
+    var oldDate = DateTime.Parse("02/25/2023 03:40:31");
+}
+
     <main>
         <section style="background-color: #131313;position: relative;bottom: 3.5rem;">
             <h1 class="container" style="max-width: 90%;">My Account</h1>
-@*            <img src="~/Uploads/Users/@Model.User.Image"/>*@
         </section>
         <section class="container" style="padding-bottom: 10rem;max-width: 90%;">
             <div style="--bs-gutter-x:0;" class="row">
                 <div class="col-4">
                     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="my-account-tabs nav-link" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Dashboard</a>
+                        <a class="my-account-tabs nav-link" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-contactmessages-tab" role="tab" aria-controls="v-pills-home" aria-selected="true">Messages</a>
                         <a class="my-account-tabs nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Orders</a>
                         <a class="my-account-tabs nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-settings" aria-selected="false">Wishlist</a>
                         <a class="my-account-tabs nav-link active" id="v-pills-messages-tab" data-bs-toggle="pill" href="#my-v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Portraits</a>
@@ -29,6 +34,48 @@
                             <hr>
                             <p style="color: #212529;">Hello, @User.Identity.Name (If Not @User.Identity.Name !Logout)</p>
                             From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.
+                        </div>
+                        <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-contactmessages-tab" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <h3 id="alo3333">
+                                Messages
+                            </h3>
+                            <hr>
+                          @*  @foreach (var item in Model.Messages)
+                            {
+                                <div>
+                                    <img src="" />
+                                    <p style="color: #212529;">@item.Text</p>
+                                </div>
+                            }*@
+                              @foreach (var item in Model.Messages)
+                              {
+                                <div class="card">
+                                    <div class="row g-0">
+                                        <div class="col-5 col-sm-4 d-flex align-items-center">
+                                           <img style="border-radius: 50%;width: 30%;margin-left: 10%;" src="~/Uploads/Users/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="img-fluid" alt="card-horizontal-image">
+                                        </div>
+                                        <div class="col-7 col-sm-8">
+                                            <div class="card-body">
+                                                @if (item.Text.Length>38)
+                                                {
+                                                   <h5 class="card-title">@item.Text.Substring(0, 38) ...</h5>
+                                                }
+                                                else{
+                                                   <h5 class="card-title">@item.Text</h5>
+                                                }
+                                                @if ((start - oldDate).Hours>=1)
+                                                {
+                                                  <p class="card-text"><small class="text-muted">@((start - oldDate).Hours) hours ago</small></p>
+                                                }
+                                                else{
+                                                  <p class="card-text"><small class="text-muted">@((start - oldDate).Minutes) mins ago</small></p>
+                                                }
+                                                 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              }
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             <div class="row">
@@ -84,7 +131,7 @@
 
                                             <img src="~/Uploads/Portraits/@portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" />
 
-                                            <figcaption><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@portrait.Id"><i class="las la-info-circle"></i></a> <a asp-action="Edit" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-pen"></i></a><a class="myaccount-delete-icon-a" asp-action="Delete" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
+                                            <figcaption><a asp-controller="Auktion" asp-action="Index" asp-route-id="@portrait.Id"><i class="las la-gavel"></i></a><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@portrait.Id"><i class="las la-info-circle"></i></a> <a asp-action="Edit" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-pen"></i></a><a class="myaccount-delete-icon-a" asp-action="Delete" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
 
                                           </figure>
                                         }
