@@ -11,9 +11,9 @@
                     <p class="card-description"> Basic form elements </p>
                     <form asp-action="Answer" method="post" class="forms-sample">
                         <div class="form-group">
-                            <label asp-for="Email">Email</label>
+                          @*  <label asp-for="Email">Email</label>
                             <input id="adminMessageName" asp-for="Email" type="email" class="form-control" placeholder="Name">
-                            <span class="text-danger" asp-validation-for="Email"></span>
+                            <span class="text-danger" asp-validation-for="Email"></span>*@
                             <label style="margin-top:2rem;" asp-for="Text">Message</label>
                             <textarea id="adminMessageInput" asp-for="Text" type="text" class="form-control" placeholder="Message"></textarea>
                             <span class="text-danger" asp-validation-for="Text"></span>

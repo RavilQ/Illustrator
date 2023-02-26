@@ -76,7 +76,7 @@ namespace Illustration.Controllers
             model.User = user;
             model.ViewModel = viewModel;
             model.SaleOrders = _context.Orders.Include(x=>x.Portrait).Where(x =>portraits.Contains(x.Portrait)).ToList();
-            model.Messages = _context.ContactMessages.Include(x => x.AppUser).Where(x=>x.IsMember==false).ToList();
+            model.Messages = _context.ContactMessages.Include(x => x.AppUser).Where(x=>x.AppUserId==user.Id).ToList();
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
             return View(model);
@@ -1012,6 +1012,30 @@ namespace Illustration.Controllers
             var order = _context.Orders.FirstOrDefault(x => x.Id == id);
 
             order.Status = Enum.OrderStatus.Rejected;
+            _context.SaveChanges();
+
+            return RedirectToAction("Profile");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> InboxMessageSend(string MyMessage)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (MyMessage.Length>800)
+            {
+                return View();
+            }
+
+            ContactMessage message = new ContactMessage { 
+            
+                AppUserId = user.Id,
+                IsMember = true,
+                Text = MyMessage
+
+            };
+
+            _context.ContactMessages.Add(message);
             _context.SaveChanges();
 
             return RedirectToAction("Profile");

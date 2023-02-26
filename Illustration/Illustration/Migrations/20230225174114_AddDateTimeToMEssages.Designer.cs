@@ -4,6 +4,7 @@ using Illustration.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Illustration.Migrations
 {
     [DbContext(typeof(IllustratorDbContext))]
-    partial class IllustratorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230225174114_AddDateTimeToMEssages")]
+    partial class AddDateTimeToMEssages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +53,15 @@ namespace Illustration.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreatAt")
+                    b.Property<DateTime?>("CreatAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsMember")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("Email")
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
+
+                    b.Property<bool?>("IsMember")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Text")
                         .IsRequired()

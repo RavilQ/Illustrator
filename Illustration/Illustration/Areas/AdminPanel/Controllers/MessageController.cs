@@ -55,6 +55,7 @@ namespace Illustration.Areas.AdminPanel.Controllers
             }
 
             message.IsMember = false;
+            message.Name = "Admin";
 
             _context.ContactMessages.Add(message);
             _context.SaveChanges();
