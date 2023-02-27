@@ -38,13 +38,13 @@ namespace Illustration.Areas.AdminPanel.Controllers
         public IActionResult Answer(string AppUserId)
         {
             ViewBag.id = AppUserId;
+            ViewBag.messages = _context.ContactMessages.Include(x=>x.AppUser).Where(x => x.AppUserId == AppUserId).ToList();
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Answer(ContactMessage message)
+        public IActionResult AdminAnswer(string MyMessage,string AppUserId)
         {
-            if (message == null)
+            if (MyMessage == null)
             {
                 return View();
             }
@@ -54,8 +54,12 @@ namespace Illustration.Areas.AdminPanel.Controllers
                 return View();
             }
 
-            message.IsMember = false;
-            message.Name = "Admin";
+            ContactMessage message = new ContactMessage { 
+                IsMember = false,
+                Name = "Admin",
+                Text = MyMessage,
+                AppUserId = AppUserId
+            };
 
             _context.ContactMessages.Add(message);
             _context.SaveChanges();

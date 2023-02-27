@@ -1,29 +1,188 @@
 ﻿@model ContactMessage
-
-<div class="main-panel">
-
-    <div class="content-wrapper">
-
-        <div class="col-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Basic form elements</h4>
-                    <p class="card-description"> Basic form elements </p>
-                    <form asp-action="Answer" method="post" class="forms-sample">
-                        <div class="form-group">
-                          @*  <label asp-for="Email">Email</label>
-                            <input id="adminMessageName" asp-for="Email" type="email" class="form-control" placeholder="Name">
-                            <span class="text-danger" asp-validation-for="Email"></span>*@
-                            <label style="margin-top:2rem;" asp-for="Text">Message</label>
-                            <textarea id="adminMessageInput" asp-for="Text" type="text" class="form-control" placeholder="Message"></textarea>
-                            <span class="text-danger" asp-validation-for="Text"></span>
-                            <input id="adminMessageUserId" type="hidden" asp-for="AppUserId" name="AppUserId" value="@ViewBag.id" />
-                        </div>
-                        <button id="superAdminSendButton" type="submit" class="btn btn-primary mr-2">Send</button>
-                        <a asp-action="Answer" class="btn btn-dark">Cancel</a>
-                    </form>
-                </div>
+@*
+<div class="container-fluid pt-4 px-4">
+    <div class="col-12">
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Send Message</h6>
+                <form method="post">
+                    <div class="mb-3">
+                        <label asp-for="Text" class="form-label">Message</label>
+                        <input id="superAdminMessageInput" asp-for="Text" class="form-control">
+                        <span class="text-danger" asp-validation-for="Text"></span>
+                        <input id="adminMessageUserId" type="hidden" asp-for="AppUserId" name="AppUserId" value="@ViewBag.id" />
+                    </div>
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <button id="superAdminSendButton" type="submit" class="btn btn-primary mr-2">Send</button>
+                    <a asp-action="Answer" class="btn btn-dark">Cancel</a>
+                </form>
             </div>
         </div>
     </div>
 </div>
+*@
+<link rel="stylesheet" href="~/assets/css/Auction.css">
+
+<style>
+    .chat-online {
+        color: #34ce57
+    }
+
+    .chat-offline {
+        color: #34ce57
+    }
+
+    .chat-messages {
+        display: flex;
+        flex-direction: column;
+        height: 28rem;
+        overflow-y: scroll
+    }
+
+    .chat-message-left,
+    .chat-message-right {
+        display: flex;
+        flex-shrink: 0
+    }
+
+    .chat-message-left {
+        margin-right: auto
+    }
+
+    .chat-message-right {
+        flex-direction: row-reverse;
+        margin-left: auto
+    }
+
+    .py-3 {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .px-4 {
+        padding-right: 1.5rem !important;
+        padding-left: 1.5rem !important;
+    }
+
+    .flex-grow-0 {
+        flex-grow: 0 !important;
+    }
+
+    .border-top {
+        border-top: 1px solid #dee2e6 !important;
+    }
+</style>
+
+<div class="container-fluid pt-4 px-4">
+
+<div style="background-color:black;" class="card">
+    <div class="row g-0">
+        <div class="col-12 col-lg-12 col-xl-12">
+            <div style="height: 88%;background-color:#191c24;" class="position-relative">
+                <div id="adminmessageinboxconfirm" class="chat-messages p-4">
+                    @foreach (ContactMessage item in ViewBag.messages)
+                    {
+                        <input id="adminmessageimagesend" type="hidden" value="@item.AppUser.Image" />
+                        <input id="adminmessagefullnamesend" type="hidden" value="@item.AppUser.Fullname" />
+                        if (item.IsMember)
+                        {
+                                <div class="chat-message-left pb-4">
+                                    <div class="me-2">
+                                        <img src="~/Uploads/Users/@item.AppUser.Image" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                    </div>
+                                    <div style="color:black;" class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                        <div style="color: lightcoral;" class="font-weight-bold mb-1">@item.AppUser.Fullname</div>
+                                        @item.Text
+                                    </div>
+                                </div>
+
+                        }
+                        else{
+                                <div class="chat-message-right pb-4">
+                                    <div class="ms-2">
+                                        <img src="~/assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                    </div>
+                                    <div style="display: flex;align-items: center;color:black;" class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                        @item.Text
+                                    </div>
+                                </div>
+                        }                       
+                    }
+                  
+                    <img style="position: absolute; display:none;" src="~/assets/images/sold3.png" alt="">
+                </div>
+            </div>
+            <form action="AdminAnswer" method="post">
+                <div style="background-color:#191c24;" class="flex-grow-0 py-3 px-4 border-top d-flex">
+                    <div style="width: 90%;" class="input-group">
+                            <input id="AdminMessageInputer" name="MyMessage" type="text" class="form-control" placeholder="Type your message">
+                            <input id="Adminmessagehiddeninput" type="hidden" name="AppUserId" value="@ViewBag.id" />
+                            <button id="AdminMessageSender" type="submit" class="btn btn-dark">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+
+@section scripts{
+    <script>
+
+        let connection = new signalR.HubConnectionBuilder().withUrl("/illustratorhub").build();
+
+        connection.start().then(function () {
+
+        })
+
+        document.getElementById("AdminMessageSender").addEventListener("click", function (e) {
+            e.preventDefault();
+            var message = document.getElementById("AdminMessageInputer").value;
+            var hiddenmessage = document.getElementById("Adminmessagehiddeninput").value;
+            var name = "Elariz"
+            connection.invoke("SendMessage", name, message);
+
+            var link = `/AdminPanel/Message/AdminAnswer?MyMessage=${message}&&AppUserId=${hiddenmessage}`
+
+            fetch(link)
+                .then(response => {
+                    return response.text();
+                }).then(html => {
+
+                })
+        })
+
+        connection.on("RecieveMessagee", function (name, message) {
+            var destination = document.getElementById("adminmessageinboxconfirm");
+            var image = document.getElementById("adminmessageimagesend").value;
+            destination.innerHTML += ` <div class="chat-message-right pb-4">
+                                        <div class="ms-2">
+                                            <img src="/Uploads/Users/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                        </div>
+                                        <div style="display: flex;align-items: center;color:black;" class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                           ${message}
+                                        </div>
+                                    </div>
+        `
+            document.getElementById('AdminMessageInputer').value = "";
+        })
+
+        connection.on("RecievMessage2", function (name, message) {
+            var destination = document.getElementById("adminmessageinboxconfirm");
+            var image = document.getElementById("adminmessageimagesend").value;
+            var name = document.getElementById("adminmessagefullnamesend").value;
+            destination.innerHTML += `   <div class="chat-message-left pb-4">
+                                            <div class="me-2">
+                                                <img src="/Uploads/Users/${image}" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                            </div>
+                                            <div style="color:black;" class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                                <div style="color: lightcoral;" class="font-weight-bold mb-1">${name}</div>
+                                                ${message}
+                                            </div>
+                                        </div>
+                `
+            document.getElementById('AdminMessageInputer').value = "";
+        })
+    </script>
+    }

@@ -554,3 +554,4 @@ C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\System
 C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\MailKit.dll
 C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\MimeKit.dll
 C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\libman.json

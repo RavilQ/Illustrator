@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RUUCkbz4ersKMYbLJUPfR8lcWGBehxyOC0qWSR0F5Ws=",
+  "Hash": "b82Ye2cwo5ikeALip4ZaI3FN41a8nw3+2uMxHGUvKiY=",
   "Source": "Illustration",
   "BasePath": "_content/Illustration",
   "Mode": "Default",
@@ -3672,6 +3672,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\we-love-women-in-black-and-white-20200831-1024-764x1024.jpg"
     },
     {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\assets\\js\\Connect.js",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "assets/js/Connect.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\Connect.js"
+    },
+    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\assets\\js\\main.js",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -3704,6 +3721,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\plugins.js"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\assets\\js\\signalr.js",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "assets/js/signalr.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\signalr.js"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\assets\\js\\signalr.min.js",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "assets/js/signalr.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\signalr.min.js"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\assets\\scss\\Auction.scss",

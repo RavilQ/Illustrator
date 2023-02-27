@@ -1,3 +1,4 @@
+using Illustration;
 using Illustration.DAL;
 using Illustration.Models;
 using Illustration.Services;
@@ -19,6 +20,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<IllustratorDbContext>();
 
 builder.Services.AddScoped<LayoutService>();
+
+builder.Services.AddSignalR();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -79,5 +82,7 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapHub<IllustratorHub>("/illustratorhub");
 
 app.Run();

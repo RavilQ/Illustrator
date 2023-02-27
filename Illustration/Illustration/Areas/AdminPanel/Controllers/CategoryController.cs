@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 
-namespace Illustration.Controllers
+namespace Illustration.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
     [Authorize(Roles = "SuperAdmin")]

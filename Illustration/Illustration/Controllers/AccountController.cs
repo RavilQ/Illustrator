@@ -1017,7 +1017,6 @@ namespace Illustration.Controllers
             return RedirectToAction("Profile");
         }
 
-        [HttpPost]
         public async Task<IActionResult> InboxMessageSend(string MyMessage)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
