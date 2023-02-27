@@ -1,6 +1,8 @@
 ﻿@{
     ViewBag.Title = "Product Listing";
     var pagedList = (IPagedList)ViewBag.message;
+    List<ContactMessage> messages = ViewBag.userss;
+    var count = 0;
 }
 
 @using X.PagedList.Mvc.Core; @*import this so we get our HTML Helper*@
@@ -17,18 +19,22 @@
         <div class="bg-secondary rounded h-100 p-4">
             <h6 class="mb-4">Messages</h6>
             <ul class="list-group">
-                @foreach (ContactMessage item in ViewBag.message)
+                @foreach (AppUser item in ViewBag.message)
                 {
                     <li style="display: flex;justify-content: space-between;align-items: center;" class="list-group-item bg-transparent">
                         <div>
-                            @item.AppUser.Fullname
+                            @item.Fullname
                         </div>
                         <div>
-                            @item.Text
+                           @* @if (messages.FindAll(x => x.AppUserId == item.Id).Count)
+                            {
+                                count++;
+                            }*@
+                            @messages.FindAll(x => x.AppUserId == item.Id).Count  messages sends
                         </div>
                         <div>
                             <div>
-                                <a class="btn btn-dark btn-fw" asp-action="Answer" asp-controller="Message" asp-route-AppUserId="@item.AppUserId">Answer</a>
+                                <a class="btn btn-dark btn-fw" asp-action="Answer" asp-controller="Message" asp-route-AppUserId="@item.Id">Answer</a>
                             </div>
                             <div>
                                 <a asp-action="Delete" asp-controller="Message" asp-route-Id="@item.Id" type="button" style="color:black;" class="btn btn-danger btn-fw mt-2">Delete</a>

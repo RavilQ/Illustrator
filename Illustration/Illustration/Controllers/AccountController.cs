@@ -607,7 +607,8 @@ namespace Illustration.Controllers
                 Fullname = registerVm.Fullname,
                 UserName = registerVm.Username,
                 Email = registerVm.Email,
-                Image = newName
+                Image = newName,
+                HasMember = true
 
             };
 

@@ -1,5 +1,6 @@
 ﻿using Illustration.DAL;
 using Illustration.Models;
+using Illustration.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,14 @@ namespace Illustration.Controllers
                 return View("Error");
             }
 
-            return View(portrait);
+            AuktionViewModel viewmodel = new AuktionViewModel {
+
+                Portrait = portrait,
+                AppUsers = _context.AppUsers.Where(x=>x.HasMember==true).ToList()
+
+            };
+
+            return View(viewmodel);
         }
     }
 }

@@ -22,12 +22,12 @@ namespace Illustration
 
                 if (user != null)
                 {
-                    //user.ConnectionId = Context.ConnectionId;
-                    //user.LastConnectedAt = DateTime.UtcNow.AddHours(4);
+                    user.ConnectionId = Context.ConnectionId;
+                    user.LastConnectedAt = DateTime.UtcNow.AddHours(4);
 
-                    //var result = _userManager.UpdateAsync(user).Result;
+                    var result = _userManager.UpdateAsync(user).Result;
 
-                    //Clients.All.SendAsync("SetAsOnline", user.Id);
+                    Clients.All.SendAsync("SetAsOnline", user.Id);
 
                 }
 
@@ -47,12 +47,12 @@ namespace Illustration
 
                 if (user != null)
                 {
-                    //user.ConnectionId = null;
-                    //user.LastConnectedAt = DateTime.UtcNow.AddHours(4);
+                    user.ConnectionId = null;
+                    user.LastConnectedAt = DateTime.UtcNow.AddHours(4);
 
-                    //var result = _userManager.UpdateAsync(user).Result;
+                    var result = _userManager.UpdateAsync(user).Result;
 
-                    //Clients.All.SendAsync("SetAsOffline", user.Id);
+                    Clients.All.SendAsync("SetAsOffline", user.Id);
 
                 }
 

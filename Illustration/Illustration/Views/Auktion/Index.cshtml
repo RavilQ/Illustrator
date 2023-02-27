@@ -1,5 +1,5 @@
 ﻿
-@model Portrait
+@model AuktionViewModel
 
     <link rel="stylesheet" href="~/assets/css/Auction.css">
 
@@ -10,7 +10,7 @@
         }
 
         .chat-offline {
-            color: #34ce57
+            color: red
         }
 
         .chat-messages {
@@ -61,14 +61,14 @@
         <section class="container">
             <div style="--bs-gutter-x:0;" class="row row-cols-1">
                 <div class="col d-flex justify-content-center pt-5">
-                <img style="width: 30%;" src="~/Uploads/Portraits/@Model.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
+                <img style="width: 30%;" src="~/Uploads/Portraits/@Model.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
                 </div>
                 <div style="text-align: center;" class="col pt-3">
-                    <h3>@Model.Name</h3>
-                    <h4>$@Model.SalePrice</h4>
-                    <small>@Model.Info....</small>
+                    <h3>@Model.Portrait.Name</h3>
+                    <h4>$@Model.Portrait.SalePrice</h4>
+                    <small>@Model.Portrait.Info....</small>
                     <hr>
-                    <small style="color:#565656;">@Model.CreatAt</small>
+                    <small style="color:#565656;">@Model.Portrait.CreatAt</small>
                 </div>
                 <div class="col pt-3">
                     <main class="content">
@@ -85,16 +85,19 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <a href="#" class="list-group-item list-group-item-action border-0">
-                                            <div class="d-flex align-items-start">
-                                                <img src="~/assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Jennifer Chang" width="40" height="40">
-                                                <div style="margin-left: 1rem;" class="flex-grow-1 ml-3">
-                                                    Jennifer Chang
-                                                    <div class="small"><span class="fas fa-circle chat-offline"></span> Online</div>
-                                                </div>
-                                            </div>
-                                        </a>
+                                            @foreach (var item in Model.AppUsers)
+                                            {
+                                                <a href="#" class="list-group-item list-group-item-action border-0">
+                                                    <div class="d-flex align-items-start">
+                                                       <img src="~/Uploads/Users/@item.Image" class="rounded-circle mr-1" alt="@item.Fullname" width="40" height="40">
+                                                        <div style="margin-left: 1rem;" class="flex-grow-1 ml-3">
+                                                            @item.Fullname
+                                                       <div id="user-@item.Id" class="small"><span class="fas fa-circle chat-@(item.ConnectionId==null?"offline":"online")"></span>@(item.ConnectionId == null ? "Offline" : "Online")</div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            }
+                                       
 
                                         <hr class="d-block d-lg-none mt-1 mb-0">
                                     </div>
@@ -149,3 +152,26 @@
             </div>
         </section>
     </main>
+
+@section Scripts{
+    <script>
+       
+        let connection = new signalR.HubConnectionBuilder().withUrl("/illustratorhub").build();
+
+        connection.start().then(function () {
+
+        })
+
+        connection.on("SetAsOffline", function (userId) {
+
+            $("#user-" + userId + " span").removeClass("chat-online");
+            $("#user-" + userId + " span").addClass("chat-offline");
+        })
+        connection.on("SetAsOnline", function (userId) {
+
+            $("#user-" + userId + " span").removeClass("chat-offline");
+            $("#user-" + userId + " span").addClass("chat-online");
+        })
+
+    </script>
+}

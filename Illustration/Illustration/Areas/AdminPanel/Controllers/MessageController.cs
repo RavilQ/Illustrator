@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using System.Linq;
 
 namespace Illustration.Areas.AdminPanel.Controllers
 {
@@ -23,9 +24,14 @@ namespace Illustration.Areas.AdminPanel.Controllers
             int pageSize = 5;
 
             var messages = _context.ContactMessages.Include(x=>x.AppUser).Where(x=>x.IsMember==true).ToList();
-            Pagination<ContactMessage> paginatedList = new Pagination<ContactMessage>();
-
-            ViewBag.message = paginatedList.GetPagedNames(messages, page, pageSize);
+            List<AppUser> users = _context.AppUsers.Where(x=>x.HasMember==true).ToList();
+            //foreach (var item in messages)
+            //{
+            //  users = _context.AppUsers.Where(x => x.Id == item.AppUserId).ToList();
+            //}
+            ViewBag.userss = messages;
+            Pagination<AppUser> paginatedList = new Pagination<AppUser>();
+            ViewBag.message = paginatedList.GetPagedNames(users, page, pageSize);
 
             if (ViewBag.message == null)
             {
