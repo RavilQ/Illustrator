@@ -307,4 +307,3 @@ $(document).on("click", ".myaccount-delete-icon-a", function (e) {
         }
     })
 })
-

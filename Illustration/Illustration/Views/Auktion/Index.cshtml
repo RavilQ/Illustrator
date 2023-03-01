@@ -1,8 +1,14 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
 @model AuktionViewModel
 
-    <link rel="stylesheet" href="~/assets/css/Auction.css">
+@inject UserManager<AppUser> _userManager
 
+<link rel="stylesheet" href="~/assets/css/Auction.css">
+@{
+
+   AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+  
+}
 
     <style>
         .chat-online {
@@ -77,72 +83,83 @@
                             <div class="card">
                                 <div class="row g-0">
                                     <div style="overflow-y: scroll;height: 35rem;" class="col-12 col-lg-5 col-xl-3 border-right">
-
-                                        <div class="px-4 d-none d-md-block">
+                                       @* <div class="px-4 d-none d-md-block">
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">
-                                                    <input type="text" class="form-control my-3" placeholder="Search...">
+                                                   <input id="my-auktion-inputer" type="text" onkeyup="auktionSearchFunction()" class="form-control my-3" placeholder="Search...">                                             
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>*@
+                                        <div>
                                             @foreach (var item in Model.AppUsers)
                                             {
-                                                <a href="#" class="list-group-item list-group-item-action border-0">
-                                                    <div class="d-flex align-items-start">
-                                                       <img src="~/Uploads/Users/@item.Image" class="rounded-circle mr-1" alt="@item.Fullname" width="40" height="40">
-                                                        <div style="margin-left: 1rem;" class="flex-grow-1 ml-3">
-                                                            @item.Fullname
-                                                       <div id="user-@item.Id" class="small"><span class="fas fa-circle chat-@(item.ConnectionId==null?"offline":"online")"></span>@(item.ConnectionId == null ? "Offline" : "Online")</div>
+                                                if (item.UserName != User.Identity.Name)
+                                                {
+                                                    <a href="#" class="list-group-item list-group-item-action border-0">
+                                                        <div class="d-flex align-items-start">
+                                                            <img src="~/Uploads/Users/@(item.Image==null?"4f64c9f81bb0d4ee969aaf7b4a5a6f40.png":item.Image)" class="rounded-circle mr-1" alt="@item.Fullname" width="40" height="40">
+                                                            <div style="margin-left: 1rem;" class="flex-grow-1 ml-3">
+                                                                @item.UserName
+                                                                <div id="user-@item.Id" class="small"><span class="fas fa-circle chat-@(item.ConnectionId==null?"offline":"online")"></span><b>@(item.ConnectionId == null ? "Offline" : "Online")</b></div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </a>
-                                            }
-                                       
+                                                    </a>
+                                                }
 
+                                            }
+                                        </div>
+                                           
                                         <hr class="d-block d-lg-none mt-1 mb-0">
                                     </div>
                                     <div class="col-12 col-lg-7 col-xl-9">
                                         <div style="height: 88%;" class="position-relative">
-                                            <div style="height: 100%;" class="chat-messages p-4">
-                                                <div class="chat-message-right pb-4">
-                                                    <div class="ms-2">
-                                                        <img src="~/assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                            <div id="groupmessageinboxconfirm" style="height: 100%;" class="chat-messages p-4">
+                                                @foreach (var item in Model.GroupMessages)
+                                                {
+                                                    if (item.AppUser.UserName == User.Identity.Name)
+                                                    {
+                                                        <div class="chat-message-right pb-4">
+                                                            <div class="ms-2">
+                                                                <img src="~/Uploads/Users/@item.AppUser.Image" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                                            </div>
+                                                            <div style="display: flex;align-items: center;" class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                                                @item.Text
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else{
+                                                        <div class="chat-message-left pb-4">
+                                                            <div class="me-2">
+                                                                <img src="~/Uploads/Users/@item.AppUser.Image" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                                            </div>
+                                                            <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                                                <div style="font-family:cursive;" class="font-weight-bold mb-1">@item.AppUser.UserName</div>
+                                                                @item.Text
+                                                            </div>
+                                                        </div>
 
-                                                    </div>
-                                                    <div style="display: flex;align-items: center;" class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                                                        Lorem ipsum dolor sit amet, vis erat denique in, dicunt prodesset te vix.
-                                                    </div>
-                                                </div>
+                                                    }
+                                                }
 
-                                                <div class="chat-message-left pb-4">
-                                                    <div class="me-2">
-                                                        <img src="~/assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
-
-                                                    </div>
-                                                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                                                        <div class="font-weight-bold mb-1">Sharon Lessman</div>
-                                                        Sit meis deleniti eu, pri vidit meliore docendi ut, an eum erat animal commodo.
-                                                    </div>
-                                                </div>
-
-                                                <div class="chat-message-center pb-4">
+                                               @* <div class="chat-message-center pb-4">
                                                     <div style="text-align: center; background-color: #212529 !important; color:white;" class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
                                                         <div class="font-weight-bold mb-1">Sharon Lessman</div>
                                                         OFFER 5000 FOR THIS PORTRAIT !!
                                                     </div>
                                                 </div>
-
+*@
                                                 <img style="position: absolute; display:none;" src="~/assets/images/sold3.png" alt="">
                                             </div>
                                         </div>
 
                                         <div class="flex-grow-0 py-3 px-4 border-top d-flex">
                                             <div style="width: 90%;" class="input-group">
-                                                <input type="text" class="form-control" placeholder="Type your message">
-                                                <button class="btn btn-dark">Send</button>
-                                            </div>
+                                                <input id="groupmessageinput" type="text" class="form-control" placeholder="Type your message">
+                                                <button id="groupMessageSenderinmine" class="btn btn-dark">Send</button>
+                                            </div>                                          
                                             <i style="font-size: 243%;margin-left: 4%;cursor: pointer;" class="las la-hand-paper"></i>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +169,8 @@
             </div>
         </section>
     </main>
-
+   <input id="mysignalrinputname" type="hidden" value="@User.Identity.Name" />
+   <input id="mysignalrinputimage" type="hidden" value="@user.Image" />
 @section Scripts{
     <script>
        
@@ -166,11 +184,58 @@
 
             $("#user-" + userId + " span").removeClass("chat-online");
             $("#user-" + userId + " span").addClass("chat-offline");
+            $("#user-" + userId + " b").html("Offline");
         })
         connection.on("SetAsOnline", function (userId) {
-
             $("#user-" + userId + " span").removeClass("chat-offline");
             $("#user-" + userId + " span").addClass("chat-online");
+            $("#user-" + userId + " b").html("Online");
+        })
+
+        document.getElementById("groupMessageSenderinmine").addEventListener("click", function (e) {
+            e.preventDefault();
+            var message = document.getElementById("groupmessageinput").value;
+            var name = $("#mysignalrinputname").val();
+            var image = $("#mysignalrinputimage").val();
+            connection.invoke("SendGroupMessage", name, message, image);
+
+            var link = `/Auktion/GroupMessageSend?MyMessage=${message}`
+
+            fetch(link)
+                .then(response => {
+                    return response.text();
+                }).then(html => {
+
+                })
+        })
+
+        connection.on("GroupMessagee", function (name, message, image) {
+            var destination = document.getElementById("groupmessageinboxconfirm");
+            destination.innerHTML += ` <div class="chat-message-right pb-4">
+                                                        <div class="ms-2">
+                                                            <img src="/Uploads/Users/${image}" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                                        </div>
+                                                        <div style="display: flex;align-items: center;" class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                                           ${message}
+                                                        </div>
+                                                    </div>
+                        `
+            document.getElementById('groupmessageinput').value = "";
+        })
+
+
+        connection.on("GroupMessage", function (name, message, image) {
+            var destination = document.getElementById("groupmessageinboxconfirm");
+            destination.innerHTML += `  <div class="chat-message-left pb-4">
+                                                        <div class="me-2">
+                                                               <img src="/Uploads/Users/${image}" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                                        </div>
+                                                        <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                                             <div style="font-family:cursive;" class="font-weight-bold mb-1">${name}</div>
+                                                            ${message}
+                                                        </div>
+                                                    </div>
+                        `
         })
 
     </script>

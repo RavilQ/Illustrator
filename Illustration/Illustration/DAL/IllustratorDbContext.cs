@@ -24,5 +24,6 @@ namespace Illustration.DAL
         public DbSet<WishListItem> WishListItems { get; set; }
         public DbSet<MyOrder> MyOrders { get; set; }
         public DbSet<ContactMessage> ContactMessages { get; set; }
+        public DbSet<GroupMessage> GroupMessages { get; set; }
     }
 }

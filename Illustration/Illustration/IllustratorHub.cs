@@ -83,5 +83,18 @@ namespace Illustration
             }
         }
 
+        public async Task SendGroupMessage(string name, string message, string image)
+        {
+
+            if (_acessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                await Clients.Caller.SendAsync("GroupMessagee", name, message, image);
+                await Clients.Others.SendAsync("GroupMessage", name, message, image);
+            }
+
+            //await Clients.All.SendAsync("GroupMessagee", name, message);
+            //await Clients.All.SendAsync("GroupMessage", name, message);
+        }
+
     }
 }

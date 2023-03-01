@@ -73,6 +73,32 @@ namespace Illustration.Migrations
                     b.ToTable("ContactMessages");
                 });
 
+            modelBuilder.Entity("Illustration.Models.GroupMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(800)
+                        .HasColumnType("nvarchar(800)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("GroupMessages");
+                });
+
             modelBuilder.Entity("Illustration.Models.MyOrder", b =>
                 {
                     b.Property<int>("Id")
@@ -664,6 +690,15 @@ namespace Illustration.Migrations
                 });
 
             modelBuilder.Entity("Illustration.Models.ContactMessage", b =>
+                {
+                    b.HasOne("Illustration.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("Illustration.Models.GroupMessage", b =>
                 {
                     b.HasOne("Illustration.Models.AppUser", "AppUser")
                         .WithMany()
