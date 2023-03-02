@@ -23,7 +23,7 @@ namespace Illustration.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index(int id, string words)
+        public async Task<IActionResult> Index(int id, decimal Offerprice)
         {
             var portrait = _context.Portraits
                 .Include(x => x.PortraitImages)
@@ -35,25 +35,42 @@ namespace Illustration.Controllers
                 return View("Error");
             }
 
-            List<AppUser> users = new List<AppUser>();
+            List<AppUser> users = _context.AppUsers.Where(x => x.HasMember == true).ToList();
 
-            if (words != null)
-            {
-                users = _context.AppUsers.Where(x => x.UserName.Contains(words)).ToList();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            }
-            else
+            if (Offerprice!=0)
             {
-                users = _context.AppUsers.Where(x => x.HasMember == true).ToList();
+                OfferPortrait offer = new OfferPortrait
+                {
+
+                    fivePercentPrice = Offerprice,
+                    PortraitId = portrait.Id,
+                    AppUserId = user.Id
+
+                };
+
+                var repeat = _context.OfferPortraits.FirstOrDefault(x => x.PortraitId == offer.PortraitId);
+
+                if (repeat != null)
+                {
+                    repeat.fivePercentPrice = Offerprice;
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    _context.OfferPortraits.Add(offer);
+                    _context.SaveChanges();
+                }
             }
 
             AuktionViewModel viewmodel = new AuktionViewModel {
 
                 Portrait = portrait,
                 AppUsers = users,
-                GroupMessages = _context.GroupMessages.Include(x=>x.AppUser).ToList()
+                GroupMessages = _context.GroupMessages.Include(x => x.AppUser).ToList(),
+                Offer = _context.OfferPortraits.FirstOrDefault(x => x.PortraitId == portrait.Id)
             };
-
             return View(viewmodel);
         }
 
@@ -79,5 +96,41 @@ namespace Illustration.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+        //public async Task<IActionResult> AuktionOffers(int id,decimal Offerprice)
+        //{
+        //    var portrait = _context.Portraits.FirstOrDefault(x => x.Id == id);
+
+        //    if (portrait==null)
+        //    {
+        //        return View("Error");
+        //    }
+
+        //    var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+        //    OfferPortrait offer = new OfferPortrait { 
+            
+        //        fivePercentPrice = Offerprice,
+        //        PortraitId = portrait.Id,
+        //        AppUserId = user.Id
+
+        //    };
+
+        //    var repeat = _context.OfferPortraits.FirstOrDefault(x => x.PortraitId == offer.PortraitId);
+
+        //    if (repeat!=null)
+        //    {
+        //        repeat.fivePercentPrice = Offerprice;
+        //        _context.SaveChanges();
+        //    }
+        //    else
+        //    {
+        //        _context.OfferPortraits.Add(offer);
+        //        _context.SaveChanges();
+        //    }
+
+        //    return RedirectToAction("Index", new { id = id });
+        //}
     }
 }

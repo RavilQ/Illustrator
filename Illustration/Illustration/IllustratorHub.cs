@@ -96,5 +96,14 @@ namespace Illustration
             //await Clients.All.SendAsync("GroupMessage", name, message);
         }
 
+
+        public async Task OfferForSale(string name, string offerPrice)
+        {
+            if (_acessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                await Clients.All.SendAsync("OfferForAll", name, offerPrice);
+            }
+        }
+
     }
 }

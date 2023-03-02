@@ -128,6 +128,33 @@ namespace Illustration.Migrations
                     b.ToTable("MyOrders");
                 });
 
+            modelBuilder.Entity("Illustration.Models.OfferPortrait", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("PortraitId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("fivePercentPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("PortraitId");
+
+                    b.ToTable("OfferPortraits");
+                });
+
             modelBuilder.Entity("Illustration.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -712,6 +739,25 @@ namespace Illustration.Migrations
                     b.HasOne("Illustration.Models.AppUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId");
+
+                    b.HasOne("Illustration.Models.Portrait", "Portrait")
+                        .WithMany()
+                        .HasForeignKey("PortraitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Portrait");
+                });
+
+            modelBuilder.Entity("Illustration.Models.OfferPortrait", b =>
+                {
+                    b.HasOne("Illustration.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Illustration.Models.Portrait", "Portrait")
                         .WithMany()
