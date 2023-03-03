@@ -97,7 +97,7 @@ namespace Illustration
         }
 
 
-        public async Task OfferForSale(string name, string offerPrice)
+        public async Task OfferForSale(string name, decimal offerPrice)
         {
             if (_acessor.HttpContext.User.Identity.IsAuthenticated)
             {

@@ -62,8 +62,8 @@ namespace Illustration.Controllers
                     _context.OfferPortraits.Add(offer);
                     _context.SaveChanges();
                 }
+              
             }
-
             AuktionViewModel viewmodel = new AuktionViewModel {
 
                 Portrait = portrait,
@@ -97,40 +97,22 @@ namespace Illustration.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Auktionoffer(int id)
+        {
+            OfferPortrait offer = _context.OfferPortraits.FirstOrDefault(x => x.PortraitId == id);
 
-        //public async Task<IActionResult> AuktionOffers(int id,decimal Offerprice)
-        //{
-        //    var portrait = _context.Portraits.FirstOrDefault(x => x.Id == id);
+            decimal percent = 0;
 
-        //    if (portrait==null)
-        //    {
-        //        return View("Error");
-        //    }
+            if (offer == null)
+            {
+                percent = 0;
+            }
+            else {
+                percent = offer.fivePercentPrice;
+            }
+           
+            return Json(percent);
+        }
 
-        //    var user = await _userManager.FindByNameAsync(User.Identity.Name);
-
-        //    OfferPortrait offer = new OfferPortrait { 
-            
-        //        fivePercentPrice = Offerprice,
-        //        PortraitId = portrait.Id,
-        //        AppUserId = user.Id
-
-        //    };
-
-        //    var repeat = _context.OfferPortraits.FirstOrDefault(x => x.PortraitId == offer.PortraitId);
-
-        //    if (repeat!=null)
-        //    {
-        //        repeat.fivePercentPrice = Offerprice;
-        //        _context.SaveChanges();
-        //    }
-        //    else
-        //    {
-        //        _context.OfferPortraits.Add(offer);
-        //        _context.SaveChanges();
-        //    }
-
-        //    return RedirectToAction("Index", new { id = id });
-        //}
     }
 }

@@ -142,7 +142,7 @@
                                                 }
 
                                    
-                                                <img style="position: absolute; display:none;" src="~/assets/images/sold3.png" alt="">
+                                                <img id="mysoldimageid" style="position: absolute; display:none;" src="~/assets/images/sold3.png" alt="">
                                             </div>
                                         </div>
 
@@ -166,14 +166,6 @@
    <input id="mysignalrinputname" type="hidden" value="@User.Identity.Name" />
    <input id="mysignalrinputimage" type="hidden" value="@user.Image" />
    <input id="offervalue2formy" type="hidden" value="@((decimal)(Model.Portrait.SalePrice * 5 / 100))" />
-    @if (Model.Offer!=null)
-    {
-    <input id="mycontextofferforsaving" type="hidden" value="@Model.Offer.fivePercentPrice" />
-    }
-    else{
-      <input id="mycontextofferforsaving" type="hidden" value="0" />
-    }
-
 @section Scripts{
     <script>
        
@@ -200,6 +192,7 @@
             var message = document.getElementById("groupmessageinput").value;
             var name = $("#mysignalrinputname").val();
             var image = $("#mysignalrinputimage").val();
+          
             connection.invoke("SendGroupMessage", name, message, image);
 
             var link = `/Auktion/GroupMessageSend?MyMessage=${message}`
@@ -246,41 +239,78 @@
                                                     </div>
                         `
         })
-
-
+        var timeoutId;
+        let offer = 0;
         document.getElementById("myportraitoffer").addEventListener("click", function (e) {
+         
+            async function firstFunction(callback) {
+                var portraitid = @Model.Portrait.Id;
+                var url = `/Auktion/Auktionoffer?id=${portraitid}`
+                var response = await fetch(url)
+                    .then(response => {
+                        return response.text();
+                    }).then(data => {
+                        offer = data;
+                    })              
 
-            var offerPrice;
-            var faiz = document.getElementById("offervalue2formy").value;
-            var offer = document.getElementById("mycontextofferforsaving").value;
-
-            if (offer != 0) {
-                offerPrice = offer + parseInt(faiz);
+                callback();
             }
-            else{
-                offerPrice = @Model.Portrait.SalePrice + parseInt(faiz);
+
+           function secondFunction() {
+                var offerPrice;
+                var faiz = $("#offervalue2formy").val();
+                var portraitid = @Model.Portrait.Id;
+                if (offer != 0) {
+                    var decimalnumber = parseInt(offer) + parseInt(faiz);
+                    offerPrice = parseInt(decimalnumber);
+
+                }
+                else {
+                    offerPrice = @Model.Portrait.SalePrice + parseInt(faiz);
+
+                }
+                var name = $("#mysignalrinputname").val();
+
+
+                connection.invoke("OfferForSale", name, offerPrice);
+
+                var link = `/Auktion/Index?id=${portraitid}&&Offerprice=${offerPrice}`
+                fetch(link)
+                    .then(response => {
+                        return response.text();
+                    }).then(data => {
+
+                    })
+           }
+
+            firstFunction(secondFunction);
+
+
+
+           
+            function delayedAction() {
+                
+                clearTimeout(timeoutId);
+
+                timeoutId = setTimeout(() => {
+                    document.getElementById("mysoldimageid").style.display="block";
+                    document.getElementById("groupmessageinput").setAttribute('disabled', 'disabled');
+                    document.getElementById("groupMessageSenderinmine").setAttribute('disabled', 'disabled');
+                    document.getElementById("myportraitoffer").style.pointerEvents = "none";
+                }, 10000);
             }
-            var name = $("#mysignalrinputname").val();
-            var portraitid = @Model.Portrait.Id;
 
-            connection.invoke("OfferForSale", name, offerPrice);
-
-            var link = `/Auktion/Index?id=${portraitid}&&Offerprice=${offerPrice}`
-            fetch(link)
-                .then(response => {
-                    return response.text();
-                }).then(html => {
-
-                })
+            delayedAction();
+              
         })
 
-
+        
         connection.on("OfferForAll", function (name, offerPrice) {
             var destination = document.getElementById("groupmessageinboxconfirm");
             destination.innerHTML += `   <div class="chat-message-center pb-4">
                                              <div style="text-align: center; background-color: #212529 !important; color:white;" class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
                                                 <div class="font-weight-bold mb-1">${name}</div>
-                                                          OFFER ${offerPrice} FOR THIS PORTRAIT !!
+                                                          OFFER ${offerPrice}$ FOR THIS PORTRAIT !!
                                               </div>
                                          </div>
                                 `
