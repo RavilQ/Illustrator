@@ -7,26 +7,23 @@ namespace Illustration.Models
     {
         public int Id { get; set; }
         [MaxLength(70)]
-        public string LastName { get; set; }
-        [MaxLength(70)]
-        public string FirstName { get; set; }
+        public string Fullname { get; set; }
         [MaxLength(70)]
         public string Email { get; set; }
         [MaxLength(270)]
-        public string Address { get; set; }
-        public long Phone { get; set; }
+        public string? Address { get; set; }
         [MaxLength(170)]
-        public string City { get; set; }
+        public string? City { get; set; }
         [MaxLength(570)]
         public string? Note { get; set; }
         public DateTime CreatAt { get; set; } = DateTime.UtcNow.AddHours(4);
         public OrderStatus? Status { get; set; }
         [MaxLength(70)]
-        public string ZipCode { get; set; }
+        public string? ZipCode { get; set; }
         [MaxLength(70)]
-        public string Company { get; set; }
+        public string? Company { get; set; }
         [MaxLength(370)]
-        public string AditionalInformation { get; set; }
+        public string? AditionalInformation { get; set; }
         public string? AppUserId { get; set; }
         public int? PortraitId { get; set; }
 

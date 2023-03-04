@@ -71,6 +71,10 @@ namespace Illustration.Controllers
                 GroupMessages = _context.GroupMessages.Include(x => x.AppUser).ToList(),
                 Offer = _context.OfferPortraits.FirstOrDefault(x => x.PortraitId == portrait.Id)
             };
+
+            portrait.IsAuktion = true;
+            _context.SaveChanges();
+
             return View(viewmodel);
         }
 
@@ -112,6 +116,31 @@ namespace Illustration.Controllers
             }
            
             return Json(percent);
+        }
+
+        public async Task<IActionResult> MakeOrder(int offerprice,string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+
+            var offer = _context.OfferPortraits.Include(x=>x.Portrait).FirstOrDefault(x => x.AppUserId == user.Id);
+
+            var portrait = _context.Portraits.FirstOrDefault(x => x.Id == offer.PortraitId);
+            
+
+            Order order = new Order { 
+            
+                AppUserId = user.Id,
+                PortraitId = offer.PortraitId,
+                Status = Enum.OrderStatus.Accepted,
+                Email = user.Email,
+                Fullname = user.Fullname
+            };
+
+            portrait.StockStatus = false;
+            _context.Orders.Add(order);
+            _context.SaveChanges();
+
+            return Ok();
         }
 
     }

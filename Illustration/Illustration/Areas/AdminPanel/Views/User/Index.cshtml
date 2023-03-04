@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Product Listing";
+    var pagedList = (IPagedList)ViewBag.user;
+}
+
+@using Illustration.Models
+@using X.PagedList.Mvc.Core; @*import this so we get our HTML Helper*@
+@using X.PagedList; @*import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+@using X.PagedList.Mvc.Core.Fluent
+@using X.PagedList.Web.Common
+
+
+<!-- import the included stylesheet for some (very basic) default styling -->
+<link href="~/AdminPanel/assets/css/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    int? count = (ViewBag.pageNumber - 1) * ViewBag.pageSize;
+    count++;
+}
+<div class="container-fluid pt-4 px-4">
+    <div class="col-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Fullname</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Img</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (AppUser user in ViewBag.user)
+                        {
+                            <tr>
+                                <th class="pt-4" scope="row">@count</th>
+                                <td class="pt-4" id="user-@user.Id">
+                                    <span class="connection-dot connection-dot-@(user.ConnectionId==null?"offline":"online")"></span> @user.UserName
+                                </td>
+                                <td class="pt-4">@user.Fullname</td>
+                                <td class="pt-4">@user.Email</td>
+                                <td class="pt-4"><img class="rounded-circle" style="margin-top:-7px; width: 40px; height: 40px;" src="~/Uploads/Users/@user.Image" /></td>
+                            </tr>
+                            count++;
+                        }
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+                    @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blank End -->
+@section Scripts{
+    <script>
+        var connection = new signalR.HubConnectionBuilder().withUrl("/illustratorhub").build();
+        connection.start();
+        connection.on("show", function (id) {
+            console.log(id + "- connected")
+        })
+        connection.on("SetAsOffline", function (userId) {
+            $("#user-" + userId + " span").removeClass("connection-dot-online");
+            $("#user-" + userId + " span").addClass("connection-dot-offline");
+        })
+        connection.on("SetAsOnline", function (userId) {
+            $("#user-" + userId + " span").removeClass("connection-dot-offline");
+            $("#user-" + userId + " span").addClass("connection-dot-online");
+        })
+    </script>
+}

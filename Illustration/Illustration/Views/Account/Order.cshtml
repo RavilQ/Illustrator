@@ -11,14 +11,9 @@
 
                 <div class="col">
                     <div class="form-floating mb-3">
-                        <input form="OrderForm" asp-for="FirstName" class="form-control" id="floatingInput" placeholder="Max">
-                        <label asp-for="FirstName">First Name</label>
-                        <span class="text-danger" asp-validation-for="FirstName"></span>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input form="OrderForm" asp-for="LastName" class="form-control" id="floatingInput" placeholder="Max">
-                        <label asp-for="LastName">Last Name</label>
-                        <span class="text-danger" asp-validation-for="LastName"></span>
+                        <input form="OrderForm" asp-for="Fullname" class="form-control" id="floatingInput" placeholder="Max">
+                        <label asp-for="Fullname">First Name</label>
+                        <span class="text-danger" asp-validation-for="Fullname"></span>
                     </div>
                     <div class="form-floating mb-3">
                         <input form="OrderForm" asp-for="Email" type="email" class="form-control" id="floatingInput" placeholder="Max">
@@ -43,11 +38,6 @@
                 </div>
                 <form method="post" id="OrderForm">
                 <div class="col">
-                    <div class="form-floating mb-3">
-                        <input asp-for="Phone" class="form-control" id="floatingInput" placeholder="Max">
-                        <label asp-for="Phone">Phone</label>
-                        <span class="text-danger" asp-validation-for="Phone"></span>
-                    </div>
                     <div class="form-floating mb-3">
                         <input asp-for="Company" class="form-control" id="floatingInput" placeholder="Max">
                         <label asp-for="Company">Company</label>

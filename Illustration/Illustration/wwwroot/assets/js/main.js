@@ -299,11 +299,17 @@ $(document).on("click", ".myaccount-delete-icon-a", function (e) {
                     else {
                         Swal.fire({
                             icon: 'error',
-                            title: 'Slider not found!',
+                            title: 'Portrait not found!',
                             text: 'Something went wrong!',
                         })
                     }
                 })
         }
     })
+})
+
+let connection = new signalR.HubConnectionBuilder().withUrl("/illustratorhub").build();
+
+connection.start().then(function () {
+
 })

@@ -72,7 +72,7 @@
                 <div style="text-align: center;" class="col pt-3">
                     <h3>@Model.Portrait.Name</h3>
                     <h4>$@Model.Portrait.SalePrice</h4>
-                    <small>@Model.Portrait.Info....</small>
+                    <small>Welcome to this magnificent auction, where you have the opportunity to become the owner of this unparalleled portrait. However, to do so, you need to offer a price that exceeds all others. Before the bidding begins, please familiarize yourself with some rules. To place your bid, you need to click on the hand icon, and the computer will automatically offer a bid that will be 5% of the initial value of the portrait, plus the cost of the portrait. If no one makes a higher bid within 10 seconds, the portrait will be sold to the last participant who made a bid. Good luck in the bidding!</small>
                     <hr>
                     <small style="color:#565656;">@Model.Portrait.CreatAt</small>
                 </div>
@@ -169,11 +169,6 @@
 @section Scripts{
     <script>
        
-        let connection = new signalR.HubConnectionBuilder().withUrl("/illustratorhub").build();
-
-        connection.start().then(function () {
-
-        })
 
         connection.on("SetAsOffline", function (userId) {
 
@@ -284,23 +279,6 @@
            }
 
             firstFunction(secondFunction);
-
-
-
-           
-            function delayedAction() {
-                
-                clearTimeout(timeoutId);
-
-                timeoutId = setTimeout(() => {
-                    document.getElementById("mysoldimageid").style.display="block";
-                    document.getElementById("groupmessageinput").setAttribute('disabled', 'disabled');
-                    document.getElementById("groupMessageSenderinmine").setAttribute('disabled', 'disabled');
-                    document.getElementById("myportraitoffer").style.pointerEvents = "none";
-                }, 10000);
-            }
-
-            delayedAction();
               
         })
 
@@ -314,6 +292,27 @@
                                               </div>
                                          </div>
                                 `
+
+            function delayedAction() {
+                
+                clearTimeout(timeoutId);
+
+                timeoutId = setTimeout(() => {
+                    document.getElementById("mysoldimageid").style.display="block";
+                    document.getElementById("groupmessageinput").setAttribute('disabled', 'disabled');
+                    document.getElementById("groupMessageSenderinmine").setAttribute('disabled', 'disabled');
+                    document.getElementById("myportraitoffer").style.pointerEvents = "none";
+                    var link = `/Auktion/MakeOrder?offerprice=${offerPrice}&&username=${name}`
+                    fetch(link)
+                        .then(response => {
+                            return response.text();
+                        }).then(data => {
+
+                        })
+                }, 10000);
+            }
+
+            delayedAction();
         })
 
     </script>

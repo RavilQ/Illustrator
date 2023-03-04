@@ -235,8 +235,10 @@
         </section>
     </main>
 
+    <input id="meyhiddenmessage" type="hidden" value="@ViewBag.admin"/>
+    <input id="meyidihiddenmessage" type="hidden" value="@Model.User.Id"/>
+    <input id="meynameihiddenmessage" type="hidden" value="@Model.User.Fullname"/>
 
-   
     <script>
         ScrollReveal().reveal('.headline');
 
@@ -299,18 +301,14 @@
 @section Scripts{
     <script>
 
-
-        let connection = new signalR.HubConnectionBuilder().withUrl("/illustratorhub").build();
-
-        connection.start().then(function () {
-
-        })
-
         document.getElementById("userMessageSenderinmine").addEventListener("click", function (e) {
             e.preventDefault();
             var message = document.getElementById("usermessageinput").value;
-            var name = "Elariz"
-            connection.invoke("SendMessageUser", name, message);
+            var name = document.getElementById("meynameihiddenmessage").value;
+            var image = document.getElementById("usermessageimagesend").value;
+            var hiddenmesage = document.getElementById("meyhiddenmessage").value;
+            var mayid = document.getElementById("meyidihiddenmessage").value;
+            connection.invoke("SendMessageUser", name, message, hiddenmesage, mayid, image);
 
             var link = `/Account/InboxMessageSend?MyMessage=${message}`
 

@@ -59,6 +59,12 @@
                          </div>
                          <a><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
                         }
+                        else if(item.IsAuktion){
+                         <div style="position: absolute;padding: 10% 5%;background-color: black;color: white;border-radius: 50%;font-family: cursive;">
+                            Auktion
+                         </div>
+                         <a asp-controller="Auktion" asp-action="Index" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
+                        }
                         else{
                           <a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
                           <a asp-controller="Portrait" asp-action="AddToWishList" asp-route-id="@item.Id" class="my-add-hover add-to-wishlist"><span>Add To Wish List</span></a>

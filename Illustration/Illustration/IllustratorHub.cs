@@ -65,21 +65,22 @@ namespace Illustration
         }
 
 
-        public async Task SendMessage(string name, string message)
+        public async Task SendMessage(string name, string message, string hiddenmessage)
         {
             if (_acessor.HttpContext.User.Identity.IsAuthenticated)
             {
                 await Clients.All.SendAsync("RecieveMessagee", name, message);
-                await Clients.All.SendAsync("RecievMessage", name, message);
+                await Clients.User(hiddenmessage).SendAsync("RecievMessage", name, message);
             }
         }
 
-        public async Task SendMessageUser(string name, string message)
+        public async Task SendMessageUser(string name, string message, string hiddenmesage, string mayid, string image)
         {
             if (_acessor.HttpContext.User.Identity.IsAuthenticated)
             {
-                await Clients.All.SendAsync("RecieveMessage", name, message);
-                await Clients.All.SendAsync("RecievMessage2", name, message);
+                await Clients.User(mayid).SendAsync("RecieveMessage", name, message);
+                await Clients.User(hiddenmesage).SendAsync("RecievMessage2", name, message);
+                await Clients.All.SendAsync("RecievMessage3", name, image);
             }
         }
 

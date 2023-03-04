@@ -164,12 +164,10 @@ namespace Illustration.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(270)
                         .HasColumnType("nvarchar(270)");
 
                     b.Property<string>("AditionalInformation")
-                        .IsRequired()
                         .HasMaxLength(370)
                         .HasColumnType("nvarchar(370)");
 
@@ -177,12 +175,10 @@ namespace Illustration.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasMaxLength(170)
                         .HasColumnType("nvarchar(170)");
 
                     b.Property<string>("Company")
-                        .IsRequired()
                         .HasMaxLength(70)
                         .HasColumnType("nvarchar(70)");
 
@@ -194,12 +190,7 @@ namespace Illustration.Migrations
                         .HasMaxLength(70)
                         .HasColumnType("nvarchar(70)");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(70)
-                        .HasColumnType("nvarchar(70)");
-
-                    b.Property<string>("LastName")
+                    b.Property<string>("Fullname")
                         .IsRequired()
                         .HasMaxLength(70)
                         .HasColumnType("nvarchar(70)");
@@ -208,9 +199,6 @@ namespace Illustration.Migrations
                         .HasMaxLength(570)
                         .HasColumnType("nvarchar(570)");
 
-                    b.Property<long>("Phone")
-                        .HasColumnType("bigint");
-
                     b.Property<int?>("PortraitId")
                         .HasColumnType("int");
 
@@ -218,7 +206,6 @@ namespace Illustration.Migrations
                         .HasColumnType("tinyint");
 
                     b.Property<string>("ZipCode")
-                        .IsRequired()
                         .HasMaxLength(70)
                         .HasColumnType("nvarchar(70)");
 

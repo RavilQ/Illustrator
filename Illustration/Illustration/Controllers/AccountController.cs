@@ -17,6 +17,8 @@ using Newtonsoft.Json;
 using static DotNetOpenAuth.OpenId.Extensions.AttributeExchange.WellKnownAttributes;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Drawing.Printing;
+using System.Drawing;
+using Microsoft.AspNetCore.Http;
 
 namespace Illustration.Controllers
 {
@@ -52,7 +54,8 @@ namespace Illustration.Controllers
 
             ViewBag.pageSize = pageSize;
             ViewBag.pageNumber = page;
-
+            var admin = _context.AppUsers.FirstOrDefault(x => x.HasMember == false);
+            ViewBag.admin = admin.Id;
             if (ViewBag.wishitems == null)
             {
                 return View("Error");
@@ -261,7 +264,18 @@ namespace Illustration.Controllers
                 }
             }
 
-            var newName = FileHelper.Save(portrait.PosterImage, _env.WebRootPath, "Uploads/Portraits");
+            var stream = portrait.PosterImage.OpenReadStream();
+            var imagee = Image.FromStream(stream);
+
+            var resizedImage = imagee.GetThumbnailImage(594, 787, null, IntPtr.Zero);
+
+            using var ms = new MemoryStream();
+            resizedImage.Save(ms, imagee.RawFormat);
+            ms.Position = 0;
+
+            var resizedFile = new FormFile(ms, 0,ms.Length, portrait.PosterImage.Name, portrait.PosterImage.FileName);
+
+            var newName = FileHelper.Save(resizedFile, _env.WebRootPath, "Uploads/Portraits");
 
             PortraitImage image = new PortraitImage
             {
@@ -278,10 +292,21 @@ namespace Illustration.Controllers
             {
                 foreach (var images in portrait.OtherImages)
                 {
+                    var stream2 = images.OpenReadStream();
+                    var imagee2 = Image.FromStream(stream2);
+
+                    var resizedImage2 = imagee2.GetThumbnailImage(768, 1013, null, IntPtr.Zero);
+
+                    using var ms2 = new MemoryStream();
+                    resizedImage2.Save(ms2, imagee2.RawFormat);
+                    ms2.Position = 0;
+
+                    var resizedFile2 = new FormFile(ms2, 0, ms2.Length, images.Name, images.FileName);
+
                     PortraitImage imagess = new PortraitImage
                     {
 
-                        Image = FileHelper.Save(images, _env.WebRootPath, "Uploads/Portraits"),
+                        Image = FileHelper.Save(resizedFile2, _env.WebRootPath, "Uploads/Portraits"),
                         ImageStatus = false,
                         Portrait = portrait
                     };
@@ -389,7 +414,18 @@ namespace Illustration.Controllers
 
             if (portrait.PosterImage != null)
             {
-                var newName = FileHelper.Save(portrait.PosterImage, _env.WebRootPath, "Uploads/Portraits");
+                var stream = portrait.PosterImage.OpenReadStream();
+                var imagee = Image.FromStream(stream);
+
+                var resizedImage = imagee.GetThumbnailImage(594, 787, null, IntPtr.Zero);
+
+                using var ms = new MemoryStream();
+                resizedImage.Save(ms, imagee.RawFormat);
+                ms.Position = 0;
+
+                var resizedFile = new FormFile(ms, 0, ms.Length, portrait.PosterImage.Name, portrait.PosterImage.FileName);
+
+                var newName = FileHelper.Save(resizedFile, _env.WebRootPath, "Uploads/Portraits");
                 FileHelper.Delete(_env.WebRootPath, "Uploads/Portraits", oldPosterImage.Image);
                 _context.PortraitImages.Remove(oldPosterImage);
                 PortraitImage image = new PortraitImage
@@ -418,10 +454,21 @@ namespace Illustration.Controllers
 
                 foreach (var images in portrait.OtherImages)
                 {
+                    var stream2 = images.OpenReadStream();
+                    var imagee2 = Image.FromStream(stream2);
+
+                    var resizedImage2 = imagee2.GetThumbnailImage(768, 1013, null, IntPtr.Zero);
+
+                    using var ms2 = new MemoryStream();
+                    resizedImage2.Save(ms2, imagee2.RawFormat);
+                    ms2.Position = 0;
+
+                    var resizedFile2 = new FormFile(ms2, 0, ms2.Length, images.Name, images.FileName);
+
                     PortraitImage imagess = new PortraitImage
                     {
 
-                        Image = FileHelper.Save(images, _env.WebRootPath, "Uploads/Portraits"),
+                        Image = FileHelper.Save(resizedFile2, _env.WebRootPath, "Uploads/Portraits"),
                         ImageStatus = false,
                         Portrait = portrait
                     };
@@ -434,8 +481,6 @@ namespace Illustration.Controllers
             oldPortrait.Dimention = portrait.Dimention;
             oldPortrait.Weight = portrait.Weight;
             oldPortrait.Info = portrait.Info;
-            oldPortrait.IsAuktion = portrait.IsAuktion;
-            oldPortrait.IsSpecial = portrait.IsSpecial;
             oldPortrait.StockStatus = portrait.StockStatus;
             oldPortrait.CreatAt = portrait.CreatAt;
             oldPortrait.CostPrice = portrait.CostPrice;
@@ -1056,5 +1101,6 @@ namespace Illustration.Controllers
 
             return true;
         }
+
     }
 }

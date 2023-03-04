@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "b82Ye2cwo5ikeALip4ZaI3FN41a8nw3+2uMxHGUvKiY=",
+  "Hash": "1+yFwmIACxKnDm8klYy07TXSXI595XxLO/6vFIPbpoc=",
   "Source": "Illustration",
   "BasePath": "_content/Illustration",
   "Mode": "Default",
@@ -3961,6 +3961,23 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\14263049-af72-47d2-9321-c74631e21dafshop-img-21-768x1013.jpg"
     },
     {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\19fd3c9c-a096-4744-973f-6b1aa5b6279eaboutusperson4-lq.jpg",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/19fd3c9c-a096-4744-973f-6b1aa5b6279eaboutusperson4-lq.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\19fd3c9c-a096-4744-973f-6b1aa5b6279eaboutusperson4-lq.jpg"
+    },
+    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\1b3d9756-69cf-4bf0-b7f3-ea4a19cf30e2h14-shop-img-13-594x787.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -4182,6 +4199,23 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\36a8a604-f9fd-4a6d-be48-23d59c5b3ffeshop-img-3-768x1013.jpg"
     },
     {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\3a50c7e1-24d0-4686-ac57-8fa64326b0b5midjourney1.png",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/3a50c7e1-24d0-4686-ac57-8fa64326b0b5midjourney1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\3a50c7e1-24d0-4686-ac57-8fa64326b0b5midjourney1.png"
+    },
+    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\3eb69dbf-d0a1-4775-a95c-06e3c3e55e1dshop-book-product-gallery-1-1-768x1013.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -4231,6 +4265,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\43c2f329-7e7a-42fc-8d70-41dfff7ea9edh14-shop-img-12-594x787.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\45f06eee-68b6-4505-8fc9-81eb4a7334feScreenshot 2023-02-12 192906.png",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/45f06eee-68b6-4505-8fc9-81eb4a7334feScreenshot 2023-02-12 192906.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\45f06eee-68b6-4505-8fc9-81eb4a7334feScreenshot 2023-02-12 192906.png"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\47ca9601-ad04-4db0-ad21-66602712d367Screenshot 2023-02-12 192810.png",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/47ca9601-ad04-4db0-ad21-66602712d367Screenshot 2023-02-12 192810.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\47ca9601-ad04-4db0-ad21-66602712d367Screenshot 2023-02-12 192810.png"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\4841bc71-6e81-40d7-a150-1758bec5ab4abatman2.jpg",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/4841bc71-6e81-40d7-a150-1758bec5ab4abatman2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\4841bc71-6e81-40d7-a150-1758bec5ab4abatman2.jpg"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\4902af6f-e906-4dae-a8d9-7f3393bd0664shop-img-7-768x1013.jpg",
@@ -4284,12 +4369,12 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\4cfa2372-c774-4b90-94ec-71ce3004d6ccshop-img-42-768x1013.jpg"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\4fedc5bf-7abc-47e8-a4a1-c37048c3a129midjourney1.png",
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\509a7c9d-a241-452e-af5d-f286392eed51Screenshot 2023-02-12 192749.png",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
       "BasePath": "_content/Illustration",
-      "RelativePath": "Uploads/Portraits/4fedc5bf-7abc-47e8-a4a1-c37048c3a129midjourney1.png",
+      "RelativePath": "Uploads/Portraits/509a7c9d-a241-452e-af5d-f286392eed51Screenshot 2023-02-12 192749.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -4298,7 +4383,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\4fedc5bf-7abc-47e8-a4a1-c37048c3a129midjourney1.png"
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\509a7c9d-a241-452e-af5d-f286392eed51Screenshot 2023-02-12 192749.png"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\50d884b9-6018-4f4c-9840-72a26f55d2d9shop-img-2-768x1013.jpg",
@@ -4316,23 +4401,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\50d884b9-6018-4f4c-9840-72a26f55d2d9shop-img-2-768x1013.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\52df385d-3663-42f3-bc0b-e765043b6ea3Screenshot 2023-02-12 192810.png",
-      "SourceId": "Illustration",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
-      "BasePath": "_content/Illustration",
-      "RelativePath": "Uploads/Portraits/52df385d-3663-42f3-bc0b-e765043b6ea3Screenshot 2023-02-12 192810.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\52df385d-3663-42f3-bc0b-e765043b6ea3Screenshot 2023-02-12 192810.png"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\543feda8-6842-4dfb-a5b6-324fc15fe976shop-book-product-gallery-2-1-768x1013.jpg",
@@ -4420,12 +4488,12 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\64f290c0-3ef3-4ede-9206-654fdbace218shop-img-35-768x1013.jpg"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\6f262d32-ae85-4fcd-aef0-a6d117078522Screenshot 2023-02-12 192424.png",
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\6780c8cd-57d3-4cb0-86b7-bcfdce6abf23About-us-person-3.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
       "BasePath": "_content/Illustration",
-      "RelativePath": "Uploads/Portraits/6f262d32-ae85-4fcd-aef0-a6d117078522Screenshot 2023-02-12 192424.png",
+      "RelativePath": "Uploads/Portraits/6780c8cd-57d3-4cb0-86b7-bcfdce6abf23About-us-person-3.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -4434,7 +4502,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\6f262d32-ae85-4fcd-aef0-a6d117078522Screenshot 2023-02-12 192424.png"
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\6780c8cd-57d3-4cb0-86b7-bcfdce6abf23About-us-person-3.jpg"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\7257b9d9-0f8a-4be3-a1a1-f60a66d41d92shop-img-22-768x1013.jpg",
@@ -4488,6 +4556,23 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\7500aa77-030c-459b-b05d-b52dc09711e5shop-img-26-768x1013.jpg"
     },
     {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\7811a613-b673-4d81-a2af-94c20a868d45Screenshot 2023-02-12 192424.png",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/7811a613-b673-4d81-a2af-94c20a868d45Screenshot 2023-02-12 192424.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\7811a613-b673-4d81-a2af-94c20a868d45Screenshot 2023-02-12 192424.png"
+    },
+    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\7d5e6269-1993-425c-91b1-5208aa79a01eh14-shop-img-1-594x787.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -4539,23 +4624,6 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\7f7024e3-516d-4eb6-b81a-915d77ddd1e2shop-img-37-768x1013.jpg"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\8241cea8-7129-40a7-8450-f05571890fc5Screenshot 2023-02-12 192553.png",
-      "SourceId": "Illustration",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
-      "BasePath": "_content/Illustration",
-      "RelativePath": "Uploads/Portraits/8241cea8-7129-40a7-8450-f05571890fc5Screenshot 2023-02-12 192553.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\8241cea8-7129-40a7-8450-f05571890fc5Screenshot 2023-02-12 192553.png"
-    },
-    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\898d6002-dded-4b00-9bff-db691d936cf0Screenshot 2023-02-12 192424.png",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -4573,12 +4641,12 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\898d6002-dded-4b00-9bff-db691d936cf0Screenshot 2023-02-12 192424.png"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\9554a1bc-745f-4d80-adde-4af24e81a613Screenshot 2023-02-12 192749.png",
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\898ef7c7-3e33-4ace-9425-5ea1b7bd2a55realistic1.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
       "BasePath": "_content/Illustration",
-      "RelativePath": "Uploads/Portraits/9554a1bc-745f-4d80-adde-4af24e81a613Screenshot 2023-02-12 192749.png",
+      "RelativePath": "Uploads/Portraits/898ef7c7-3e33-4ace-9425-5ea1b7bd2a55realistic1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -4587,7 +4655,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\9554a1bc-745f-4d80-adde-4af24e81a613Screenshot 2023-02-12 192749.png"
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\898ef7c7-3e33-4ace-9425-5ea1b7bd2a55realistic1.jpg"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\9617e615-26c4-42ff-a461-6616f0232586h14-shop-img-3-594x787.jpg",
@@ -4624,23 +4692,6 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\9628c20b-b1fe-43a5-a3da-a1f2b3593c9dh14-shop-img-14-594x787.jpg"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\99a5f7a0-9bfd-4948-9ed7-8be9471f31e1Screenshot 2023-02-12 192932.png",
-      "SourceId": "Illustration",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
-      "BasePath": "_content/Illustration",
-      "RelativePath": "Uploads/Portraits/99a5f7a0-9bfd-4948-9ed7-8be9471f31e1Screenshot 2023-02-12 192932.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\99a5f7a0-9bfd-4948-9ed7-8be9471f31e1Screenshot 2023-02-12 192932.png"
-    },
-    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\9a3f45bd-2957-4151-bc3f-927031575bc2shop-img-23-768x1013.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -4673,23 +4724,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\a3f9e961-8735-4a54-ad65-6ebdebb3666cshop-img-47-768x1013.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\aa2b46e6-23dd-4388-99e9-723944a7e03cbatman2.jpg",
-      "SourceId": "Illustration",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
-      "BasePath": "_content/Illustration",
-      "RelativePath": "Uploads/Portraits/aa2b46e6-23dd-4388-99e9-723944a7e03cbatman2.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\aa2b46e6-23dd-4388-99e9-723944a7e03cbatman2.jpg"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\ac7cd547-a316-47c9-ac3e-e2854c59f140shop-img-9-768x1013.jpg",
@@ -4828,6 +4862,23 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\b83b92d3-6a69-48c5-ab0f-39ae89ed2fd7shop-book-product-1-594x787.jpg"
     },
     {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\bad8c2ed-05af-4f1d-ac91-730be31c5df2Screenshot 2023-02-12 192932.png",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/bad8c2ed-05af-4f1d-ac91-730be31c5df2Screenshot 2023-02-12 192932.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\bad8c2ed-05af-4f1d-ac91-730be31c5df2Screenshot 2023-02-12 192932.png"
+    },
+    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\c0ddec05-a636-4f57-85ae-7e83d1b622d3shop-img-32-768x1013.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -4894,6 +4945,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\cc728ab7-31a0-4a97-9c01-b0062f1f3663h14-shop-img-8-594x787.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\d609bb8e-3b3e-4b68-94f4-76529be44d27Screenshot 2023-02-12 192553.png",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/d609bb8e-3b3e-4b68-94f4-76529be44d27Screenshot 2023-02-12 192553.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\d609bb8e-3b3e-4b68-94f4-76529be44d27Screenshot 2023-02-12 192553.png"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\d67d0cc7-bdc0-4f80-9257-a8bb29e7b62dshop-img-40-768x1013.jpg",
@@ -5015,23 +5083,6 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\e7954481-8f84-4244-9998-fe2343914d6dh14-shop-img-5-594x787.jpg"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\eede8037-caaf-467b-a65f-da59e58b30b7Screenshot 2023-02-12 192906.png",
-      "SourceId": "Illustration",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
-      "BasePath": "_content/Illustration",
-      "RelativePath": "Uploads/Portraits/eede8037-caaf-467b-a65f-da59e58b30b7Screenshot 2023-02-12 192906.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\eede8037-caaf-467b-a65f-da59e58b30b7Screenshot 2023-02-12 192906.png"
-    },
-    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\ef7c04d3-af35-4bb9-8f6f-8f685aaf85dch14-shop-img-16-594x787.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -5081,23 +5132,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\f33d2a3c-8e4f-4616-949d-df94efa09470h14-shop-img-9-594x787.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\f8f6689d-d1bb-47f6-bbce-5f09d30b94acrealistic1.jpg",
-      "SourceId": "Illustration",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
-      "BasePath": "_content/Illustration",
-      "RelativePath": "Uploads/Portraits/f8f6689d-d1bb-47f6-bbce-5f09d30b94acrealistic1.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\f8f6689d-d1bb-47f6-bbce-5f09d30b94acrealistic1.jpg"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\fae032a8-a4c5-4dc4-8030-d07ddb744604shop-img-28-768x1013.jpg",

@@ -287,3 +287,18 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+
+.connection-dot {
+    padding: 0px 10px;
+    border-radius: 100%;
+    position: relative;
+    right: 1rem;
+}
+
+.connection-dot-online {
+    background-color: green;
+}
+
+.connection-dot-offline {
+    background-color: grey;
+}

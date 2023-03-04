@@ -130,18 +130,12 @@
 @section scripts{
     <script>
 
-        let connection = new signalR.HubConnectionBuilder().withUrl("/illustratorhub").build();
-
-        connection.start().then(function () {
-
-        })
-
         document.getElementById("AdminMessageSender").addEventListener("click", function (e) {
             e.preventDefault();
             var message = document.getElementById("AdminMessageInputer").value;
             var hiddenmessage = document.getElementById("Adminmessagehiddeninput").value;
-            var name = "Elariz"
-            connection.invoke("SendMessage", name, message);
+            var name = document.getElementById("adminmessagefullnamesend").value;
+            connection.invoke("SendMessage", name, message, hiddenmessage);
 
             var link = `/AdminPanel/Message/AdminAnswer?MyMessage=${message}&&AppUserId=${hiddenmessage}`
 
