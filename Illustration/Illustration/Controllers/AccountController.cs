@@ -44,23 +44,11 @@ namespace Illustration.Controllers
         }
 
         [Authorize(Roles = "Member")]
-        public async Task<IActionResult> Profile(int? page = 1)
+        public async Task<IActionResult> Profile()
         {
-            int pageSize = 3;
-
-            var wishitems = _context.WishListItems.ToList();
-            Pagination<WishListItem> paginatedList = new Pagination<WishListItem>();
-            ViewBag.wishitems = paginatedList.GetPagedNames(wishitems, page, pageSize);
-
-            ViewBag.pageSize = pageSize;
-            ViewBag.pageNumber = page;
             var admin = _context.AppUsers.FirstOrDefault(x => x.HasMember == false);
             ViewBag.admin = admin.Id;
-            if (ViewBag.wishitems == null)
-            {
-                return View("Error");
-            }
-
+   
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             AccountDetailViewModel viewModel = new AccountDetailViewModel
@@ -70,7 +58,7 @@ namespace Illustration.Controllers
                 Email = user.Email
             };
 
-            var portraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            var portraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.AppUserId == user.Id && x.StockStatus==true).ToList();
 
             ProfileViewModel model = new ProfileViewModel();
             model.Portraits = portraits;
@@ -78,7 +66,7 @@ namespace Illustration.Controllers
             model.MyOrders = _context.Orders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
             model.User = user;
             model.ViewModel = viewModel;
-            model.SaleOrders = _context.Orders.Include(x=>x.Portrait).Where(x =>portraits.Contains(x.Portrait)).ToList();
+            model.SaleOrders = _context.Orders.Include(x=>x.Portrait).Include(x=>x.AppUser).Where(x =>portraits.Contains(x.Portrait)).ToList();
             model.Messages = _context.ContactMessages.Include(x => x.AppUser).Where(x=>x.AppUserId==user.Id).ToList();
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();

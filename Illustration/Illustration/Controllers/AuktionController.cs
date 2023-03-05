@@ -120,9 +120,10 @@ namespace Illustration.Controllers
 
         public async Task<IActionResult> MakeOrder(int offerprice,string username)
         {
+           
             var user = await _userManager.FindByNameAsync(username);
 
-            var offer = _context.OfferPortraits.Include(x=>x.Portrait).FirstOrDefault(x => x.AppUserId == user.Id);
+            var offer = _context.OfferPortraits.Include(x=>x.Portrait).FirstOrDefault(x => x.PortraitId == offerprice);
 
             var portrait = _context.Portraits.FirstOrDefault(x => x.Id == offer.PortraitId);
             
@@ -136,8 +137,18 @@ namespace Illustration.Controllers
                 Fullname = user.Fullname
             };
 
+            var forbiddenorder = _context.Orders.FirstOrDefault(x => x.PortraitId == order.PortraitId);
+
+            if (forbiddenorder!=null)
+            {
+                return Ok();
+            }
+
+            var messagelist = _context.GroupMessages.ToList();
+
             portrait.StockStatus = false;
             _context.Orders.Add(order);
+            _context.GroupMessages.RemoveRange(messagelist);
             _context.SaveChanges();
 
             return Ok();

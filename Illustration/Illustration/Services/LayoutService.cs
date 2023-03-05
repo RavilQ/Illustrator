@@ -32,7 +32,9 @@ namespace Illustration.Services
             {
                 string UserId = _accessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                wishList = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).ToList();
+                //var user = await _userManager.FindByNameAsync(_accessor.HttpContext.User.Identity.Name);
+
+                wishList = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x=>x.AppUserId== UserId).ToList();
             }
             else
             {

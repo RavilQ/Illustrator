@@ -114,6 +114,24 @@
                                     <div class="col-12 col-lg-7 col-xl-9">
                                         <div style="height: 88%;" class="position-relative">
                                             <div id="groupmessageinboxconfirm" style="height: 100%;" class="chat-messages p-4">
+
+
+                                                <div class="chat-message-left pb-4">
+                                                    <div class="me-2">
+                                                        <img src="~/Uploads/Users/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                                    </div>
+                                                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                                        <div style="font-family:cursive;" class="font-weight-bold mb-1">Admin</div>
+                                                        Welcome to this magnificent auction, where you have the opportunity to become the owner of this unparalleled portrait. However, to do so, you need to offer a price that exceeds all others. Before the bidding begins, please familiarize yourself with some rules. To place your bid, you need to click on the hand icon, and the computer will automatically offer a bid that will be 5% of the initial value of the portrait, plus the cost of the portrait. If no one makes a higher bid within 10 seconds, the portrait will be sold to the last participant who made a bid.Remember, this portrait is a unique piece of art and a valuable investment that could appreciate in value over time. So, don't hesitate to make your bid count and secure your chance to own this masterpiece.It's important to note that bidding in an auction requires careful consideration of your financial situation and the value of the item you're bidding on. Make sure you have set a maximum bid amount before entering the auction, and stick to it to avoid overspending.
+
+                                                        Don't get caught up in the excitement of the bidding process and end up bidding beyond your means. Remember that there may be additional fees such as taxes and shipping costs that will add to the final price.
+
+                                                        Take the time to research the value and authenticity of the portrait to ensure you're making an informed decision. And if you have any questions, don't hesitate to ask the auctioneer or a representative for clarification.
+
+                                                        Good luck and may the highest bidder win this exceptional piece of art!
+                                                    </div>
+                                                </div>
+
                                                 @foreach (var item in Model.GroupMessages)
                                                 {
                                                     if (item.AppUser.UserName == User.Identity.Name)
@@ -141,8 +159,7 @@
                                                     }
                                                 }
 
-                                   
-                                                <img id="mysoldimageid" style="position: absolute; display:none;" src="~/assets/images/sold3.png" alt="">
+                                            <img id="mysoldimageid" style="display:none;position:absolute;width: 90%;" src="~/assets/images/sold3.png" alt="">
                                             </div>
                                         </div>
 
@@ -166,6 +183,7 @@
    <input id="mysignalrinputname" type="hidden" value="@User.Identity.Name" />
    <input id="mysignalrinputimage" type="hidden" value="@user.Image" />
    <input id="offervalue2formy" type="hidden" value="@((decimal)(Model.Portrait.SalePrice * 5 / 100))" />
+   <input id="portraitidforlastfegtch" type="hidden" value="@Model.Portrait.Id" />
 @section Scripts{
     <script>
        
@@ -283,6 +301,7 @@
         })
 
         
+
         connection.on("OfferForAll", function (name, offerPrice) {
             var destination = document.getElementById("groupmessageinboxconfirm");
             destination.innerHTML += `   <div class="chat-message-center pb-4">
@@ -293,7 +312,7 @@
                                          </div>
                                 `
 
-            function delayedAction() {
+            function delayedAction(name, offerPrice) {
                 
                 clearTimeout(timeoutId);
 
@@ -302,18 +321,31 @@
                     document.getElementById("groupmessageinput").setAttribute('disabled', 'disabled');
                     document.getElementById("groupMessageSenderinmine").setAttribute('disabled', 'disabled');
                     document.getElementById("myportraitoffer").style.pointerEvents = "none";
-                    var link = `/Auktion/MakeOrder?offerprice=${offerPrice}&&username=${name}`
-                    fetch(link)
-                        .then(response => {
-                            return response.text();
-                        }).then(data => {
 
-                        })
+                    lastfetch(name,offerPrice);
+ 
+
                 }, 10000);
             }
 
-            delayedAction();
+            delayedAction(name, offerPrice);
         })
+
+
+        function lastfetch(name, offerPrice) {
+            var potraitaydi = $("#portraitidforlastfegtch").val();
+            var linked = `/Auktion/MakeOrder?offerprice=${potraitaydi}&&username=${name}`;
+            var nameadd = $("#mysignalrinputname").val();
+            if(nameadd==name){
+                fetch(linked)
+                    .then(response => {
+                        return response.text();
+                    }).then(data => {
+                        console.log(data);
+                    });
+                lastfetch.called = true;
+            }          
+        }
 
     </script>
 }

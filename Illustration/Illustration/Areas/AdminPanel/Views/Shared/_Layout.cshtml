@@ -176,6 +176,7 @@
 <script src="~/AdminPanel/assets/js/MyMain.js"></script>
 
     <script>
+
         let connection = new signalR.HubConnectionBuilder().withUrl("/illustratorhub").build();
 
         connection.start().then(function () {

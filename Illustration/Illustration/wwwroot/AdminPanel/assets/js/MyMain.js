@@ -34,3 +34,4 @@ $(document).on("click", ".slider-delete-btn", function (e) {
         }
     })
 })
+
