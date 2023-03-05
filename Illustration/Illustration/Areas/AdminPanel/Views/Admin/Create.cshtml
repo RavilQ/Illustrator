@@ -1,0 +1,37 @@
+﻿@using Illustration.Areas.AdminPanel.ViewModel
+
+@model AdminCreateViewModel
+
+<div class="container-fluid pt-4 px-4">
+    <div class="col-12">
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Create Admin</h6>
+                <form method="post">
+                    <div class="mb-3">
+                        <label asp-for="Fullname" class="form-label">Fullname</label>
+                        <input asp-for="Fullname" class="form-control">
+                        <span class="text-danger" asp-validation-for="Fullname"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Username" class="form-label">Username</label>
+                        <input asp-for="Username" class="form-control">
+                        <span class="text-danger" asp-validation-for="Username"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label">Password</label>
+                        <input asp-for="Password" class="form-control">
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                        <input asp-for="ConfirmPassword" class="form-control">
+                        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                    </div>
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,7 @@ using System.Linq;
 namespace Illustration.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class MessageController : Controller
     {
         private readonly IllustratorDbContext _context;

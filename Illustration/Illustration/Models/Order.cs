@@ -26,6 +26,7 @@ namespace Illustration.Models
         public string? AditionalInformation { get; set; }
         public string? AppUserId { get; set; }
         public int? PortraitId { get; set; }
+        public int? Price { get; set; }
 
         public AppUser? AppUser { get; set; }
         public Portrait? Portrait { get; set; }

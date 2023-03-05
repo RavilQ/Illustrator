@@ -9,7 +9,7 @@ using System.Data;
 namespace Illustration.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class UserController : Controller
     {
         private readonly IllustratorDbContext _context;

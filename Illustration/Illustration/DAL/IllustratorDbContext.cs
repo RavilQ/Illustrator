@@ -26,5 +26,6 @@ namespace Illustration.DAL
         public DbSet<ContactMessage> ContactMessages { get; set; }
         public DbSet<GroupMessage> GroupMessages { get; set; }
         public DbSet<OfferPortrait> OfferPortraits { get; set; }
+        public DbSet<TodoList> TodoLists { get; set; }
     }
 }

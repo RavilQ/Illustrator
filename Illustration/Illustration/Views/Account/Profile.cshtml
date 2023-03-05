@@ -2,11 +2,6 @@
 
 @model ProfileViewModel
 
-@{
-    var start = DateTime.UtcNow.AddHours(4);
-    //var oldDate = DateTime.Parse("02/25/2023 03:40:31");
-}
-
     <main>
         <section style="background-color: #131313;position: relative;bottom: 3.5rem;">
             <h1 class="container" style="max-width: 90%;">My Account</h1>
@@ -40,45 +35,7 @@
                                 Messages
                             </h3>
                             <hr>
-                              @*@foreach (var item in Model.Messages)
-                              {
-                                var alma = item.CreatAt;
-                                <a style="text-decoration:none;color:black;" href="#">
-                                    <div class="card">
-                                        <div style="display: flex;">
-                                            <div style=" display: flex;align-items: center;">
-                                                <img style="border-radius: 50%;width: 74%;margin-left: 10%;" src="~/Uploads/Users/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="" alt="card-horizontal-image">
-                                            </div>
-                                            <div>
-                                                <div>
-                                                    @if (item.Text.Length > 38)
-                                                    {
-                                                        <h5>@item.Text.Substring(0, 38) ...</h5>
-                                                    }
-                                                    else
-                                                    {
-                                                        <h5>@item.Text</h5>
-                                                    }
-                                                    @if ((start - alma).Days >= 1)
-                                                    {
-                                                        <p><small class="text-muted">@((start - alma).Days) days ago</small></p>
-                                                    }
-                                                    else if ((start - alma).Hours >= 1)
-                                                    {
-                                                        <p><small class="text-muted">@((start - alma).Hours) hours ago</small></p>
-                                                    }
-                                                    else
-                                                    {
-                                                        <p><small class="text-muted">@((start - alma).Minutes) mins ago</small></p>
-                                                    }
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>                     
-                              }*@
-
+                    
                               @await Html.PartialAsync("_inboxMessagesPartial",Model.Messages)
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -93,7 +50,7 @@
                                     <img src="~/Uploads/Portraits/@item.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
                                     <h3>@item.Portrait.Name</h3>
                                     <div>@item.CreatAt</div>
-                                    <div>$@item.Portrait.SalePrice</div>
+                                    <div>$@item.Price</div>
                                     <div><span class="badge bg-dark">@item.Status</span></div>
                                     </div>
                                 }

@@ -14,6 +14,8 @@ namespace Illustration.Models
         [MaxLength(90)]
         public string ConnectionId { get; set; }
         public DateTime LastConnectedAt { get; set; }
+        [MaxLength(50)]
+        public string? RoleName { get; set; }
         [NotMapped]
         public IFormFile? PosterImage { get; set; } 
     }

@@ -23,7 +23,7 @@ namespace Illustration.Areas.AdminPanel.Controllers
         {
             AppUser admin = new AppUser
             {
-                UserName = "Moon",
+                UserName = "Sun",
                 Fullname = "Celil Ehmedov",
                 HasMember = false
             };

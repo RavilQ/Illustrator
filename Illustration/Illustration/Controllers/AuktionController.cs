@@ -134,7 +134,8 @@ namespace Illustration.Controllers
                 PortraitId = offer.PortraitId,
                 Status = Enum.OrderStatus.Accepted,
                 Email = user.Email,
-                Fullname = user.Fullname
+                Fullname = user.Fullname,
+                Price = (int)offer.fivePercentPrice
             };
 
             var forbiddenorder = _context.Orders.FirstOrDefault(x => x.PortraitId == order.PortraitId);

@@ -202,6 +202,9 @@ namespace Illustration.Migrations
                     b.Property<int?>("PortraitId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Price")
+                        .HasColumnType("int");
+
                     b.Property<byte?>("Status")
                         .HasColumnType("tinyint");
 
@@ -444,6 +447,24 @@ namespace Illustration.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tags");
+                });
+
+            modelBuilder.Entity("Illustration.Models.TodoList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TodoLists");
                 });
 
             modelBuilder.Entity("Illustration.Models.WishListItem", b =>
@@ -699,6 +720,10 @@ namespace Illustration.Migrations
 
                     b.Property<DateTime>("LastConnectedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("RoleName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasDiscriminator().HasValue("AppUser");
                 });
