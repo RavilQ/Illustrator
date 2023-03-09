@@ -1,7 +1,9 @@
 ﻿using Illustration.Areas.AdminPanel.ViewModel;
+using Illustration.DAL;
 using Illustration.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Illustration.Areas.AdminPanel.Controllers
 {
@@ -11,12 +13,14 @@ namespace Illustration.Areas.AdminPanel.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IllustratorDbContext _context;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, IllustratorDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _context = context;
         }
 
         public async Task<IActionResult> CreateAdmin()
@@ -68,6 +72,11 @@ namespace Illustration.Areas.AdminPanel.Controllers
                 return View();
             }
 
+            if (user.RoleName=="Admin" && user.PasswordResetCheck==false)
+            {
+                return RedirectToAction("AdminPasswordReset",new { password = loginVm.Password});
+            }
+
             return RedirectToAction("Index", "Dashboard");
         }
 
@@ -77,5 +86,37 @@ namespace Illustration.Areas.AdminPanel.Controllers
 
             return RedirectToAction("Login");
         }
+
+        public IActionResult AdminPasswordReset(string password)
+        {
+            ViewBag.user = password;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AdminPasswordReset(AdminResetPasswordViewModel viewmodel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var newuser = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (viewmodel.Password != null && viewmodel.ConfirmPassword != null)
+            {
+                    var netice = await _userManager.ChangePasswordAsync(newuser, viewmodel.user, viewmodel.ConfirmPassword);
+                    if (netice == null)
+                    {
+                        return View("Error");
+                    }
+            }
+
+            newuser.PasswordResetCheck = true;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Dashboard");
+        }
+
     }
 }

@@ -56,6 +56,8 @@ namespace Illustration.Areas.AdminPanel.Controllers
             }
 
             Reviews.Status = Enum.OrderStatus.Accepted;
+            var portrait = _context.Portraits.Include(x => x.Reviews).FirstOrDefault(x => x.Id == Reviews.PortraitId);
+            portrait.AvgRate = (int)portrait.Reviews.Average(x => x.Raiting);
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Review");

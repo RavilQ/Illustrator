@@ -1,0 +1,13 @@
+﻿
+@model List<Order>
+
+@foreach (var item in Model)
+{
+    <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
+        <img src="~/Uploads/Portraits/@item.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
+        <h3>@item.Portrait.Name</h3>
+        <div>@item.CreatAt</div>
+        <div>$@item.Price</div>
+        <div><span class="badge bg-dark">@item.Status</span></div>
+    </div>
+}

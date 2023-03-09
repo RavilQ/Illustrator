@@ -100,6 +100,7 @@ namespace Illustration.Areas.AdminPanel.Controllers
             var user = _context.AppUsers.FirstOrDefault(x => x.Id == adminf.Id);
 
             user.RoleName = "Admin";
+            user.PasswordResetCheck = false;
             _context.SaveChanges();
 
             return RedirectToAction("Index");

@@ -9,7 +9,7 @@
     @foreach (var item in Model)
     {
         <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-6">
-            <a asp-controller="Account" asp-action="DeleteToWishList" asp-route-id="@item.Portrait.Id"><i style="font-size: 165%;" class="las la-times"></i></a>
+            <a style="color:black;" asp-controller="Account" asp-action="DeleteToWishList" asp-route-id="@item.Portrait.Id"><i style="font-size: 165%;" class="las la-times"></i></a>
             <img src="~/Uploads/Portraits/@item.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
             <h3>@item.Portrait.Name</h3>
             <div></div>

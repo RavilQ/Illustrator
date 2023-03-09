@@ -44,84 +44,44 @@
                                 <h3>All Order Portraits<span>( @Model.MyOrders.Count )</span></h3>
                                 </div>
                                 <hr />
-                                @foreach (var item in Model.MyOrders)
-                                {
-                                    <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
-                                    <img src="~/Uploads/Portraits/@item.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
-                                    <h3>@item.Portrait.Name</h3>
-                                    <div>@item.CreatAt</div>
-                                    <div>$@item.Price</div>
-                                    <div><span class="badge bg-dark">@item.Status</span></div>
-                                    </div>
-                                }
+                                <div id="profilemyorderscontainerforloadmore">
+                                    @foreach (var item in Model.MyOrders)
+                                    {
+                                        <div style="border-bottom: 1px solid black;padding: 3rem;align-items: center;text-align: center;" class="row row-cols-5">
+                                            <img src="~/Uploads/Portraits/@item.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" alt="">
+                                            <h3>@item.Portrait.Name</h3>
+                                            <div>@item.CreatAt</div>
+                                            <div>$@item.Price</div>
+                                            <div><span class="badge bg-dark">@item.Status</span></div>
+                                        </div>
+                                    }
+                                </div>                               
                             </div>
+                            @if(Model.OrderCount.Count>3){
+                                <div style="display: flex;justify-content: center;padding-top: 5%;">
+                                    <a asp-action="GetMyOrdersforloadmore" asp-controller="Account" commentCount="@Model.OrderCount.Count" takeCount="3" skipCount="0" class="loadmore-btn-for-myorders btn btn-dark">Load More</a>
+                                </div>
+                            }                           
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                            @await Html.PartialAsync("_profileWishlistPartial",Model.WishListItem)
+                            <div id="wihslistcontainer">
+                                 @await Html.PartialAsync("_profileWishlistPartial",Model.WishListItem)
+                            </div>  
+                            @if(Model.Wishlistitemscount.Count>3){
+                                <div style="display: flex;justify-content: center;padding-top: 5%;">
+                                    <a asp-action="Getwishlistitemsforloadmore" asp-controller="Account" commentCount="@Model.Wishlistitemscount.Count" takeCount="3" skipCount="0" class="loadmore-btn btn btn-dark">Load More</a>
+                                </div>
+                            }                           
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade show active" id="my-v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                            <!-- <div class="l-container">
-                                <div class="b-game-card">
-                                  <div class="b-game-card__cover" style="background-image: url(/assets/images/rosee3.jpg);"></div>
-                                </div>
-                                <div class="b-game-card">
-                                  <div class="b-game-card__cover" style="background-image: url(/assets/images/jisoo3.jpg);"></div>
-                                </div>
-                                <div class="b-game-card">
-                                  <div class="b-game-card__cover" style="background-image: url(/assets/images/lalisa.jpg);"></div>
-                                </div>
-                                <div class="b-game-card">
-                                  <div class="b-game-card__cover" style="background-image: url(/assets/images/jennie2.jpg);"></div>
-                                </div>
-                            </div> -->
-
-
-                            <div class="wrapper">
-                            <div class="d-flex justify-content-between">
-                                <h3>All Portraits<span>( @Model.Portraits.Count )</span></h3>
-                                <a asp-action="Create" class="btn btn-dark">Add Portrait</a>
+                            <div>
+                                @await Html.PartialAsync("_profilePortraitPartial",Model.Portraits)
                             </div>
-                            <hr />
-
-                                <div style="width: 109%;" class="cards">
-                                    @foreach (var portrait in Model.Portraits)
-                                    {
-                                        if (portrait.StockStatus)
-                                        {
-                                          <figure class="card">
-
-                                            <img src="~/Uploads/Portraits/@portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" />
-
-                                            <figcaption><a asp-controller="Auktion" asp-action="Index" asp-route-id="@portrait.Id"><i class="las la-gavel"></i></a><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@portrait.Id"><i class="las la-info-circle"></i></a> <a asp-action="Edit" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-pen"></i></a><a class="myaccount-delete-icon-a" asp-action="Delete" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
-
-                                          </figure>
-                                        }
-
-                                    }    
-                                   
-
-                             @*       <figure class="card">
-
-                                        <img src="~/assets/images/realistic1.jpg" />
-
-                                        <figcaption><a href="#"><i class="las la-info-circle"></i></a> <a href="#"><i style="line-height: unset;" class="las la-pen"></i></a><a id="myaccount-delete-icon-a" href="#"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
-
-                                    </figure>
-
-                                    <figure class="card">
-
-                                        <img src="~/assets/images/batman2.jpg" />
-
-                                        <figcaption><a href="#"><i class="las la-info-circle"></i></a> <a href="#"><i style="line-height: unset;" class="las la-pen"></i></a><a id="myaccount-delete-icon-a" href="#"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
-
-                                    </figure>*@
-
-
+                            @if(Model.Portraitscount.Count>3){
+                                <div style="display: flex;justify-content: center;padding-top: 5%;">
+                                    <a asp-action="GetPortraitsforloadmore" asp-controller="Account" commentCount="@Model.Portraitscount.Count" takeCount="3" skipCount="0" class="loadmore-btn-for-portraits btn btn-dark">Load More</a>
                                 </div>
-
-
-
-                            </div>
+                            }                         
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-sale" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <div class="col-lg-12 grid-margin stretch-card">
@@ -142,7 +102,7 @@
                                                 <th> Actions </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="profileSaleorderscontainerforloadmore">
                                             @foreach (var item in Model.SaleOrders)
                                             {
                                                 <tr>
@@ -178,6 +138,11 @@
                             </div>
 
                         </div>
+                        @if(Model.SaleOrderCount.Count>3){
+                           <div style="display: flex;justify-content: center;padding-top: 5%;">
+                               <a asp-action="GetSaleOrdersforloadmore" asp-controller="Account" commentCount="@Model.Portraitscount.Count" takeCount="3" skipCount="0" class="loadmore-btn-for-sale-orders btn btn-dark">Load More</a>
+                           </div>
+                        }     
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-details" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                             <h3>

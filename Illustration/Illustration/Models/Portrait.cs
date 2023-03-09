@@ -15,7 +15,7 @@ namespace Illustration.Models
         public string Info { get; set; }
         [MaxLength(350)]
         public string Desc { get; set; }
-        [MaxLength(150)]
+        [MaxLength(17)]
         public string Name { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal SalePrice { get; set; }

@@ -1,12 +1,16 @@
 ﻿using Illustration.DAL;
 using Illustration.Models;
 using Illustration.ViewModel;
+using MailKit.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MimeKit.Text;
+using MimeKit;
 using NuGet.Packaging.Signing;
 using System.Data;
+using MailKit.Net.Smtp;
 
 namespace Illustration.Controllers
 {
@@ -151,6 +155,18 @@ namespace Illustration.Controllers
             _context.Orders.Add(order);
             _context.GroupMessages.RemoveRange(messagelist);
             _context.SaveChanges();
+
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse("iillustrator@yandex.ru"));
+            email.To.Add(MailboxAddress.Parse($"{user.Email}"));
+            email.Subject = "Congratulations!!";
+            email.Body = new TextPart(TextFormat.Html) { Text = $"<h1>You have purchased this masterpiece painting!!</h1>" };
+
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.yandex.com", 465, SecureSocketOptions.SslOnConnect);
+            smtp.Authenticate("iillustrator@yandex.ru", "illustrator123$");
+            smtp.Send(email);
+            smtp.Disconnect(true);
 
             return Ok();
         }

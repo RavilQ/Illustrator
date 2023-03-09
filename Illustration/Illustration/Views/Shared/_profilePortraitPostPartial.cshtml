@@ -1,0 +1,16 @@
+﻿@model List<Portrait>
+
+        @foreach (var portrait in Model)
+        {
+            if (portrait.StockStatus)
+            {
+                <figure class="card">
+
+                    <img src="~/Uploads/Portraits/@portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" />
+
+                    <figcaption><a asp-controller="Auktion" asp-action="Index" asp-route-id="@portrait.Id"><i class="las la-gavel"></i></a><a asp-controller="Portrait" asp-action="Detail" asp-route-id="@portrait.Id"><i class="las la-info-circle"></i></a> <a asp-action="Edit" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-pen"></i></a><a class="myaccount-delete-icon-a" asp-action="Delete" asp-route-id="@portrait.Id"><i style="line-height: unset;" class="las la-minus-circle"></i></a></figcaption>
+
+                </figure>
+            }
+
+        }

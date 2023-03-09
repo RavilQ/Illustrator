@@ -265,8 +265,8 @@ namespace Illustration.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasMaxLength(17)
+                        .HasColumnType("nvarchar(17)");
 
                     b.Property<decimal>("SalePrice")
                         .HasColumnType("decimal(18,2)");
@@ -720,6 +720,9 @@ namespace Illustration.Migrations
 
                     b.Property<DateTime>("LastConnectedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("PasswordResetCheck")
+                        .HasColumnType("bit");
 
                     b.Property<string>("RoleName")
                         .HasMaxLength(50)

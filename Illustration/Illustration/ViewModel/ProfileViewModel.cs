@@ -12,5 +12,9 @@ namespace Illustration.ViewModel
         public AccountDetailViewModel ViewModel { get; set; }
         public List<Order> SaleOrders { get; set; } = new List<Order>();
         public List<ContactMessage> Messages { get; set; } = new List<ContactMessage>();
+        public List<WishListItem> Wishlistitemscount { get; set; } = new List<WishListItem>();
+        public List<Portrait> Portraitscount { get; set; } = new List<Portrait>();
+        public List<Order> OrderCount { get; set; } = new List<Order>();
+        public List<Order> SaleOrderCount { get; set; } = new List<Order>();
     }
 }

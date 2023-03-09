@@ -167,6 +167,8 @@
     var drawing = Model.Categories.Where(x => x.Id == 3).ToList();
     var work = Model.Categories.Where(x => x.Id == 4).ToList();
     var handmade = Model.Categories.Where(x => x.Id == 6).ToList();
+    var art = Model.Categories.Where(x=>x.Id == 2).ToList();
+    var print = Model.Categories.Where(x => x.Id == 5).ToList();
 }
 
 <div class="container-fluid pt-4 px-4">
@@ -212,15 +214,12 @@
 
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
-        <div class="col-sm-12 col-xl-6">
-            <div class="bg-secondary text-center rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Worldwide Sales</h6>
-                    <a href="">Show All</a>
-                </div>
-                <canvas id="worldwide-sales"></canvas>
-            </div>
-        </div>
+       <div class="col-sm-12 col-xl-6">
+           <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Portraits by Categories</h6>
+                <canvas id="bar-chart" width="465" height="232" style="display: block; box-sizing: border-box; height: 232px; width: 465px;"></canvas>
+           </div>
+       </div>
         <div class="col-sm-12 col-xl-6">
             <div class="bg-secondary text-center rounded p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
@@ -409,32 +408,29 @@
             }
         });
 
-        // Worldwide Sales Chart
-        var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
-        var myChart1 = new Chart(ctx1, {
-            type: "bar",
-            data: {
-                labels: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
-                datasets: [{
-                    label: "Drawing",
-                    data: [15, 30, 55, 65, 60, 80, @drawing.Count],
-                    backgroundColor: "rgba(235, 22, 22, .7)"
-                },
-                {
-                    label: "Work",
-                    data: [8, 35, 40, 60, 70, 55, @work.Count],
-                    backgroundColor: "rgba(235, 22, 22, .5)"
-                },
-                {
-                    label: "Handmade",
-                    data: [12, 25, 45, 55, 65, 70, @handmade.Count],
-                    backgroundColor: "rgba(235, 22, 22, .3)"
-                }
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
+
+         // Single Bar Chart
+    var ctx4 = $("#bar-chart").get(0).getContext("2d");
+    var myChart4 = new Chart(ctx4, {
+        type: "bar",
+        data: {
+            labels: ["Drawing", "Work", "Handmade", "Art", "Graphic Print"],
+            datasets: [{
+                    label: "Categories",
+                    backgroundColor: [
+                    "rgba(235, 22, 22, .7)",
+                    "rgba(235, 22, 22, .6)",
+                    "rgba(235, 22, 22, .5)",
+                    "rgba(235, 22, 22, .4)",
+                    "rgba(235, 22, 22, .3)"
+                ],
+                data: [@work.Count,@art.Count,@print.Count, @drawing.Count, @handmade.Count]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
     </script>
 }

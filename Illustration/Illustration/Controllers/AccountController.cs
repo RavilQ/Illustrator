@@ -61,12 +61,17 @@ namespace Illustration.Controllers
             var portraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.AppUserId == user.Id && x.StockStatus==true).ToList();
 
             ProfileViewModel model = new ProfileViewModel();
-            model.Portraits = portraits;
-            model.WishListItem = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x=>x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
-            model.MyOrders = _context.Orders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
+            model.Portraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.AppUserId == user.Id && x.StockStatus == true).Take(3).ToList();
+            model.Portraitscount = portraits;
+            model.WishListItem = _context.WishListItems.Include(x => x.Portrait).ThenInclude(x=>x.PortraitImages).Where(x => x.AppUserId == user.Id).Take(3).ToList();
+            model.Wishlistitemscount = _context.WishListItems.Where(x => x.AppUserId == user.Id).ToList();
+            model.MyOrders = _context.Orders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).Take(3).ToList();
+            model.OrderCount = _context.Orders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id).ToList();
             model.User = user;
             model.ViewModel = viewModel;
-            model.SaleOrders = _context.Orders.Include(x=>x.Portrait).Include(x=>x.AppUser).Where(x =>portraits.Contains(x.Portrait)).ToList();
+            var saleportraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.AppUserId == user.Id && x.StockStatus == false).ToList();
+            model.SaleOrders = _context.Orders.Include(x=>x.Portrait).Include(x=>x.AppUser).Where(x => saleportraits.Contains(x.Portrait)).Take(3).ToList();
+            model.SaleOrderCount = _context.Orders.Include(x => x.Portrait).Include(x => x.AppUser).Where(x => saleportraits.Contains(x.Portrait)).ToList();
             model.Messages = _context.ContactMessages.Include(x => x.AppUser).Where(x=>x.AppUserId==user.Id).ToList();
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
@@ -1036,6 +1041,7 @@ namespace Illustration.Controllers
             order.Status = Enum.OrderStatus.Accepted;
             var portrait = _context.Portraits.FirstOrDefault(x => x.Id == order.PortraitId);
             portrait.StockStatus = false;
+
             _context.SaveChanges();
 
             return RedirectToAction("Profile");
@@ -1088,6 +1094,76 @@ namespace Illustration.Controllers
             }
 
             return true;
+        }
+
+        public async Task<IActionResult> Getwishlistitemsforloadmore(int count = 3, int skipCount = 3)
+        {
+            List<WishListItem> productReviews = new List<WishListItem>();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);        
+            if (user == null)
+            {
+               return View("Error");
+            }
+
+            productReviews = _context.WishListItems.Include(x=>x.Portrait).ThenInclude(x => x.PortraitImages)
+          .Where(x =>x.AppUserId == user.Id)
+          .Skip(skipCount)
+          .Take(count)
+          .ToList();
+            return PartialView("_profileWishlistPostPartial", productReviews);
+
+        }
+
+         public async Task<IActionResult> GetPortraitsforloadmore(int count = 3, int skipCount = 3)
+         {
+            List<Portrait> productReviews = new List<Portrait>();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+            {
+                return View("Error");
+            }
+
+            productReviews = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.AppUserId == user.Id && x.StockStatus == true)
+          .Skip(skipCount)
+          .Take(count)
+          .ToList();
+            return PartialView("_profilePortraitPostPartial", productReviews);
+
+         }
+
+        public async Task<IActionResult> GetMyOrdersforloadmore(int count = 3, int skipCount = 3)
+        {
+            List<Order> productReviews = new List<Order>();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+            {
+                return View("Error");
+            }
+
+            productReviews = _context.Orders.Include(x => x.Portrait).ThenInclude(x => x.PortraitImages).Where(x => x.AppUserId == user.Id)
+          .Skip(skipCount)
+          .Take(count)
+          .ToList();
+            return PartialView("_profileMyOrdersPostPartial", productReviews);
+
+        }
+
+        public async Task<IActionResult> GetSaleOrdersforloadmore(int count = 3, int skipCount = 3)
+        {
+            List<Order> productReviews = new List<Order>();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var saleportraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.AppUserId == user.Id && x.StockStatus == false).ToList();
+            if (user == null)
+            {
+                return View("Error");
+            }
+
+            productReviews = _context.Orders.Include(x => x.Portrait).Include(x => x.AppUser).Where(x => saleportraits.Contains(x.Portrait))
+          .Skip(skipCount)
+          .Take(count)
+          .ToList();
+            return PartialView("_profileSaleOrdersPostPartial", productReviews);
+
         }
 
     }

@@ -34,3 +34,16 @@ $(document).on("click", ".slider-delete-btn", function (e) {
         }
     })
 })
+
+
+$(document).ready(function () {
+    var navLinks = $('.navbar-nav a.nav-link');
+
+    // обработчик клика
+    navLinks.click(function () {
+        // удалить класс active у всех элементов
+        navLinks.removeClass('active');
+        // добавить класс active только для текущего элемента
+        $(this).addClass('active');
+    });
+});

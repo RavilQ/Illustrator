@@ -210,6 +210,13 @@ namespace Illustration.Controllers
 
             List<WishListItem> wishListItems = new List<WishListItem>();
 
+            var testitems = _context.WishListItems.ToList();
+
+            if (testitems.Count==0)
+            {
+                return PartialView("_wishListPartial", wishListItems);
+            }
+
             if (user != null)
             {
                 var wishListItem = _context.WishListItems.First();
@@ -259,19 +266,25 @@ namespace Illustration.Controllers
                 return RedirectToAction("Detail", new { id = id });
             }
 
+            var repeatreview = _context.Reviews.FirstOrDefault(x => x.AppUserId == user.Id && x.PortraitId==id);
+
             review.Id = 0;
             review.Status = Enum.OrderStatus.Pending;
             review.PortraitId = id;
 
             if (user != null)
             {
-                review.AppUserId = user.Id;  
+                review.AppUserId = user.Id;
+
+                if (repeatreview!=null)
+                {
+                    return RedirectToAction("Detail", new { id = id });
+                }
             }
 
             var portrait = _context.Portraits.Include(x=>x.Reviews).FirstOrDefault(x => x.Id == id);
 
             _context.Reviews.Add(review);
-            portrait.AvgRate = (int)portrait.Reviews.Average(x => x.Raiting);
             _context.SaveChanges();
 
             return RedirectToAction("Detail", new { id = id });

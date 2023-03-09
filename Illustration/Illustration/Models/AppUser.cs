@@ -16,6 +16,7 @@ namespace Illustration.Models
         public DateTime LastConnectedAt { get; set; }
         [MaxLength(50)]
         public string? RoleName { get; set; }
+        public bool PasswordResetCheck { get; set; }
         [NotMapped]
         public IFormFile? PosterImage { get; set; } 
     }
