@@ -1,0 +1,52 @@
+﻿
+@model List<Review>
+
+@foreach (var item in Model)
+{
+    <div style="border: none; padding-top: 2rem;" class="card">
+        <div class="row g-0">
+            <div class="col-2 col-sm-2">
+                @if (item.AppUser == null)
+                {
+                    <img style="width: 100% !important;" src="~/Uploads/Users/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="img-fluid w-100" alt="card-horizontal-image">
+                }
+                else
+                {
+                    <img style="width: 100% !important;" src="~/Uploads/Users/@(item.AppUser.Image?? "4f64c9f81bb0d4ee969aaf7b4a5a6f40.png")" class="img-fluid w-100" alt="card-horizontal-image">
+                }
+            </div>
+            <div class="col-10 col-sm-10">
+                <div style="position: relative;" class="card-body">
+                    @if (item.AppUser == null && item.Fullname == null)
+                    {
+                        <h5 style="margin-bottom: -11px;" class="card-title">Anonym</h5>
+                    }
+                    else
+                    {
+                        <h5 style="margin-bottom: -11px;" class="card-title">@(item.Fullname == null ? item.AppUser.Fullname : item.Fullname)</h5>
+                    }
+                    <p class="card-text"><small style="font-size:13px; margin-top:-1rem;" class="text-muted">@item.CreatAt</small></p>
+                    <div style="display: flex;
+                                                            justify-content: end;
+                                                            position: absolute;
+                                                            margin-left: 25rem;
+                                                            margin-top: -4rem;">
+                        @for (var i = 1; i <= 5; i++)
+                        {
+                            <span class="simple-star fa fa-star @(item.Raiting>=i?"checked":"")"></span>
+                        }
+                        @* <span class="simple-star fa fa-star checked"></span>
+                    <span class="simple-star fa fa-star checked"></span>
+                    <span class="simple-star fa fa-star checked"></span>
+                    <span class="simple-star fa fa-star"></span>
+                    <span class="simple-star fa fa-star"></span>*@
+                    </div>
+
+                    <span>@item.Message</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}

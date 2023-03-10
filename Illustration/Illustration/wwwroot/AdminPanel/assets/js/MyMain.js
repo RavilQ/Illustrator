@@ -35,7 +35,6 @@ $(document).on("click", ".slider-delete-btn", function (e) {
     })
 })
 
-
 $(document).ready(function () {
     var navLinks = $('.navbar-nav a.nav-link');
 
@@ -45,5 +44,15 @@ $(document).ready(function () {
         navLinks.removeClass('active');
         // добавить класс active только для текущего элемента
         $(this).addClass('active');
+
+        // сохранить информацию о выбранном элементе в localStorage
+        localStorage.setItem('selectedNavItem', $(this).attr('href'));
     });
+
+    // восстановить состояние элементов после загрузки страницы
+    var selectedNavItem = localStorage.getItem('selectedNavItem');
+    if (selectedNavItem) {
+        navLinks.removeClass('active');
+        $('.navbar-nav a[href="' + selectedNavItem + '"]').addClass('active');
+    }
 });

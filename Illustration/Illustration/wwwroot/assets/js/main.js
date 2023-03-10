@@ -430,9 +430,8 @@ $(document).on("click", ".loadmore-btn-for-myorders", function (e) {
 
 
 
-$(document).on("click", ".loadmore-btn-for-sale-orders", function (e) {
+$(document).on("click", ".loadmore-btn-for-reviews", function (e) {
     e.preventDefault();
-
     let link = $(this).attr("href");
     let skipCount = parseInt($(this).attr("skipCount"))
     let takeCount = parseInt($(this).attr("takeCount"))
@@ -455,7 +454,7 @@ $(document).on("click", ".loadmore-btn-for-sale-orders", function (e) {
             return res.text();
         }).then(data => {
 
-            document.getElementById("profileSaleorderscontainerforloadmore").innerHTML += data;
+            document.getElementById("reviewcontaineridforloadmore").innerHTML += data;
 
             console.log(data);
         })

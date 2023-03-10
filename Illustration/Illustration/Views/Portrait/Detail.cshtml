@@ -40,12 +40,21 @@
                         <span class="simple-star fa fa-star"></span>*@
                       </p>
                       <p class="card-text"><small class="text-muted">$@Model.Portrait.SalePrice</small></p>
-                     @* @if (Model.User.Id != Model.Portrait.AppUserId)
-                      {*@
+                            
+                      @if (User.Identity.IsAuthenticated)
+                      {
+                            @if (ViewBag.user != Model.Portrait.AppUserId)
+                            {
+                                <div class="btn-2">
+                                    <a asp-controller="Account" asp-action="Order" asp-route-id="@Model.Portrait.Id"><span>Complete Order</span></a>
+                                </div>
+                            }
+                      }
+                      else{
                             <div class="btn-2">
                                 <a asp-controller="Account" asp-action="Order" asp-route-id="@Model.Portrait.Id"><span>Complete Order</span></a>
                             </div>
-                     @* }*@
+                      }
                       <div>
                         <h4 style="color: #212529;padding-top: 2rem;">Info</h4>
                         <p style="color: #6c6c6c;" class="card-text">@Model.Portrait.Info</p>
@@ -88,43 +97,65 @@
                                 </div>
                                 <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">
                                     <h5>@Model.Reviews.Count review for @Model.Portrait.Name</h5>
-                                    @foreach (var item in Model.Reviews)
-                                    {
-                                            <div style="border: none; padding-top: 2rem;" class="card">
-                                                <div class="row g-0">
-                                                    <div class="col-2 col-sm-2">
-                                                        <img style="width: 100% !important;" src="~/Uploads/Users/@(item.AppUser.Image?? "4f64c9f81bb0d4ee969aaf7b4a5a6f40.png")" class="img-fluid w-100" alt="card-horizontal-image">
-                                                    </div>
-                                                    <div class="col-10 col-sm-10">
-                                                        <div style="position: relative;" class="card-body">
-                                                            <h5 style="margin-bottom: -11px;" class="card-title">@(item.Fullname==null?item.AppUser.Fullname:item.Fullname)</h5>
-                                                            <p class="card-text"><small style="font-size:13px; margin-top:-1rem;" class="text-muted">@item.CreatAt</small></p>
-                                                            <div style="display: flex;
+                                    <div id="reviewcontaineridforloadmore">
+                                            @foreach (var item in Model.Reviews)
+                                            {
+                                                <div style="border: none; padding-top: 2rem;" class="card">
+                                                    <div class="row g-0">
+                                                        <div class="col-2 col-sm-2">
+                                                            @if (item.AppUser == null)
+                                                            {
+                                                                <img style="width: 100% !important;" src="~/Uploads/Users/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="img-fluid w-100" alt="card-horizontal-image">
+                                                            }
+                                                            else
+                                                            {
+                                                                <img style="width: 100% !important;" src="~/Uploads/Users/@(item.AppUser.Image?? "4f64c9f81bb0d4ee969aaf7b4a5a6f40.png")" class="img-fluid w-100" alt="card-horizontal-image">
+                                                            }
+                                                        </div>
+                                                        <div class="col-10 col-sm-10">
+                                                            <div style="position: relative;" class="card-body">
+                                                                @if (item.AppUser == null && item.Fullname == null)
+                                                                {
+                                                                    <h5 style="margin-bottom: -11px;" class="card-title">Anonym</h5>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <h5 style="margin-bottom: -11px;" class="card-title">@(item.Fullname == null ? item.AppUser.Fullname : item.Fullname)</h5>
+                                                                }
+                                                                <p class="card-text"><small style="font-size:13px; margin-top:-1rem;" class="text-muted">@item.CreatAt</small></p>
+                                                                <div style="display: flex;
                                                             justify-content: end;
                                                             position: absolute;
                                                             margin-left: 25rem;
                                                             margin-top: -4rem;">
-                                                                @for (var i = 1; i <= 5; i++)
-                                                                {
-                                                                    <span class="simple-star fa fa-star @(item.Raiting>=i?"checked":"")"></span>
-                                                                }
-                                                               @* <span class="simple-star fa fa-star checked"></span>
+                                                                    @for (var i = 1; i <= 5; i++)
+                                                                    {
+                                                                        <span class="simple-star fa fa-star @(item.Raiting>=i?"checked":"")"></span>
+                                                                    }
+                                                                    @* <span class="simple-star fa fa-star checked"></span>
                                                                 <span class="simple-star fa fa-star checked"></span>
                                                                 <span class="simple-star fa fa-star checked"></span>
                                                                 <span class="simple-star fa fa-star"></span>
                                                                 <span class="simple-star fa fa-star"></span>*@
-                                                            </div>
+                                                                </div>
 
-                                                            <span>@item.Message</span>
+                                                                <span>@item.Message</span>
+                                                            </div>
                                                         </div>
+
                                                     </div>
 
                                                 </div>
-
-                                            </div>
+                                            }
+                                    </div>
+                                  
+                                    @if (Model.ReviewsCount.Count > 3)
+                                    {
+                                      <div style="display: flex;justify-content: center;padding-top: 5%;">
+                                         <a asp-action="GetReviewsforloadmore" asp-controller="Portrait" asp-route-id="@Model.Portrait.Id" commentCount="@Model.ReviewsCount.Count" takeCount="3" skipCount="0" class="loadmore-btn-for-reviews btn btn-dark">Load More</a>
+                                      </div>
                                     }
-                                   
-                                    <hr>
+                                        <hr>
                                     <h4 style="color: #212529;padding-top: 2rem;">Add a Review</h4>
                                     <h5 style="color: #212529;padding-top: 2rem;">Your Raiting</h5>
                                     @await Html.PartialAsync("_reviewPartial",Model.Review)

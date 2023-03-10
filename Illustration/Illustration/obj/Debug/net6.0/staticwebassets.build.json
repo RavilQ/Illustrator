@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1+yFwmIACxKnDm8klYy07TXSXI595XxLO/6vFIPbpoc=",
+  "Hash": "cU/UcDSB2KhS1Q199Q8S6btE4/pHUqYO+s+hjv6T0MU=",
   "Source": "Illustration",
   "BasePath": "_content/Illustration",
   "Mode": "Default",
@@ -5219,12 +5219,12 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Sliders\\pages-parallax-img-7a.jpg"
     },
     {
-      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Users\\2fc23068-9ce5-4d97-a858-06d2bf35c2a2aboutusperson6.jpg",
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Users\\3b5b2fd8-0835-4010-823c-0a26ee41fcf8ries_blood_hands_at_the_9dfb39c9-e62d-450f-ad1d-a691edc4dc00.png",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
       "BasePath": "_content/Illustration",
-      "RelativePath": "Uploads/Users/2fc23068-9ce5-4d97-a858-06d2bf35c2a2aboutusperson6.jpg",
+      "RelativePath": "Uploads/Users/3b5b2fd8-0835-4010-823c-0a26ee41fcf8ries_blood_hands_at_the_9dfb39c9-e62d-450f-ad1d-a691edc4dc00.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -5233,7 +5233,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Users\\2fc23068-9ce5-4d97-a858-06d2bf35c2a2aboutusperson6.jpg"
+      "OriginalItemSpec": "wwwroot\\Uploads\\Users\\3b5b2fd8-0835-4010-823c-0a26ee41fcf8ries_blood_hands_at_the_9dfb39c9-e62d-450f-ad1d-a691edc4dc00.png"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Users\\4f64c9f81bb0d4ee969aaf7b4a5a6f40.png",
@@ -5251,6 +5251,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\Users\\4f64c9f81bb0d4ee969aaf7b4a5a6f40.png"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Users\\7cd0febc-6538-4b7e-8c03-49e5413d74a9om_the_marvel_series_blood_hands_at_the_9dfb39c9-e62d-450f-ad1d-a691edc4dc00.png",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Users/7cd0febc-6538-4b7e-8c03-49e5413d74a9om_the_marvel_series_blood_hands_at_the_9dfb39c9-e62d-450f-ad1d-a691edc4dc00.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Users\\7cd0febc-6538-4b7e-8c03-49e5413d74a9om_the_marvel_series_blood_hands_at_the_9dfb39c9-e62d-450f-ad1d-a691edc4dc00.png"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Users\\aef3d1ba-bf36-4c01-97c8-1eb3e0c6a038batman2.jpg",

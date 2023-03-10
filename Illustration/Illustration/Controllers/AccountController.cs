@@ -150,7 +150,18 @@ namespace Illustration.Controllers
 
             if (memberVm.PosterImage != null)
             {
-                var newName = FileHelper.Save(memberVm.PosterImage, _env.WebRootPath, "Uploads/Users");
+                var stream = memberVm.PosterImage.OpenReadStream();
+                var imagee = Image.FromStream(stream);
+
+                var resizedImage = imagee.GetThumbnailImage(83, 83, null, IntPtr.Zero);
+
+                using var ms = new MemoryStream();
+                resizedImage.Save(ms, imagee.RawFormat);
+                ms.Position = 0;
+
+                var resizedFile = new FormFile(ms, 0, ms.Length, memberVm.PosterImage.Name, memberVm.PosterImage.FileName);
+
+                var newName = FileHelper.Save(resizedFile, _env.WebRootPath, "Uploads/Users");
                 if (user.Image != null)
                 {
                     FileHelper.Delete(_env.WebRootPath, "Uploads/Users", user.Image);
@@ -1044,6 +1055,21 @@ namespace Illustration.Controllers
 
             _context.SaveChanges();
 
+            if (order.AppUserId==null)
+            {
+                var email = new MimeMessage();
+                email.From.Add(MailboxAddress.Parse("iillustrator@yandex.ru"));
+                email.To.Add(MailboxAddress.Parse($"{order.Email}"));
+                email.Subject = "Congratulations!!";
+                email.Body = new TextPart(TextFormat.Html) { Text = $"<h1>Your order is accepted!!</h1>" };
+
+                using var smtp = new SmtpClient();
+                smtp.Connect("smtp.yandex.com", 465, SecureSocketOptions.SslOnConnect);
+                smtp.Authenticate("iillustrator@yandex.ru", "illustrator123$");
+                smtp.Send(email);
+                smtp.Disconnect(true);
+            }
+
             return RedirectToAction("Profile");
         }
 
@@ -1053,6 +1079,21 @@ namespace Illustration.Controllers
 
             order.Status = Enum.OrderStatus.Rejected;
             _context.SaveChanges();
+
+            if (order.AppUserId == null)
+            {
+                var email = new MimeMessage();
+                email.From.Add(MailboxAddress.Parse("iillustrator@yandex.ru"));
+                email.To.Add(MailboxAddress.Parse($"{order.Email}"));
+                email.Subject = "Sorry..";
+                email.Body = new TextPart(TextFormat.Html) { Text = $"<h1>Your order is rejected</h1>" };
+
+                using var smtp = new SmtpClient();
+                smtp.Connect("smtp.yandex.com", 465, SecureSocketOptions.SslOnConnect);
+                smtp.Authenticate("iillustrator@yandex.ru", "illustrator123$");
+                smtp.Send(email);
+                smtp.Disconnect(true);
+            }
 
             return RedirectToAction("Profile");
         }

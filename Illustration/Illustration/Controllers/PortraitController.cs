@@ -28,15 +28,23 @@ namespace Illustration.Controllers
                 .Include(x => x.PortraitCategories)
                 .Include(x => x.PortraitTags).FirstOrDefault(x => x.Id == id);
 
-            DetailViewModel model = new DetailViewModel {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
+                if (user != null)
+                {
+                    ViewBag.user = user.Id;
+                }
+            }
+
+            DetailViewModel model = new DetailViewModel {
                 Portrait = portrait,
                 Portraits = _context.Portraits.Include(x => x.PortraitImages)
                 .Include(x => x.PortraitCategories).ThenInclude(x => x.Category)
                 .Include(x => x.PortraitTags).ThenInclude(x => x.Tag).Where(x => x.Id != id && x.IsSpecial == true).Take(4).ToList(),
                 Reviews = _context.Reviews.Include(x=>x.AppUser).Where(x=>x.PortraitId==id && x.Status== Enum.OrderStatus.Accepted).Take(3).ToList(),
-                User = await _userManager.FindByNameAsync(User.Identity.Name)
-
+                ReviewsCount = _context.Reviews.Include(x => x.AppUser).Where(x => x.PortraitId == id && x.Status == Enum.OrderStatus.Accepted).ToList()
             };
 
             ViewBag.Id = portrait.Id;
@@ -266,7 +274,28 @@ namespace Illustration.Controllers
                 return RedirectToAction("Detail", new { id = id });
             }
 
-            var repeatreview = _context.Reviews.FirstOrDefault(x => x.AppUserId == user.Id && x.PortraitId==id);
+            if (user==null)
+            {
+                if (review.Email == null)
+                {
+                    return RedirectToAction("Detail", new { id = id });
+                }
+
+                var repeatreviewed = _context.Reviews.FirstOrDefault(x => x.Email == review.Email && x.PortraitId == id);
+
+                if (repeatreviewed != null)
+                {
+                    return RedirectToAction("Detail", new { id = id });
+                }
+
+                review.Id = 0;
+                review.Status = Enum.OrderStatus.Pending;
+                review.PortraitId = id;
+                _context.Reviews.Add(review);
+                _context.SaveChanges();
+
+                return RedirectToAction("Detail", new { id = id });
+            }
 
             review.Id = 0;
             review.Status = Enum.OrderStatus.Pending;
@@ -274,6 +303,7 @@ namespace Illustration.Controllers
 
             if (user != null)
             {
+                var repeatreview = _context.Reviews.FirstOrDefault(x => x.AppUserId == user.Id && x.PortraitId == id);
                 review.AppUserId = user.Id;
 
                 if (repeatreview!=null)
@@ -295,6 +325,18 @@ namespace Illustration.Controllers
             var portraits = _context.Portraits.Include(x => x.PortraitImages).Where(x => x.Name.Contains(words) && x.IsSpecial).Take(4).ToList();
 
             return PartialView("_searchPartial", portraits);
+        }
+
+        public IActionResult GetReviewsforloadmore(int id, int count = 3, int skipCount = 3)
+        {
+            List<Review> productReviews = new List<Review>();
+
+            productReviews = _context.Reviews.Include(x => x.Portrait).Include(x => x.AppUser).Where(x => x.PortraitId==id)
+          .Skip(skipCount)
+          .Take(count)
+          .ToList();
+            return PartialView("_detailReviewPostPartial", productReviews);
+
         }
 
     }

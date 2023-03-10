@@ -6,8 +6,13 @@
         <div class="bg-secondary rounded h-100 p-4">
             <dl class="row mb-0">
                 <dt class="col-sm-4 mb-4">User Name</dt>
-                <dd class="col-sm-8">@Model.AppUser.Fullname</dd>
-
+                @if (Model.AppUser==null)
+                {
+                    <dd class="col-sm-8">@Model.Fullname</dd>
+                }
+                else{
+                    <dd class="col-sm-8">@Model.AppUser.Fullname</dd>
+                }
                 <dt class="col-sm-4 mb-4">Review Writing Time</dt>
                 <dd class="col-sm-8">@Model.CreatAt</dd>
 

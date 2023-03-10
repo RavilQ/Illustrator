@@ -9,5 +9,6 @@ namespace Illustration.ViewModel
         public Review Review { get; set; }
         public List<Review> Reviews { get; set; } = new List<Review>();
         public AppUser User { get; set; }
+        public List<Review> ReviewsCount { get; set; } = new List<Review>();
     }
 }

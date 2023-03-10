@@ -43,7 +43,18 @@
                         {
                             <tr>
                                 <th class="pt-4" scope="row">@count</th>
-                                <td class="pt-4">@Review.AppUser.Fullname</td>
+                                @if (Review.AppUser == null && Review.Fullname==null)
+                                {
+                                    <td class="pt-4">Anonym</td>
+                                }
+                                else if (Review.AppUser == null && Review.Fullname != null)
+                                {
+                                    <td class="pt-4">@Review.Fullname</td>
+                                }
+                                else if (Review.AppUser != null)
+                                {
+                                    <td class="pt-4">@Review.AppUser.Fullname</td>
+                                }
                                 <td class="pt-4">@Review.CreatAt</td>
                                 <td class="pt-4">@Review.Message</td>
                                 <td class="pt-4">@Review.Raiting</td>

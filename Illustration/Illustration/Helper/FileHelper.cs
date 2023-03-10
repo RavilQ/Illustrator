@@ -5,7 +5,7 @@
         public static string Save(IFormFile file, string rootPath, string folder)
         {
             string oldFileImage = file.FileName;
-            string newFileName = Guid.NewGuid().ToString() + (oldFileImage.Length > 80 ? oldFileImage.Substring(oldFileImage.Length - 80) : oldFileImage);
+            string newFileName = Guid.NewGuid().ToString() + (oldFileImage.Length > 64 ? oldFileImage.Substring(oldFileImage.Length - 64) : oldFileImage);
             string path = Path.Combine(rootPath, folder, newFileName);
 
             using (FileStream fs = new FileStream(path, FileMode.Create))
