@@ -1,0 +1,49 @@
+﻿
+@model Blog
+
+<div class="container-fluid pt-4 px-4">
+            <a asp-action="Edit" class="btn btn-danger">Edit</a>
+            <div style="--bs-gutter-x:0;" class="row row-cols-1">
+                <div class="col d-flex justify-content-center pt-5">
+                    <img style="width: 100%;" src="~/Uploads/Blog/@Model.FirstImage" alt="">
+                </div>
+                <div class="col pt-3">
+                    <h3>@Model.FirstTitle</h3>
+                    <small>@Model.FirstText</small>
+                    <hr>
+                </div>
+                <div class="col pt-5">
+                    <img style="width: 100%;" src="~/Uploads/Blog/@Model.SecondImage" alt="">
+                </div>
+                <div class="col pt-3">
+                    <h3>@Model.SecondTitle</h3>
+                    <small>@Model.SecondText</small>
+                    <hr>
+                </div>
+                <div class="col pt-5">
+                    <div style="background-color: #303030;">
+                        <div style="padding: 5rem;text-align: center;">
+                            <p>@Model.FirstGreyText</p>
+                            <p style="font-size: 88%;">@Model.FirstGreyAuthor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col pt-5">
+                    <img style="width: 100%;" src="~/Uploads/Blog/@Model.ThirdImage" alt="">
+                </div>
+                <div class="col pt-3">
+                    <h3>@Model.ThirdTitle</h3>
+                    <small>@Model.ThirdText</small>
+                    <hr>
+                </div>
+                <div class="col pt-5 pb-5">
+                    <div style="background-color: #303030;">
+                        <div style="padding: 3rem;text-align: center;">
+                            <p>
+                               @Model.SecondGreyText
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>

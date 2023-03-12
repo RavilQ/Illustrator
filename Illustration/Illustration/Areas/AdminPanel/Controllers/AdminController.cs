@@ -26,14 +26,23 @@ namespace Illustration.Areas.AdminPanel.Controllers
             _roleManager = roleManager;
             _context = context;
         }
-        public async Task<IActionResult> Index(int? page = 1)
+        public async Task<IActionResult> Index(int? page = 1,string? search = null)
         {
             int pageSize = 5;
 
-            List<AppUser> admins = _context.AppUsers.Where(x => x.HasMember == false && x.RoleName!="SuperAdmin").ToList();
+            List<AppUser> admins = new List<AppUser>();
+
+            if (search!=null)
+            {
+                admins = _context.AppUsers.Where(x =>x.RoleName == "Admin" && x.UserName.Contains(search)).ToList();
+            }
+            else{
+                admins = _context.AppUsers.Where(x => x.HasMember == false && x.RoleName != "SuperAdmin").ToList();
+            }
             var users = _userManager.Users.ToList();
             Pagination<AppUser> paginatedList = new Pagination<AppUser>();
             ViewBag.message = paginatedList.GetPagedNames(admins, page, pageSize);
+            ViewBag.search = search;
 
             if (ViewBag.message == null)
             {

@@ -23,7 +23,7 @@
                     }
                     else
                     {
-                        <h5 style="margin-bottom: -11px;" class="card-title">@(item.Fullname == null ? item.AppUser.Fullname : item.Fullname)</h5>
+                        <h5 style="margin-bottom: -11px;" class="card-title">@(item.Fullname == null ? item.AppUser.UserName : item.Fullname)</h5>
                     }
                     <p class="card-text"><small style="font-size:13px; margin-top:-1rem;" class="text-muted">@item.CreatAt</small></p>
                     <div style="display: flex;

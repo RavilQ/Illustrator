@@ -5,7 +5,12 @@
     var count = 0;
     var sum = 0;
 }
+   <style>
 
+    .toast-success {
+        background-color: black !important;
+    }
+   </style>
 
     <main>
         <!-- SLIDER SECTION  -->
@@ -23,7 +28,7 @@
                         if (item.IsShow)
                         {
                             <div class="carousel-item @(count==1?"active":"")">
-                                <img src="~/assets/images/@(item.Image)" class="d-block w-100 slide-images" alt="Slide 1">
+                                <img src="~/Uploads/Sliders/@item.Image" class="d-block w-100 slide-images" alt="Slide 1">
                                 <div class="carousel-caption d-none d-sm-block slide-text">
                                     <h5 class="slider-h5">@item.Title</h5>
                                     <p class="slider-p">@item.Text</p>
@@ -104,7 +109,7 @@
                     </p>
 
                     <div class="buttons">
-                        <button class="blob-btn">
+                        <a style="text-decoration:none;" asp-action="Blog" class="blob-btn">
                             READ MORE
                             <span class="blob-btn__inner">
                                 <span class="blob-btn__blobs">
@@ -114,7 +119,7 @@
                                     <span class="blob-btn__blob"></span>
                                 </span>
                             </span>
-                        </button>
+                        </a>
                         <br />
 
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -142,8 +147,17 @@
                                 Sold
                             </div>
                         }
-                        <a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
-                        <a asp-controller="Portrait" asp-action="AddToWishList" asp-route-id="@item.Id" class="my-add-hover add-to-wishlist"><span>Add To Wish List</span></a>
+                        else if(item.IsAuktion){
+                         <div style="position: absolute;padding: 10% 5%;background-color: black;color: white;border-radius: 50%;font-family: cursive;">
+                            Auktion
+                         </div>
+                         <a asp-controller="Auktion" asp-action="Index" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Portrait" asp-action="Detail" asp-route-id="@item.Id"><img src="~/Uploads/Portraits/@item.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" class="card-img-top" alt="card-group-image"></a>
+                            <a asp-controller="Portrait" asp-action="AddToWishList" asp-route-id="@item.Id" class="my-add-hover add-to-wishlist"><span>Add To Wish List</span></a>
+                        }
                         <div class="card-body card-texts">
                             <h5 class="card-title">@item.Name</h5>
                             @foreach (var item2 in item.PortraitCategories)

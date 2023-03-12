@@ -1,0 +1,140 @@
+﻿@using Illustration.Areas.AdminPanel.ViewModel
+@*@{
+    ViewBag.Title = "Product Listing";
+    var pagedList = (IPagedList)ViewBag.portrait;
+}
+
+@using Illustration.Models
+@using X.PagedList.Mvc.Core; 
+@using X.PagedList;
+@using X.PagedList.Mvc.Core.Fluent
+@using X.PagedList.Web.Common
+
+<link href="~/AdminPanel/assets/css/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    int? count = (ViewBag.pageNumber - 1) * ViewBag.pageSize;
+    count++;
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="col-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Stock Status</th>
+                            <th scope="col">Img</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Portrait portrait in ViewBag.portrait)
+                        {
+                            <tr>
+                                <th class="pt-4" scope="row">@count</th>
+                                <td class="pt-4">@portrait.Name</td>
+                                <td class="pt-4">@portrait.StockStatus</td>
+                                <td class="pt-4"><img class="rounded-circle" style="margin-top:-7px; width: 40px; height: 40px;" src="~/Uploads/Portraits/@portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true).Image" /></td>
+                                <td>
+                                    @if (portrait.IsSpecial)
+                                    {
+                                        <a asp-action="Simple" asp-controller="Portrait" asp-route-id="@portrait.Id" type="button" class="btn btn-dark rounded-pill m-2">Simple</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="Special" asp-controller="Portrait" asp-route-id="@portrait.Id" type="button" class="btn btn-dark rounded-pill m-2">Special</a>
+                                    }
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+                    @Html.PagedListPager(pagedList, page => Url.Action("SearchingPanel", new { page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+*@
+
+@model AdminSearch
+
+<div class="container-fluid pt-4 px-4">
+    <div class="col-sm-12 col-xl-12">
+        <div class="bg-secondary rounded h-100 p-4">
+            <ul class="list-group">
+                    <li style="display: flex;justify-content: space-between;align-items: center;" class="list-group-item bg-transparent">
+                        <div>
+                           Admins
+                        </div>
+                        <div>
+                           Found: @Model.Admins.Count
+                        </div>
+                        <div>
+                            <div>
+                                <a asp-action="Index" asp-controller="Admin" asp-route-search="@ViewBag.search" type="button" class="btn btn-dark btn-fw mt-2">Go</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="display: flex;justify-content: space-between;align-items: center;" class="list-group-item bg-transparent">
+                        <div>
+                            Users
+                        </div>
+                        <div style="margin-left:1.2%;">
+                            Found: @Model.Users.Count
+                        </div>
+                        <div>
+                            <div>
+                                 <a asp-action="Index" asp-controller="User" asp-route-search="@ViewBag.search" type="button" class="btn btn-dark btn-fw mt-2">Go</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="display: flex;justify-content: space-between;align-items: center;" class="list-group-item bg-transparent">
+                        <div>
+                            Portrait
+                        </div>
+                        <div style="margin-left: 0.8%;">
+                            Found: @Model.Portraits.Count
+                        </div>
+                        <div>
+                            <div>
+                                 <a asp-action="Index" asp-controller="Portrait" asp-route-search="@ViewBag.search" type="button" class="btn btn-dark btn-fw mt-2">Go</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="display: flex;justify-content: space-between;align-items: center;" class="list-group-item bg-transparent">
+                        <div>
+                            Tag
+                        </div>
+                        <div style="margin-left: 3%;">
+                            Found: @Model.Tags.Count
+                        </div>
+                        <div>
+                            <div>
+                                 <a asp-action="Index" asp-controller="Tag" asp-route-search="@ViewBag.search" type="button" class="btn btn-dark btn-fw mt-2">Go</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="display: flex;justify-content: space-between;align-items: center;" class="list-group-item bg-transparent">
+                        <div>
+                            Categories
+                        </div>
+                        <div style="margin-right: 2.5%;">
+                            Found: @Model.Categorys.Count
+                        </div>
+                        <div>
+                            <div>
+                                <a asp-action="Index" asp-controller="Category" asp-route-search="@ViewBag.search" type="button" class="btn btn-dark btn-fw mt-2">Go</a>
+                            </div>
+                        </div>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>

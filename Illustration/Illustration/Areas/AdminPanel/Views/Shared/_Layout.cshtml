@@ -58,14 +58,20 @@
                 </div>
                 <div id="mynavbarinyo" class="navbar-nav w-100">
                     <a asp-action="Index" asp-controller="Dashboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a asp-action="Index" asp-controller="Portrait" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Portraits</a>
-                    <a asp-action="Index" asp-controller="Slider" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Slider</a>
-                    <a asp-action="Index" asp-controller="Category" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Category</a>
-                    <a asp-action="Index" asp-controller="Tag" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tag</a>
-                    <a asp-action="Index" asp-controller="Review" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Review</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-file-alt me-2"></i>Crud</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a asp-action="Index" asp-controller="Portrait" class="nav-item nav-link">Portraits</a>
+                            <a asp-action="Index" asp-controller="Slider" class="nav-item nav-link">Slider</a>
+                            <a asp-action="Index" asp-controller="Category" class="nav-item nav-link">Category</a>
+                            <a asp-action="Index" asp-controller="Tag" class="nav-item nav-link">Tag</a>
+                        </div>
+                    </div>                   
+                    <a asp-action="Index" asp-controller="Review" class="nav-item nav-link"><i class="fa fa-th me-2"></i></i>Review</a>
                     <a asp-action="Index" asp-controller="Message" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Message</a>
-                    <a asp-action="Index" asp-controller="User" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Users</a>
-                    <a asp-action="Index" asp-controller="Admin" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Admins</a>
+                    <a asp-action="Index" asp-controller="User" class="nav-item nav-link"><i class="fa fa-laptop me-2"></i>Users</a>
+                    <a asp-action="Index" asp-controller="Admin" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Admins</a>
+                    <a asp-action="Index" asp-controller="Blog" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Blog</a>
                 </div>
             </nav>
         </div>
@@ -80,8 +86,8 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+                <form method="get" asp-controller="Dashboard" asp-action="SearchingPanel" class="d-none d-md-flex ms-4">
+                    <input name="search" class="form-control bg-dark border-0" type="search" placeholder="Search">
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div id="mydiverformessageuvedomlenie" class="nav-item dropdown">

@@ -13,6 +13,7 @@ namespace Illustration.Models
         [MaxLength(200)]
         public string? Image { get; set; }
         public bool IsShow { get; set; }
+        public int Waitlist { get; set; }
         [NotMapped]
         public IFormFile? ImageFile { get; set; }
     }

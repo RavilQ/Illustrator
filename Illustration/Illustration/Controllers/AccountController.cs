@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Drawing.Printing;
 using System.Drawing;
 using Microsoft.AspNetCore.Http;
+using static DotNetOpenAuth.OpenId.Extensions.AttributeExchange.WellKnownAttributes.Media;
 
 namespace Illustration.Controllers
 {
@@ -597,6 +598,11 @@ namespace Illustration.Controllers
                 return View();
             }
 
+            if (user.IsBan)
+            {
+                return View("BannedUser");
+            }
+
             var result = await _signInManager.PasswordSignInAsync(user, memberVm.Password, false, false);
 
             if (!result.Succeeded)
@@ -647,7 +653,17 @@ namespace Illustration.Controllers
 
                 }
 
-              newName = FileHelper.Save(registerVm.PosterImage, _env.WebRootPath, "Uploads/Users");
+                var stream2 = registerVm.PosterImage.OpenReadStream();
+                var imagee2 = Image.FromStream(stream2);
+
+                var resizedImage2 = imagee2.GetThumbnailImage(83, 83, null, IntPtr.Zero);
+
+                using var ms2 = new MemoryStream();
+                resizedImage2.Save(ms2, imagee2.RawFormat);
+                ms2.Position = 0;
+                var resizedFile2 = new FormFile(ms2, 0, ms2.Length, registerVm.PosterImage.Name, registerVm.PosterImage.FileName);
+
+                newName = FileHelper.Save(resizedFile2, _env.WebRootPath, "Uploads/Users");
             }
 
             AppUser user = new AppUser

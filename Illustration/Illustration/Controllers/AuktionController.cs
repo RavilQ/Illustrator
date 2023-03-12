@@ -43,6 +43,11 @@ namespace Illustration.Controllers
 
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
+            //if (portrait.AppUser.Id==user.Id)
+            //{
+            //    return View();
+            //}
+
             if (Offerprice!=0)
             {
                 OfferPortrait offer = new OfferPortrait

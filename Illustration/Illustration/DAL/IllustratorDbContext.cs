@@ -27,5 +27,7 @@ namespace Illustration.DAL
         public DbSet<GroupMessage> GroupMessages { get; set; }
         public DbSet<OfferPortrait> OfferPortraits { get; set; }
         public DbSet<TodoList> TodoLists { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
+        public DbSet<Blog> Blog { get; set; }
     }
 }

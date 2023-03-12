@@ -23,7 +23,7 @@ namespace Illustration.Controllers
 
         public IActionResult Index()
         {
-            var images = _context.Sliders.Take(3).ToList();
+            var images = _context.Sliders.OrderBy(x=>x.Waitlist).ToList();
             var portraits = _context.Portraits
                 .Include(x => x.PortraitImages)
                 .Include(x => x.PortraitCategories).ThenInclude(x => x.Category)
@@ -48,6 +48,37 @@ namespace Illustration.Controllers
         public IActionResult Blog()
         {
             return View();
+        }
+
+        public async Task<IActionResult> NewSubscriber()
+        {
+            AppUser user = null;
+
+            if (User.Identity.IsAuthenticated)
+            {
+               user = await _userManager.FindByNameAsync(User.Identity.Name);
+            }
+            else
+            {
+                return RedirectToAction("Blog");
+            }
+
+            if (user.Email==null || _context.Subscribers.Any(x=>x.AppUserId==user.Id))
+            {
+                return RedirectToAction("Blog");
+            }
+
+            Subscriber subscribe = new Subscriber { 
+            
+                AppUserId = user.Id,
+                Email = user.Email
+
+            };
+
+            _context.Subscribers.Add(subscribe);
+            _context.SaveChanges();
+
+            return RedirectToAction("Blog");
         }
 
         public IActionResult ContactUs()

@@ -41,5 +41,12 @@
     count = 0;
 }
 <div style="width: 100%;display: flex;justify-content: center;">
-    @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
+    @Html.PagedListPager(pagedList, page => Url.Action("Index",
+    new { page = page,
+    pageSize = ViewBag.SelectedPageSize,
+    minPrice =  ViewBag.selectedMin,
+    maxPrice =  ViewBag.selectedMax,
+    CategoryIds = ViewBag.CategoryIds,
+    search =ViewBag.Search,
+    sort = ViewBag.Sort }))
 </div>

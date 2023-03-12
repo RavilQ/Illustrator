@@ -17,16 +17,27 @@ namespace Illustration.Areas.AdminPanel.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? page = 1)
+        public IActionResult Index(int? page = 1, string? search = null)
         {
             int pageSize = 5;
 
-            var category = _context.Categories.ToList();
+            List<Category> category = new List<Category>();
+
+            if (search != null)
+            {
+                category = _context.Categories.Where(x=>x.Name.Contains(search)).ToList();
+            }
+            else
+            {
+                category = _context.Categories.ToList();
+            }
+
             Pagination<Category> paginatedList = new Pagination<Category>();
 
             ViewBag.category = paginatedList.GetPagedNames(category, page, pageSize);
             ViewBag.pageSize = pageSize;
             ViewBag.pageNumber = page;
+            ViewBag.search = search;
 
             if (ViewBag.category == null)
             {

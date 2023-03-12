@@ -8,7 +8,7 @@
 
         <div class="col-sm-12 col-xl-12">
             <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Create Singer</h6>
+                <h6 class="mb-4">Create Slider</h6>
                 <form method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label asp-for="Title" class="form-label">Title</label>
@@ -19,6 +19,11 @@
                         <label asp-for="Text" class="form-label">Text</label>
                         <input asp-for="Text" type="text" class="form-control">
                         <span class="text-danger" asp-validation-for="Text"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Waitlist" class="form-label">Waitlist</label>
+                        <input asp-for="Waitlist" class="form-control">
+                        <span class="text-danger" asp-validation-for="Waitlist"></span>
                     </div>
                     <div class="mb-3">
                         <label asp-for="ImageFile" class="form-label">Slider photo</label>

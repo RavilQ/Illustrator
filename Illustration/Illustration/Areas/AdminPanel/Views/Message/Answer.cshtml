@@ -83,7 +83,7 @@
                     @foreach (ContactMessage item in ViewBag.messages)
                     {
                         <input id="adminmessageimagesend" type="hidden" value="@item.AppUser.Image" />
-                        <input id="adminmessagefullnamesend" type="hidden" value="@item.AppUser.Fullname" />
+                        <input id="adminmessagefullnamesend" type="hidden" value="@item.AppUser.UserName" />
                         if (item.IsMember)
                         {
                                 <div class="chat-message-left pb-4">
@@ -91,7 +91,7 @@
                                         <img src="~/Uploads/Users/@item.AppUser.Image" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
                                     </div>
                                     <div style="color:black;" class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                                        <div style="color: lightcoral;" class="font-weight-bold mb-1">@item.AppUser.Fullname</div>
+                                        <div style="color: lightcoral;" class="font-weight-bold mb-1">@item.AppUser.UserName</div>
                                         @item.Text
                                     </div>
                                 </div>

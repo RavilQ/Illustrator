@@ -22,6 +22,71 @@ namespace Illustration.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Illustration.Models.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("FirstGreyAuthor")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("FirstGreyText")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("FirstImage")
+                        .HasMaxLength(170)
+                        .HasColumnType("nvarchar(170)");
+
+                    b.Property<string>("FirstText")
+                        .HasMaxLength(600)
+                        .HasColumnType("nvarchar(600)");
+
+                    b.Property<string>("FirstTitle")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("SecondGreyAuthor")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("SecondGreyText")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("SecondImage")
+                        .HasMaxLength(170)
+                        .HasColumnType("nvarchar(170)");
+
+                    b.Property<string>("SecondText")
+                        .HasMaxLength(600)
+                        .HasColumnType("nvarchar(600)");
+
+                    b.Property<string>("SecondTitle")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("ThirdImage")
+                        .HasMaxLength(170)
+                        .HasColumnType("nvarchar(170)");
+
+                    b.Property<string>("ThirdText")
+                        .HasMaxLength(600)
+                        .HasColumnType("nvarchar(600)");
+
+                    b.Property<string>("ThirdTitle")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blog");
+                });
+
             modelBuilder.Entity("Illustration.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -426,9 +491,35 @@ namespace Illustration.Migrations
                         .HasMaxLength(70)
                         .HasColumnType("nvarchar(70)");
 
+                    b.Property<int>("Waitlist")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
+                });
+
+            modelBuilder.Entity("Illustration.Models.Subscriber", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Subscribers");
                 });
 
             modelBuilder.Entity("Illustration.Models.Tag", b =>
@@ -718,6 +809,9 @@ namespace Illustration.Migrations
                         .HasMaxLength(101)
                         .HasColumnType("nvarchar(101)");
 
+                    b.Property<bool>("IsBan")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("LastConnectedAt")
                         .HasColumnType("datetime2");
 
@@ -871,6 +965,17 @@ namespace Illustration.Migrations
                     b.Navigation("AppUser");
 
                     b.Navigation("Portrait");
+                });
+
+            modelBuilder.Entity("Illustration.Models.Subscriber", b =>
+                {
+                    b.HasOne("Illustration.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("Illustration.Models.WishListItem", b =>

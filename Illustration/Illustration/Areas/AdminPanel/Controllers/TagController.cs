@@ -17,12 +17,22 @@ namespace Illustration.Areas.AdminPanel.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? page = 1)
+        public IActionResult Index(int? page = 1,string? search=null)
         {
 
             int pageSize = 5;
 
-            var tag = _context.Tags.ToList();
+            List<Tag> tag = new List<Tag>();
+
+            if (search!=null)
+            {
+                tag = _context.Tags.Where(x=>x.Name.Contains(search)).ToList();
+            }
+            else
+            {
+                tag = _context.Tags.ToList();
+            }
+
             if (tag.Count % 5 == 0)
             {
                 page=1;
@@ -32,6 +42,7 @@ namespace Illustration.Areas.AdminPanel.Controllers
             ViewBag.tag = paginatedList.GetPagedNames(tag, page, pageSize);
             ViewBag.pageSize = pageSize;
             ViewBag.pageNumber = page;
+            ViewBag.search = search;
 
             if (ViewBag.tag == null)
             {

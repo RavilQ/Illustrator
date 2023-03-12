@@ -27,7 +27,7 @@
                 {
                     <li style="display: flex;justify-content: space-between;align-items: center;" class="list-group-item bg-transparent">
                         <div>
-                            @item.Fullname
+                            @item.UserName
                         </div>
                         <div>
                             @item.RoleName
@@ -40,9 +40,11 @@
                     </li>
                 }
             </ul>
-           <div class="d-flex justify-content-center">
-                @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
-           </div>
+            <div class="d-flex justify-content-center">
+                @Html.PagedListPager(pagedList, page => Url.Action("Index",
+                new { page =page,
+                search = ViewBag.search}))
+            </div>
         </div>
     </div>
 </div>

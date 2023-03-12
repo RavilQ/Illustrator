@@ -1,0 +1,105 @@
+﻿
+@model Blog
+
+<div class="container-fluid pt-4 px-4">
+    <div class="col-12">
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Edit Blog</h6>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label asp-for="FirstImageFile" class="form-label">First Image</label>
+                        <input id="file" asp-for="FirstImageFile" class="form-control bg-dark">
+                        <span class="text-danger" asp-validation-for="FirstImageFile"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="FirstTitle" class="form-label">First Title</label>
+                        <input asp-for="FirstTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="FirstTitle"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="FirstText" class="form-label">First Text</label>
+                        <input asp-for="FirstText" type="text" class="form-control">
+                        <span class="text-danger" asp-validation-for="FirstText"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="SecondImageFile" class="form-label">Second Image</label>
+                        <input id="file" asp-for="SecondImageFile" class="form-control bg-dark">
+                        <span class="text-danger" asp-validation-for="SecondImageFile"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="SecondTitle" class="form-label">Second Title</label>
+                        <input asp-for="SecondTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="SecondTitle"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="SecondText" class="form-label">Second Text</label>
+                        <input asp-for="SecondText" type="text" class="form-control">
+                        <span class="text-danger" asp-validation-for="SecondText"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ThirdImageFile" class="form-label">Third Image</label>
+                        <input id="file" asp-for="ThirdImageFile" class="form-control bg-dark">
+                        <span class="text-danger" asp-validation-for="ThirdImageFile"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ThirdTitle" class="form-label">Third Title</label>
+                        <input asp-for="ThirdTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="ThirdTitle"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ThirdText" class="form-label">Third Text</label>
+                        <input asp-for="ThirdText" type="text" class="form-control">
+                        <span class="text-danger" asp-validation-for="ThirdText"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="FirstGreyText" class="form-label">First Grey Text</label>
+                        <input asp-for="FirstGreyText" class="form-control">
+                        <span class="text-danger" asp-validation-for="FirstGreyText"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="FirstGreyAuthor" class="form-label">First Grey Author</label>
+                        <input asp-for="FirstGreyAuthor" type="text" class="form-control">
+                        <span class="text-danger" asp-validation-for="FirstGreyAuthor"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="SecondGreyText" class="form-label">Second Grey Text</label>
+                        <input asp-for="SecondGreyText" type="text" class="form-control">
+                        <span class="text-danger" asp-validation-for="SecondGreyText"></span>
+                    </div>
+                    <div class="row">
+                        <span id="output"></span>
+                    </div>
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@*
+<script>
+    function handleFileSelect(evt) {
+        var file = evt.target.files; // FileList object
+        var f = file[0];
+        // Only process image files.
+        if (!f.type.match('image.*')) {
+            alert("Image only please....");
+        }
+        var reader = new FileReader();
+        // Closure to capture the file information.
+        reader.onload = (function (theFile) {
+            return function (e) {
+                // Render thumbnail.
+                //var span = document.createElement('span');
+                //span.innerHTML = ['<img style="width: 10rem;margin-bottom: 15px;border-radius: 16%; " class="thumb" title="', escape(theFile.name), '" src="', e.target.result, '" />'].join('');
+                //document.getElementById('output').insertBefore(span, null);
+                document.getElementById('output').innerHTML = ['<img style="width: 10rem;margin-bottom: 15px;border-radius: 16%; " class="thumb" title="', escape(theFile.name), '" src="', e.target.result, '" />'].join('');
+            };
+        })(f);
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+    }
+    document.getElementById('file').addEventListener('change', handleFileSelect, false);
+</script>
+*@

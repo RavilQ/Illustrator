@@ -18,16 +18,27 @@ namespace Illustration.Areas.AdminPanel.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? page = 1)
+        public IActionResult Index(int? page = 1, string? search = null)
         {
             int pageSize = 5;
 
-            var portraits = _context.Portraits.Include(x=>x.PortraitImages).ToList();
+            List<Portrait> portraits = new List<Portrait>();
+
+            if (search!=null)
+            {
+                portraits = _context.Portraits.Include(x => x.PortraitImages).Where(x=>x.Name.Contains(search)).ToList();
+            }
+            else
+            {
+                portraits = _context.Portraits.Include(x => x.PortraitImages).ToList();
+            }
+            
             Pagination<Portrait> paginatedList = new Pagination<Portrait>();
 
             ViewBag.portrait = paginatedList.GetPagedNames(portraits, page, pageSize);
             ViewBag.pageSize = pageSize;
             ViewBag.pageNumber = page;
+            ViewBag.search = search;
 
             if (ViewBag.portrait == null)
             {

@@ -29,6 +29,7 @@
                             <th scope="col">Fullname</th>
                             <th scope="col">Email</th>
                             <th scope="col">Img</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,15 +42,27 @@
                                 </td>
                                 <td class="pt-4">@user.Fullname</td>
                                 <td class="pt-4">@user.Email</td>
-                                <td class="pt-4"><img class="rounded-circle" style="margin-top:-7px; width: 40px; height: 40px;" src="~/Uploads/Users/@(user.Image==null?"4f64c9f81bb0d4ee969aaf7b4a5a6f40.png":user.Image)" /></td>
+                                <td class="pt-4"><img class="rounded-circle" style="margin-top:-7px; width: 40px; height: 40px;" src="~/Uploads/Users/@(user.Image==null?"4f64c9f81bb0d4ee969aaf7b4a5a6f40.png":user.Image)" /></td>         
+                                @if(user.IsBan==false){
+                                    <td>
+                                        <a asp-action="BanPeople" asp-controller="User" asp-route-id="@user.Id" type="button" class="btn btn-dark m-2">Ban</a>
+                                    </td>
+                                }
+                                else{
+                                    <td>
+                                        <a asp-action="UnbanPeople" asp-controller="User" asp-route-id="@user.Id" type="button" class="btn btn-info m-2">Unban</a>
+                                    </td>
+                                }
                             </tr>
                             count++;
                         }
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-center">
-                    @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
-                </div>
+                @Html.PagedListPager(pagedList, page => Url.Action("Index",
+                new { page =page,
+                search = ViewBag.search}))
+            </div>
             </div>
         </div>
     </div>
@@ -57,8 +70,8 @@
 <!-- Blank End -->
 @section Scripts{
     <script>
-        var connection = new signalR.HubConnectionBuilder().withUrl("/illustratorhub").build();
-        connection.start();
+        //var connection = new signalR.HubConnectionBuilder().withUrl("/illustratorhub").build();
+        //connection.start();
         connection.on("show", function (id) {
             console.log(id + "- connected")
         })

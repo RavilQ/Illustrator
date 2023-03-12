@@ -17,6 +17,7 @@ namespace Illustration.Models
         [MaxLength(50)]
         public string? RoleName { get; set; }
         public bool PasswordResetCheck { get; set; }
+        public bool IsBan { get; set; }
         [NotMapped]
         public IFormFile? PosterImage { get; set; } 
     }

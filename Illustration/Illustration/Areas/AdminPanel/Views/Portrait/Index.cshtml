@@ -54,7 +54,9 @@
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-center">
-                    @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
+                    @Html.PagedListPager(pagedList, page => Url.Action("Index",
+                    new { page =page,
+                    search = ViewBag.search}))
                 </div>
             </div>
         </div>

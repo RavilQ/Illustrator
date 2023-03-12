@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data;
+using System.Drawing;
 
 namespace Illustration.Areas.AdminPanel.Controllers
 {
@@ -64,8 +65,23 @@ namespace Illustration.Areas.AdminPanel.Controllers
                 return View();
             }
 
+            if (slider.Waitlist==0 || _context.Sliders.Any(x=>x.Waitlist==slider.Waitlist))
+            {
+                slider.Waitlist = _context.Sliders.Where(x => x.Id != slider.Id).Max(x => x.Waitlist) + 1;
+            }
 
-            slider.Image = FileHelper.Save(slider.ImageFile, _env.WebRootPath, "Uploads/Sliders");
+
+            var stream = slider.ImageFile.OpenReadStream();
+            var imagee = Image.FromStream(stream);
+
+            var resizedImage = imagee.GetThumbnailImage(1920, 1100, null, IntPtr.Zero);
+
+            using var ms = new MemoryStream();
+            resizedImage.Save(ms, imagee.RawFormat);
+            ms.Position = 0;
+
+            var resizedFile = new FormFile(ms, 0, ms.Length, slider.ImageFile.Name, slider.ImageFile.FileName);
+            slider.Image = FileHelper.Save(resizedFile, _env.WebRootPath, "Uploads/Sliders");
 
             _context.Sliders.Add(slider);
             _context.SaveChanges();
@@ -111,12 +127,32 @@ namespace Illustration.Areas.AdminPanel.Controllers
                 }
 
                 FileHelper.Delete(_env.WebRootPath, "Uploads/Sliders", slider.Image);
-                slider.Image = FileHelper.Save(newSlider.ImageFile, _env.WebRootPath, "Uploads/Sliders");
+                var stream = newSlider.ImageFile.OpenReadStream();
+                var imagee = Image.FromStream(stream);
+
+                var resizedImage = imagee.GetThumbnailImage(1920, 1100, null, IntPtr.Zero);
+
+                using var ms = new MemoryStream();
+                resizedImage.Save(ms, imagee.RawFormat);
+                ms.Position = 0;
+
+                var resizedFile = new FormFile(ms, 0, ms.Length, newSlider.ImageFile.Name, newSlider.ImageFile.FileName);
+                slider.Image = FileHelper.Save(resizedFile, _env.WebRootPath, "Uploads/Sliders");
             }
 
             slider.Title = newSlider.Title;
             slider.Text = newSlider.Text;
             slider.IsShow = newSlider.IsShow;
+
+            if (newSlider.Waitlist == 0 || _context.Sliders.Any(x => x.Waitlist == newSlider.Waitlist))
+            {
+                slider.Waitlist = _context.Sliders.Where(x=>x.Id!=slider.Id).Max(x => x.Waitlist) + 1;
+            }
+            else
+            {
+                slider.Waitlist = newSlider.Waitlist;
+            }
+
 
             _context.SaveChanges();
             return RedirectToAction("Index");

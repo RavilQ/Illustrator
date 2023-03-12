@@ -18,16 +18,27 @@ namespace Illustration.Areas.AdminPanel.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? page = 1)
+        public IActionResult Index(int? page = 1, string? search=null)
         {
             int pageSize = 5;
 
-            var user = _context.AppUsers.ToList();
+            List<AppUser> user = new List<AppUser>();
+
+            if (search!=null)
+            {
+                user = _context.AppUsers.Where(x=>x.HasMember==true && x.UserName.Contains(search)).ToList();
+            }
+            else
+            {
+                user = _context.AppUsers.ToList();
+            }
+
             Pagination<AppUser> paginatedList = new Pagination<AppUser>();
 
             ViewBag.user = paginatedList.GetPagedNames(user, page, pageSize);
             ViewBag.pageSize = pageSize;
             ViewBag.pageNumber = page;
+            ViewBag.search = search;
 
             if (ViewBag.user == null)
             {
@@ -35,6 +46,36 @@ namespace Illustration.Areas.AdminPanel.Controllers
             }
 
             return View();
+        }
+
+        public IActionResult BanPeople(string id)
+        {
+            var user = _context.AppUsers.FirstOrDefault(x => x.Id == id);
+
+            if (user==null)
+            {
+                return View("Error");
+            }
+
+            user.IsBan = true;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UnbanPeople(string id)
+        {
+            var user = _context.AppUsers.FirstOrDefault(x => x.Id == id);
+
+            if (user == null)
+            {
+                return View("Error");
+            }
+
+            user.IsBan = false;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

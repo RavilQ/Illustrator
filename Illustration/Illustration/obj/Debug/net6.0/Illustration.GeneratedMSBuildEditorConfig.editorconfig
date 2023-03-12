@@ -19,8 +19,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xBY2NvdW50XEFkbWluUGFzc3dvcmRSZXNldC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xBY2NvdW50XEZvcmdvdFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xBY2NvdW50XExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xBY2NvdW50XFJlc2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Admin/Create.cshtml]
@@ -29,6 +37,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xBZG1pblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Blog/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xCbG9nXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Blog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xCbG9nXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Category/Create.cshtml]
@@ -45,6 +61,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xEYXNoYm9hcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Dashboard/SearchingPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5QYW5lbFxWaWV3c1xEYXNoYm9hcmRcU2VhcmNoaW5nUGFuZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/Desktop/New folder/Illustration/Illustration/Areas/AdminPanel/Views/Message/Answer.cshtml]
@@ -169,6 +189,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Portrait/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9ydHJhaXRcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Shared/BannedUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEJhbm5lZFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/Desktop/New folder/Illustration/Illustration/Views/Shared/Error.cshtml]
