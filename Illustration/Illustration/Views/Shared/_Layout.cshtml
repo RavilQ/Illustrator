@@ -12,6 +12,9 @@
     {
         user = await _userManager.FindByNameAsync(User.Identity.Name);
     }
+
+
+    Dictionary<string, string> settings = layoutService.GetSettings();
 }
 
 <!DOCTYPE html>
@@ -121,10 +124,10 @@
                 <div class="footer-coll">
                     <h4>follow us</h4>
                     <div class="social-links">
-                        <a target="_blank" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                        <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                        <a target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                        <a target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                        <a target="_blank" href="@settings["FbLink"]"><i class="fab fa-facebook-f"></i></a>
+                        <a target="_blank" href="@settings["TwLink"]"><i class="fab fa-twitter"></i></a>
+                        <a target="_blank" href="@settings["InstaLink"]"><i class="fab fa-instagram"></i></a>
+                        <a target="_blank" href="@settings["LinkedinLink"]"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>

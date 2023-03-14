@@ -1,5 +1,6 @@
 ﻿using Illustration.Areas.AdminPanel.ViewModel;
 using Illustration.DAL;
+using Illustration.Enum;
 using Illustration.Helper;
 using Illustration.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using System.Linq;
 
 namespace Illustration.Area.AdminPanel.Controllers
 {
@@ -24,9 +26,17 @@ namespace Illustration.Area.AdminPanel.Controllers
         {
             ViewBag.Todolist = _context.TodoLists.ToList();
 
-            var query = _context.Portraits.Include(x => x.PortraitCategories).ThenInclude(x => x.Category);
+            var query = _context.Portraits.Include(x => x.PortraitCategories).ThenInclude(x => x.Category).Include(x=>x.PortraitTags).ThenInclude(x=>x.Tag);
+
+            //ViewBag.list1 = list1.Count;
+            //ViewBag.list2 = list2.Count;
+            //ViewBag.list3 = list3.Count;
+            //ViewBag.list4 = list4.Count;
+            //ViewBag.list5 = list5.Count;
 
             List<Category> list = new List<Category>();
+
+            List<Tag> tlist = new List<Tag>();
 
             foreach (var item in query)
             {
@@ -34,6 +44,12 @@ namespace Illustration.Area.AdminPanel.Controllers
                 {
                     list.Add(item2.Category);
                 }
+
+                foreach (var item3 in item.PortraitTags)
+                {
+                    tlist.Add(item3.Tag);
+                }
+
             }
 
             DashboardVIewModel viewmodel = new DashboardVIewModel {
@@ -44,10 +60,9 @@ namespace Illustration.Area.AdminPanel.Controllers
     .ToList(),
             Portraits = _context.Portraits.ToList(),
                 Orders = _context.Orders.ToList(),
-                Categories = list
+                Categories = list,
+                Tags = tlist
             };
-
-            
 
             return View(viewmodel);
         }

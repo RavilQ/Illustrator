@@ -1022,7 +1022,12 @@ namespace Illustration.Controllers
 
             order.Status = Enum.OrderStatus.Pending;
 
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            AppUser user = null;
+
+            if (User.Identity.IsAuthenticated)
+            {
+               user = await _userManager.FindByNameAsync(User.Identity.Name);
+            }
 
             MyOrder myOrder = new MyOrder
             {
@@ -1040,6 +1045,13 @@ namespace Illustration.Controllers
             if (wishListItem != null)
             {
                 _context.WishListItems.Remove(wishListItem);
+            }
+
+            var portrait = _context.Portraits.FirstOrDefault(x => x.Id == id);
+
+            if (portrait!=null)
+            {
+                portrait.StockStatus = false;
             }
 
             order.Id = 0;

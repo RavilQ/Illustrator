@@ -11,7 +11,13 @@
             <img style="width:43%;" class="card-img-top" src="~/Uploads/Portraits/@Model.Portrait.PortraitImages.FirstOrDefault(x=>x.ImageStatus==true)?.Image" alt="Card image cap">
             <div class="card-body text-center">
                 <h5 class="card-title">Portrait: @Model.Portrait.Name</h5>
-                <p style="color:black">Client: @Model.AppUser.Fullname</p>
+                @if (Model.AppUser!=null)
+                {
+                    <p style="color:black">Client: @Model.AppUser.UserName</p>
+                }
+                else{
+                    <p style="color:black">Client: @Model.Fullname</p>
+                }
                 <p style="color:black">Price: $@(Model.Portrait.SalePrice - (Model.Portrait.SalePrice * (Model.Portrait.DiscountPercent / 100)))</p>
                 <p style="color:black">Order Create Time: @Model.CreatAt</p>
                 <span>Order Status: <div class="badge bg-dark">@Model.Status</div></span>

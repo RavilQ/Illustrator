@@ -108,7 +108,13 @@
                                                 <tr>
 
                                                     <td>
-                                                        <span class="pl-2">@item.AppUser.Fullname</span>
+                                                        @if (item.AppUser==null)
+                                                        {
+                                                            <span class="pl-2">@item.Fullname</span>
+                                                        }
+                                                        else{
+                                                            <span class="pl-2">@item.AppUser.UserName</span>
+                                                        }
                                                     </td>
                                                     <td> $@(((item.Portrait.SalePrice * (100 - item.Portrait.DiscountPercent) / 100)).ToString("0.00")) </td>
                                                     <td> @item.Portrait.Name </td>

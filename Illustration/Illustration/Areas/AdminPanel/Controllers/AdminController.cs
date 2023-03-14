@@ -43,6 +43,8 @@ namespace Illustration.Areas.AdminPanel.Controllers
             Pagination<AppUser> paginatedList = new Pagination<AppUser>();
             ViewBag.message = paginatedList.GetPagedNames(admins, page, pageSize);
             ViewBag.search = search;
+            ViewBag.pageSize = pageSize;
+            ViewBag.pageNumber = page;
 
             if (ViewBag.message == null)
             {
@@ -88,6 +90,7 @@ namespace Illustration.Areas.AdminPanel.Controllers
             {
                 UserName = newadmin.Username,
                 Fullname = newadmin.Fullname,
+                Email = newadmin.Email,
                 HasMember = false
             };
 

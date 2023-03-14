@@ -24,6 +24,11 @@ namespace Illustration.Services
 
         }
 
+        public Dictionary<string, string> GetSettings()
+        {
+            return _context.Settings.ToDictionary(x => x.Key, x => x.Value);
+        }
+
         public List<WishListItem> GetWishListItems()
         {
             List<WishListItem> wishList = new List<WishListItem>();

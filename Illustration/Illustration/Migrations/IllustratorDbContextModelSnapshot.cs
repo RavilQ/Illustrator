@@ -138,6 +138,34 @@ namespace Illustration.Migrations
                     b.ToTable("ContactMessages");
                 });
 
+            modelBuilder.Entity("Illustration.Models.Creators", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Fullname")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("nvarchar(120)");
+
+                    b.Property<string>("Info")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("nvarchar(120)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Creators");
+                });
+
             modelBuilder.Entity("Illustration.Models.GroupMessage", b =>
                 {
                     b.Property<int>("Id")
@@ -464,6 +492,29 @@ namespace Illustration.Migrations
                     b.HasIndex("PortraitId");
 
                     b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("Illustration.Models.Setting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(70)
+                        .HasColumnType("nvarchar(70)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(340)
+                        .HasColumnType("nvarchar(340)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("Illustration.Models.Slider", b =>

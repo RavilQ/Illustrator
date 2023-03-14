@@ -16,7 +16,7 @@ namespace Illustration
         }
         public override Task OnConnectedAsync()
         {
-            if (_acessor.HttpContext.User.Identity.IsAuthenticated && _acessor.HttpContext.User.IsInRole("Member"))
+            if (_acessor.HttpContext.User.Identity.IsAuthenticated)
             {
                 var user = _userManager.FindByNameAsync(_acessor.HttpContext.User.Identity.Name).Result;
 
@@ -41,7 +41,7 @@ namespace Illustration
 
         public override Task OnDisconnectedAsync(Exception? exception)
         {
-            if (_acessor.HttpContext.User.Identity.IsAuthenticated && _acessor.HttpContext.User.IsInRole("Member"))
+            if (_acessor.HttpContext.User.Identity.IsAuthenticated)
             {
                 var user = _userManager.FindByNameAsync(_acessor.HttpContext.User.Identity.Name).Result;
 

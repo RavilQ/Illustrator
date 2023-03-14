@@ -29,5 +29,7 @@ namespace Illustration.DAL
         public DbSet<TodoList> TodoLists { get; set; }
         public DbSet<Subscriber> Subscribers { get; set; }
         public DbSet<Blog> Blog { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+        public DbSet<Creators> Creators { get; set; }
     }
 }

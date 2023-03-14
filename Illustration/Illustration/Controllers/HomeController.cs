@@ -29,11 +29,14 @@ namespace Illustration.Controllers
                 .Include(x => x.PortraitCategories).ThenInclude(x => x.Category)
                 .Include(x => x.PortraitTags).ThenInclude(x => x.Tag).Where(x => x.IsSpecial == true);
 
+            var settings = _context.Settings.ToDictionary(x => x.Key, x => x.Value);
+
             HomeViewModel model = new HomeViewModel {
 
                 Sliders = images,
                 Portraits = portraits.Take(8).ToList(),
-                SecondPortraits = portraits.Skip(8).Take(8).ToList()
+                SecondPortraits = portraits.Skip(8).Take(8).ToList(),
+                Settings = settings
 
             };
 
@@ -42,7 +45,16 @@ namespace Illustration.Controllers
 
         public IActionResult AboutUs()
         {
-            return View();
+            var settings = _context.Settings.ToDictionary(x => x.Key, x => x.Value);
+
+            AboutUsVIewModel viewmodel = new AboutUsVIewModel { 
+            
+                Settings = settings,
+                Creators = _context.Creators.Take(4).ToList()
+
+            };
+
+            return View(viewmodel);
         }
 
         public IActionResult Blog()
@@ -94,7 +106,16 @@ namespace Illustration.Controllers
                 return View();
             }
 
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            AppUser user = null;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                user = await _userManager.FindByNameAsync(User.Identity.Name);
+            }
+            else
+            {
+                return View();
+            }
 
             if (user!=null)
             {

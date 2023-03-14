@@ -30,7 +30,7 @@ namespace Illustration.Areas.AdminPanel.Controllers
             }
             else
             {
-                user = _context.AppUsers.ToList();
+                user = _context.AppUsers.Where(x => x.HasMember == true).ToList();
             }
 
             Pagination<AppUser> paginatedList = new Pagination<AppUser>();

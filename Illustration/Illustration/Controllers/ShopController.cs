@@ -89,8 +89,8 @@ namespace Illustration.Controllers
                 return View("Error");
             }
 
-            decimal min = _context.Portraits.Min(x => x.SalePrice * (100 - x.DiscountPercent) / 100);
-            decimal max = _context.Portraits.Max(x => x.SalePrice * (100 - x.DiscountPercent) / 100);
+            var min = _context.Portraits.Min(x => x.SalePrice);
+            var max = _context.Portraits.Max(x => x.SalePrice);
 
             ViewBag.minPrice = min;
             ViewBag.maxPrice = max;

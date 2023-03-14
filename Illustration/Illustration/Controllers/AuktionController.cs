@@ -41,6 +41,11 @@ namespace Illustration.Controllers
 
             List<AppUser> users = _context.AppUsers.Where(x => x.HasMember == true).ToList();
 
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index","Home");
+            }
+
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             //if (portrait.AppUser.Id==user.Id)

@@ -9,5 +9,6 @@ namespace Illustration.Areas.AdminPanel.ViewModel
         public List<Portrait> Portraits { get; set; } = new List<Portrait>();
         public List<Order> Orders { get; set; } = new List<Order>();
         public List<Category> Categories { get; set; } = new List<Category>();
+        public List<Tag> Tags { get; set; } = new List<Tag>();
     }
 }

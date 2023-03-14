@@ -7,5 +7,6 @@ namespace Illustration.ViewModel
         public List<Slider> Sliders { get; set; } = new List<Slider>();
         public List<Portrait> Portraits { get; set; } = new List<Portrait>();
         public List<Portrait> SecondPortraits { get; set; } = new List<Portrait>();
+        public Dictionary<string, string>? Settings { get; set; }
     }
 }

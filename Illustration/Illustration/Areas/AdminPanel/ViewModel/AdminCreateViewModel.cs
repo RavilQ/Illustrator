@@ -8,6 +8,8 @@ namespace Illustration.Areas.AdminPanel.ViewModel
         public string Fullname { get; set; }
         [MaxLength(25)]
         public string Username { get; set; }
+        [MaxLength(55)]
+        public string Email { get; set; }
         [MaxLength(25)]
         [DataType(DataType.Password)]
         public string Password { get; set; }

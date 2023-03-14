@@ -1,4 +1,6 @@
 ﻿
+@model AboutUsVIewModel
+
     <main>
         <section id="myaboutusmainsection">
              <h1>About us</h1>
@@ -11,7 +13,7 @@
                   </div>
                   <div class="col-6 col-sm-6">
                     <div class="card-body">
-                      <h5 class="card-title">Our goals are to win market</h5>
+                      <h5 class="card-title">@Model.Settings["AboutUsTitle"]</h5>
                       <div style="border: none;padding-top: 1rem;" class="card">
                         <div style="background-color: white;" class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -98,46 +100,46 @@
             </div>
         </section>
         <section>
-              <div id="myportretsections" class="row fix-row-x headline">
-                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                    <div class="card mx-3 cards-border portret-image-hover">
-                        <img src="~/assets/images/lalisa.jpg" class="myaboutusimages card-img-top" alt="card-group-image">
-                        <div class="card-body card-texts">
-                        <h5 class="card-title">Lalisa Manobal</h5>
-                        <small>Marketing manager</small> 
-                        <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at felis aliquam.</small>
-                        <div class="social-links pt-3">
-                            <a href="#"><i style="color: black;" class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i style="color: black;" class="fab fa-twitter"></i></a>
-                            <a href="#"><i style="color: black;" class="fab fa-instagram"></i></a>
-                            <a href="#"><i style="color: black;" class="fab fa-linkedin-in"></i></a>
+            <div id="myportretsections" class="row fix-row-x headline">
+                @foreach (var item in Model.Creators)
+                {
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <div class="card mx-3 cards-border portret-image-hover">
+                            <img src="~/assets/images/@item.Image" class="myaboutusimages card-img-top" alt="card-group-image">
+                            <div class="card-body card-texts">
+                                <h5 class="card-title">@item.Fullname</h5>
+                                <small>@item.Info</small>
+                                <div class="social-links pt-3">
+                                    <a href="#"><i style="color: black;" class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i style="color: black;" class="fab fa-twitter"></i></a>
+                                    <a href="#"><i style="color: black;" class="fab fa-instagram"></i></a>
+                                    <a href="#"><i style="color: black;" class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                }
+            @*    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
                     <div class="card mx-3 cards-border portret-image-hover">
                         <img src="~/assets/images/jisoo3 -edit.jpg" class="myaboutusimages card-img-top" alt="card-group-image">
                         <div class="card-body card-texts">
                         <h5 class="card-title">Kim Jisoo</h5>
-                        <small>Designer</small> 
-                        <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at felis aliquam.</small>
+                        <small>Designer Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at felis aliquam.</small>
                         <div class="social-links pt-3">
                             <a href="#"><i style="color: black;" class="fab fa-facebook-f"></i></a>
                             <a href="#"><i style="color: black;" class="fab fa-twitter"></i></a>
                             <a href="#"><i style="color: black;" class="fab fa-instagram"></i></a>
                             <a href="#"><i style="color: black;" class="fab fa-linkedin-in"></i></a>
                         </div>
+                        </div>
                     </div>
-                       </div>
                 </div>
                 <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
                     <div class="card mx-3 cards-border portret-image-hover">
                         <img src="~/assets/images/jennie2 -edit.jpg" class="myaboutusimages card-img-top" alt="card-group-image">
                         <div class="card-body card-texts">
                         <h5 class="card-title">Jennie Kim</h5>
-                        <small>Developer</small> 
-                        <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at felis aliquam.</small>
+                        <small>Developer Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at felis aliquam.</small>
                         <div class="social-links pt-3">
                             <a href="#"><i style="color: black;" class="fab fa-facebook-f"></i></a>
                             <a href="#"><i style="color: black;" class="fab fa-twitter"></i></a>
@@ -152,8 +154,7 @@
                         <img src="~/assets/images/rosee4.jpg" class="myaboutusimages card-img-top" alt="card-group-image">
                         <div class="card-body card-texts">
                         <h5 class="card-title">Roseanne Park</h5>
-                        <small>Administrator</small> 
-                        <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at felis aliquam.</small>
+                        <small>Administrator Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at felis aliquam.</small>
                         <div class="social-links pt-3">
                             <a href="#"><i style="color: black;" class="fab fa-facebook-f"></i></a>
                             <a href="#"><i style="color: black;" class="fab fa-twitter"></i></a>
@@ -162,7 +163,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+                </div>*@
             </div>
         </section>
     </main>
