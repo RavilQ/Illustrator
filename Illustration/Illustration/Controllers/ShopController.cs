@@ -20,7 +20,7 @@ namespace Illustration.Controllers
 
         public IActionResult Index(string? search,int? TagId = null,int? categoriId = null, string? sort = "AtoZ", decimal? maxPrice = null, decimal? minPrice = null, int? page = 1)
         {
-            var portraits = _context.Portraits.AsQueryable();
+            var portraits = _context.Portraits.Where(x=>x.IsSpecial==true).AsQueryable();
             var categories = _context.Categories.ToList();
             var tags = _context.Tags.ToList();
 

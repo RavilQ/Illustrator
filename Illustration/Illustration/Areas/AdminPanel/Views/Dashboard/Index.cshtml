@@ -24,141 +24,105 @@
         }
     }
 
-     List<Portrait> auktion2017 = new List<Portrait>();
-
-    foreach (var item in Model.Portraits)
-    {
-    @if ((start - item.CreatAt).Days >= 2190 && item.IsAuktion==true)
-        {
-            auktion2017.Add(item);
-        }
-    }
+    List<Portrait> auktion2017 = new List<Portrait>();
 
     List<Portrait> auktion2018 = new List<Portrait>();
 
-    foreach (var item in Model.Portraits)
-    {
-    @if ((start - item.CreatAt).Days >= 1825 && item.IsAuktion==true)
-        {
-            auktion2018.Add(item);
-        }
-    }
-
     List<Portrait> auktion2019 = new List<Portrait>();
-
-    foreach (var item in Model.Portraits)
-    {
-    @if ((start - item.CreatAt).Days >= 1460 && item.IsAuktion==true)
-        {
-            auktion2019.Add(item);
-        }
-    }
 
     List<Portrait> auktion2020 = new List<Portrait>();
 
-    foreach (var item in Model.Portraits)
-    {
-    @if ((start - item.CreatAt).Days >= 1095 && item.IsAuktion == true)
-        {
-            auktion2020.Add(item);
-        }
-    }
-
     List<Portrait> auktion2021 = new List<Portrait>();
 
-    foreach (var item in Model.Portraits)
-    {
-    @if ((start - item.CreatAt).Days >= 730 && item.IsAuktion == true)
-        {
-            auktion2021.Add(item);
-        }
-    }
-
     List<Portrait> auktion2022 = new List<Portrait>();
-
-    foreach (var item in Model.Portraits)
-    {
-    @if ((start - item.CreatAt).Days >= 365 && item.IsAuktion == true)
-        {
-            auktion2022.Add(item);
-        }
-    }
 
     List<Portrait> auktion2023 = new List<Portrait>();
 
     foreach (var item in Model.Portraits)
     {
-    @if ((start - item.CreatAt).Days <= 365 && item.IsAuktion == true)
-        {
+      if (item.CreatAt.Year == 2017 && item.IsAuktion==true)
+      {
+            auktion2017.Add(item);
+      }
+   
+      if (item.CreatAt.Year == 2018 && item.IsAuktion==true)
+      {
+            auktion2018.Add(item);
+      }
+
+      if (item.CreatAt.Year == 2019 && item.IsAuktion==true)
+      {
+            auktion2019.Add(item);
+      }
+
+      if (item.CreatAt.Year == 2020 && item.IsAuktion==true)
+      {
+            auktion2020.Add(item);
+      }
+
+      if (item.CreatAt.Year == 2021 && item.IsAuktion==true)
+      {
+            auktion2021.Add(item);
+      }
+
+      if (item.CreatAt.Year == 2022 && item.IsAuktion==true)
+      {
+            auktion2022.Add(item);
+      }
+
+      if (item.CreatAt.Year == 2023 && item.IsAuktion==true)
+      {
             auktion2023.Add(item);
-        }
+      }
     }
 
     List<Order> sale2017 = new List<Order>();
 
-    foreach (var item in Model.Orders)
-    {
-    @if ((start - item.CreatAt).Days >= 2190)
-        {
-            sale2017.Add(item);
-        }
-    }
-
     List<Order> sale2018 = new List<Order>();
-
-    foreach (var item in Model.Orders)
-    {
-    @if ((start - item.CreatAt).Days >= 1825)
-        {
-            sale2018.Add(item);
-        }
-    }
 
     List<Order> sale2019 = new List<Order>();
 
-    foreach (var item in Model.Orders)
-    {
-    @if ((start - item.CreatAt).Days >= 1460)
-        {
-            sale2019.Add(item);
-        }
-    }
-
     List<Order> sale2020 = new List<Order>();
-
-    foreach (var item in Model.Orders)
-    {
-    @if ((start - item.CreatAt).Days >= 1095)
-        {
-            sale2020.Add(item);
-        }
-    }
 
     List<Order> sale2021 = new List<Order>();
 
-    foreach (var item in Model.Orders)
-    {
-    @if ((start - item.CreatAt).Days >= 730)
-        {
-            sale2021.Add(item);
-        }
-    }
-
     List<Order> sale2022 = new List<Order>();
-
-    foreach (var item in Model.Orders)
-    {
-    @if ((start - item.CreatAt).Days >= 365)
-        {
-            sale2022.Add(item);
-        }
-    }
 
     List<Order> sale2023 = new List<Order>();
 
     foreach (var item in Model.Orders)
     {
-    @if ((start - item.CreatAt).Days <= 365)
+        if (item.CreatAt.Year == 2017)
+        {
+            sale2017.Add(item);
+        }
+
+        if (item.CreatAt.Year == 2018)
+        {
+            sale2018.Add(item);
+        }
+
+        if (item.CreatAt.Year == 2019)
+        {
+            sale2019.Add(item);
+        }
+
+        if (item.CreatAt.Year == 2020)
+        {
+            sale2020.Add(item);
+        }
+
+        if (item.CreatAt.Year == 2021)
+        {
+            sale2021.Add(item);
+        }
+
+        if (item.CreatAt.Year == 2022)
+        {
+            sale2022.Add(item);
+        }
+
+        if (item.CreatAt.Year == 2023)
         {
             sale2023.Add(item);
         }
@@ -184,7 +148,7 @@
                 <i class="fa fa-chart-line fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Today Sale</p>
-                    <h6 class="mb-0">$@order.Max(x=>x.Price)</h6>                
+                    <h6 class="mb-0">$@order.Sum(order => order.Price)</h6>                
                 </div>
             </div>
         </div>
@@ -193,7 +157,7 @@
                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Total Sale</p>
-                    <h6 class="mb-0">$@Model.Orders.Max(x => x.Price)</h6>
+                    <h6 class="mb-0">$@ViewBag.totalprice</h6>
                 </div>
             </div>
         </div>
@@ -249,7 +213,7 @@
 
         <div class="col-sm-12 col-xl-6">
             <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Doughnut Chart</h6>
+                <h6 class="mb-4">Sold Portraits by Tags</h6>
                 <canvas id="doughnut-chart" width="465" height="465" style="display: block; box-sizing: border-box; height: 465px; width: 465px;"></canvas>
             </div>
         </div>
@@ -366,7 +330,7 @@
     var myChart4 = new Chart(ctx4, {
         type: "bar",
         data: {
-            labels: ["Drawing", "Work", "Handmade", "Art", "Graphic Print"],
+            labels: [ "Art", "Work", "Drawing", "Graphic Print", "Handmade",],
             datasets: [{
                     label: "Categories",
                     backgroundColor: [
@@ -376,8 +340,8 @@
                     "rgba(235, 22, 22, .4)",
                     "rgba(235, 22, 22, .3)"
                 ],
-                data: [@work.Count,@art.Count,@print.Count, @drawing.Count, @handmade.Count]
-            }]
+                    data: [@art.Count, @work.Count, @drawing.Count, @print.Count, @handmade.Count]
+                }]
         },
         options: {
             responsive: true

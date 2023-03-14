@@ -28,11 +28,40 @@ namespace Illustration.Area.AdminPanel.Controllers
 
             var query = _context.Portraits.Include(x => x.PortraitCategories).ThenInclude(x => x.Category).Include(x=>x.PortraitTags).ThenInclude(x=>x.Tag);
 
-            //ViewBag.list1 = list1.Count;
-            //ViewBag.list2 = list2.Count;
-            //ViewBag.list3 = list3.Count;
-            //ViewBag.list4 = list4.Count;
-            //ViewBag.list5 = list5.Count;
+            var orders = _context.Orders.Include(x => x.Portrait).ThenInclude(x => x.PortraitTags).ToList();
+
+            var totalPrice = orders.Sum(order => order.Price);
+
+            List<Portrait> lsted = new List<Portrait>();
+
+            ViewBag.totalprice = totalPrice;
+
+            foreach (var item in orders)
+            {
+                var ptest = _context.Portraits.Include(x => x.PortraitTags).ThenInclude(x => x.Tag).FirstOrDefault(x=>x.Id==item.Portrait.Id);
+                lsted.Add(ptest);
+            }
+
+            List<PortraitTag> ptags1 = new List<PortraitTag>();
+            List<PortraitTag> ptags2 = new List<PortraitTag>();
+            List<PortraitTag> ptags3 = new List<PortraitTag>();
+            List<PortraitTag> ptags4 = new List<PortraitTag>();
+            List<PortraitTag> ptags5 = new List<PortraitTag>();
+
+            foreach (var item in lsted)
+            {
+                ptags1.AddRange(item.PortraitTags.Where(x => x.Tag.Id == 1));
+                ptags2.AddRange(item.PortraitTags.Where(x => x.Tag.Id == 2));
+                ptags3.AddRange(item.PortraitTags.Where(x => x.Tag.Id == 3));
+                ptags4.AddRange(item.PortraitTags.Where(x => x.Tag.Id == 4));
+                ptags5.AddRange(item.PortraitTags.Where(x => x.Tag.Id == 5));
+            }
+
+            ViewBag.list1 = ptags1.Count;
+            ViewBag.list2 = ptags2.Count;
+            ViewBag.list3 = ptags3.Count;
+            ViewBag.list4 = ptags4.Count;
+            ViewBag.list5 = ptags5.Count;
 
             List<Category> list = new List<Category>();
 
