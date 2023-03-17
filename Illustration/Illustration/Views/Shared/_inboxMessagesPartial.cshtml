@@ -59,14 +59,26 @@
         <div class="col-12 col-lg-12 col-xl-12">
             <div style="height: 88%;" class="position-relative">
                 <div id="usermessageinboxconfirm" class="chat-messages p-4">
+                    @if (ViewBag.image==null)
+                    {
+                        <input id="usermessageimagesend" type="hidden" value="4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" />
+                    }
+                    else{
+                        <input id="usermessageimagesend" type="hidden" value="@ViewBag.image" />
+                    }
                     @foreach (var item in Model)
                     {
-                        <input id="usermessageimagesend" type="hidden" value="@item.AppUser.Image" />
                         if (item.IsMember)
                         {
                             <div class="chat-message-right pb-4">
                                 <div class="ms-2">
-                                    <img src="~/Uploads/Users/@item.AppUser.Image" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                    @if (@item.AppUser.Image==null)
+                                    {
+                                        <img src="~/assets/images/4f64c9f81bb0d4ee969aaf7b4a5a6f40.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                    }
+                                    else{
+                                        <img src="~/Uploads/Users/@item.AppUser.Image" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+                                    }
                                 </div>
                                 <div style="display: flex;align-items: center;" class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
                                    @item.Text

@@ -40,8 +40,9 @@
                         </div>
                         <div style="border: 1px solid #cecece;padding: 3rem;" class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             <div class="row">
-                                <div class="d-flex justify-content-between">
+                            <div style="margin-bottom: 3%;" class="d-flex justify-content-between">
                                 <h3>All Order Portraits<span>( @Model.MyOrders.Count )</span></h3>
+                                <a asp-action="ExportAsExcell" class="btn btn-dark">Exel Download</a>
                                 </div>
                                 <hr />
                                 <div id="profilemyorderscontainerforloadmore">
@@ -87,7 +88,11 @@
                         <div class="col-lg-12 grid-margin stretch-card">
 
                             <div>
-                                <h4 class="card-title">Sale Portraits</h4>
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="card-title">Sale Portraits</h4>
+                                    <a asp-action="ExportAsExcell" class="btn btn-dark">Exel Download</a>
+                                </div>
+                               
                                 <div class="table-responsive">
                                     <table class="table">
 

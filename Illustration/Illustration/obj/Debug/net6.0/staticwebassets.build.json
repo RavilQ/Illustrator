@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kH2KbWher4CzRjex6C6Pd7opKWIpLHC1pueGDIO7rFA=",
+  "Hash": "n24hrqxhck9j8KA1Z3ko9PDEJfg/hbBI/eZVBKpUvgQ=",
   "Source": "Illustration",
   "BasePath": "_content/Illustration",
   "Mode": "Default",
@@ -4012,6 +4012,23 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\0f5cda1b-8618-4e42-9392-d2ec3b6b2e39shop-img-16-768x1013.jpg"
     },
     {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\12d918d4-3eda-4332-a2fa-0d3abc47c698lalisa.jpg",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/12d918d4-3eda-4332-a2fa-0d3abc47c698lalisa.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\12d918d4-3eda-4332-a2fa-0d3abc47c698lalisa.jpg"
+    },
+    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\14263049-af72-47d2-9321-c74631e21dafshop-img-21-768x1013.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -4845,6 +4862,23 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\ad3cc0bc-73b6-4723-aa6b-5eb8f1ffbbd7shop-img-27-768x1013.jpg"
     },
     {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\b1e608c6-99d0-49a8-875e-b06cea2c58e2About-us-person.jpg",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/b1e608c6-99d0-49a8-875e-b06cea2c58e2About-us-person.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\b1e608c6-99d0-49a8-875e-b06cea2c58e2About-us-person.jpg"
+    },
+    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\b4abd663-a398-4cda-b3b2-f4af3738cec5shop-img-14-768x1013.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -5236,6 +5270,23 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\fb54188f-6d1c-45f1-a296-b7e87207a75eshop-img-20-768x1013.jpg"
     },
     {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Portraits\\ffcbadbd-5d97-44c1-bd01-27d8d2a57c42midjourney1.png",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Portraits/ffcbadbd-5d97-44c1-bd01-27d8d2a57c42midjourney1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Portraits\\ffcbadbd-5d97-44c1-bd01-27d8d2a57c42midjourney1.png"
+    },
+    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Sliders\\pages-parallax-img-5a.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -5474,6 +5525,23 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\Users\\aef3d1ba-bf36-4c01-97c8-1eb3e0c6a038batman2.jpg"
     },
     {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Users\\b04e8634-4e4a-44a3-b95c-9e5a5990c090aboutusperson6.jpg",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Users/b04e8634-4e4a-44a3-b95c-9e5a5990c090aboutusperson6.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Users\\b04e8634-4e4a-44a3-b95c-9e5a5990c090aboutusperson6.jpg"
+    },
+    {
       "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Users\\daca83c4-8d16-4e55-89e8-b7d3a86e6083146393.jpg",
       "SourceId": "Illustration",
       "SourceType": "Discovered",
@@ -5506,6 +5574,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\Users\\f0330479-4e0e-490a-88bd-a36d907b4c75top-wallpaper-home-screen-iron-man-best-iron-man-full-screen.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\Uploads\\Users\\f395c356-1dd2-43ed-8e99-6bb105193f63aboutusperson6.jpg",
+      "SourceId": "Illustration",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\New folder\\Illustration\\Illustration\\wwwroot\\",
+      "BasePath": "_content/Illustration",
+      "RelativePath": "Uploads/Users/f395c356-1dd2-43ed-8e99-6bb105193f63aboutusperson6.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Users\\f395c356-1dd2-43ed-8e99-6bb105193f63aboutusperson6.jpg"
     }
   ]
 }

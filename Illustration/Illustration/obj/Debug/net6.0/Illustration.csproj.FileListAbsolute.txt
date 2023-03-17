@@ -555,3 +555,10 @@ C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\MailKi
 C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\MimeKit.dll
 C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\BouncyCastle.Crypto.dll
 C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\libman.json
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\ClosedXML.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\ExcelNumberFormat.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\Irony.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\SixLabors.Fonts.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\System.IO.Packaging.dll
+C:\Users\HP\Desktop\New folder\Illustration\Illustration\bin\Debug\net6.0\XLParser.dll

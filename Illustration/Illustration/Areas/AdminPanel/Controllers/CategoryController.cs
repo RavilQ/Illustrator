@@ -1,4 +1,5 @@
-﻿using Illustration.DAL;
+﻿using ClosedXML.Excel;
+using Illustration.DAL;
 using Illustration.Helper;
 using Illustration.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -131,6 +132,22 @@ namespace Illustration.Areas.AdminPanel.Controllers
             _context.Categories.Remove(category);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult ExportAsExcell()
+        {
+            var category = _context.Categories.AsQueryable();
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(ForExel.ToDataTable<Category>(category.ToList()));
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", $"{DateTime.UtcNow.AddHours(4).Date}-houses.xlsx");
+                }
+            }
+
+            return View();
         }
     }
 }

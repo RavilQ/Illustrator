@@ -20,6 +20,8 @@ using System.Drawing.Printing;
 using System.Drawing;
 using Microsoft.AspNetCore.Http;
 using static DotNetOpenAuth.OpenId.Extensions.AttributeExchange.WellKnownAttributes.Media;
+using DocumentFormat.OpenXml.Spreadsheet;
+using ClosedXML.Excel;
 
 namespace Illustration.Controllers
 {
@@ -76,6 +78,7 @@ namespace Illustration.Controllers
             model.Messages = _context.ContactMessages.Include(x => x.AppUser).Where(x=>x.AppUserId==user.Id).ToList();
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
+            ViewBag.image = user.Image; 
             return View(model);
         }
 
@@ -106,12 +109,14 @@ namespace Illustration.Controllers
             model.ViewModel = viewModel;
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
+            ViewBag.image = user.Image;
 
             if (memberVm.Username == null || memberVm.Email == null)
             {
                 ModelState.AddModelError("Username", "Chose another Username !!");
                 ViewBag.Categories = _context.Categories.ToList();
                 ViewBag.Tags = _context.Tags.ToList();
+                ViewBag.image = user.Image;
                 return View(model);
             }
 
@@ -120,6 +125,7 @@ namespace Illustration.Controllers
                 ModelState.AddModelError("Username", "Chose another Username !!");
                 ViewBag.Categories = _context.Categories.ToList();
                 ViewBag.Tags = _context.Tags.ToList();
+                ViewBag.image = user.Image;
                 return View(model);
             }
 
@@ -128,6 +134,7 @@ namespace Illustration.Controllers
                 ModelState.AddModelError("Email", "Chose another Email !!");
                 ViewBag.Categories = _context.Categories.ToList();
                 ViewBag.Tags = _context.Tags.ToList();
+                ViewBag.image = user.Image;
                 return View(model);
             }
 
@@ -176,6 +183,7 @@ namespace Illustration.Controllers
             {
                 ViewBag.Categories = _context.Categories.ToList();
                 ViewBag.Tags = _context.Tags.ToList();
+                ViewBag.image = user.Image;
                 return View(model);
             }
 
@@ -192,6 +200,7 @@ namespace Illustration.Controllers
                     {
                         ViewBag.Categories = _context.Categories.ToList();
                         ViewBag.Tags = _context.Tags.ToList();
+                        ViewBag.image = user.Image;
                         return View(model);
                     }
                 }
@@ -201,24 +210,28 @@ namespace Illustration.Controllers
         }
 
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
+            ViewBag.image = user.Image;
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(Portrait portrait)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             if (!ModelState.IsValid)
             {
                 ViewBag.Categories = _context.Categories.ToList();
                 ViewBag.Tags = _context.Tags.ToList();
+                ViewBag.image = user.Image;
                 return View();
             }
-
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             if (user == null)
             {
@@ -249,6 +262,7 @@ namespace Illustration.Controllers
             {
                 ViewBag.Categories = _context.Categories.ToList();
                 ViewBag.Tags = _context.Tags.ToList();
+                ViewBag.image = user.Image;
                 ModelState.AddModelError("PosterImage", "Image is incorrect");
                 return View();
 
@@ -262,6 +276,7 @@ namespace Illustration.Controllers
                     {
                         ViewBag.Categories = _context.Categories.ToList();
                         ViewBag.Tags = _context.Tags.ToList();
+                        ViewBag.image = user.Image;
                         ModelState.AddModelError("OtherImages", "Image is incorrect");
                         return View();
 
@@ -343,9 +358,11 @@ namespace Illustration.Controllers
 
         }
 
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var portrait = _context.Portraits.FirstOrDefault(x => x.Id == id);
+
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             if (portrait == null)
             {
@@ -353,17 +370,21 @@ namespace Illustration.Controllers
             }
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
+            ViewBag.image = user.Image;
 
             return View(portrait);
         }
 
         [HttpPost]
-        public IActionResult Edit(Portrait portrait)
+        public async  Task<IActionResult> Edit(Portrait portrait)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             if (!ModelState.IsValid)
             {
                 ViewBag.Categories = _context.Categories.ToList();
                 ViewBag.Tags = _context.Tags.ToList();
+                ViewBag.image = user.Image;
                 return RedirectToAction("Profile");
             }
 
@@ -1055,8 +1076,8 @@ namespace Illustration.Controllers
             }
 
             order.Id = 0;
+            order.Price = (int)portrait.SalePrice;
             _context.Orders.Add(order);
-            _context.MyOrders.Add(myOrder);
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Home");
@@ -1233,6 +1254,22 @@ namespace Illustration.Controllers
           .ToList();
             return PartialView("_profileSaleOrdersPostPartial", productReviews);
 
+        }
+
+        public IActionResult ExportAsExcell()
+        {
+            var category = _context.Categories.AsQueryable();
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(ForExel.ToDataTable<Category>(category.ToList()));
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", $"{DateTime.UtcNow.AddHours(4).Date}-houses.xlsx");
+                }
+            }
+
+            return View();
         }
 
     }
